@@ -1,0 +1,109 @@
+
+/* CSS */
+
+
+body {
+
+    background-image: url(images/background-img.jpg);
+    
+}
+
+.main-page-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas: 
+    "banner banner"
+    "navigation navigation"
+    "ingress ingress"
+    "content-menu content-menu"
+    "content-info content-info"
+    "advert advert"
+    "footer footer";
+    grid-gap: 5px;
+}
+
+
+
+.ingress {
+    grid-area: ingress;
+    text-align: center;
+    padding-top: 25px;
+}
+
+.ingress h1{
+    font-size: 22px
+}
+
+.ingress p{
+    font-family: serif;
+    font-style: italic;
+    font-size: 20px;
+}
+
+.navigation {
+     grid-area: navigation;
+
+    
+    color: #f2f2f2;
+    text-align: center;
+    padding: 20px 5px;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+/* Change the color of links on hover */
+.navigation a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+/* Add a color to the active/current link */
+.navigation a.active {
+    padding-right: 20px;
+    
+    color: blue;
+}
+
+
+.banner{
+     grid-area: banner;
+    align-content: center
+    
+}
+
+
+/* Add a black background color to the top navigation */
+
+.footer {
+    grid-area: footer;
+    text-align: center;
+    
+}
+/* Style the links inside the navigation bar */
+
+
+.logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    height: auto;
+    
+}
+
+@media screen and (min-width: 736px)
+{
+    .main-page-container {
+    display: grid;
+    grid-template-columns: 1fr 500px 500px 1fr;
+    grid-template-rows: 100px fit-content(100%) 1fr ;
+    grid-template-areas: 
+    ". banner banner ."
+    ". navigation navigation ."
+    ". ingress ingress ."
+    ". content-menu content-info ."
+    ". advert advert ."
+    ". footer footer .";
+}
+}
