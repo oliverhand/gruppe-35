@@ -1,5 +1,6 @@
-// Make the DIV element draggable:
+// Make the DIV element draggable: //Calling the dragElement function
 dragElement(document.getElementById("mydiv"));
+
 
 function dragElement(elmnt) {
   var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
@@ -41,3 +42,21 @@ function dragElement(elmnt) {
     document.onmousemove = null;
   }
 }
+
+//Creating new Div-elements.
+function addElement(){
+    var newElement= document.getElementById("mydiv").cloneNode(true);
+    newElement.setAttribute('draggable',true);
+    newElement.id="newDiv";
+   //var taskContent = document.createTextNode(input.value); 
+    //task.appendChild(taskContent);  
+   var target = document.getElementById("mydiv"); 
+    //var parent = document.getElementById("ToDoBox");
+    document.body.insertBefore(newElement,target);
+    
+}
+    var button = document.getElementById("mydiv");
+    button.addEventListener("click",addElement);
+
+    dragElement(document.getElementById("newDiv"));
+
