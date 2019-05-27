@@ -8,6 +8,8 @@ body {
   background-color: #f1f1f1;
   border: 1px solid #d3d3d3;
   text-align: center;
+    resize: both;
+    overflow: hidden;
 }
 
 #mydivheader {
