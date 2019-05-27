@@ -3,17 +3,18 @@ body {
 }   
 
 #mydiv {
-  position: absolute;
-  z-index: 9;
-  background-color: #f1f1f1;
-  border: 1px solid #d3d3d3;
-  text-align: center;
+    position: absolute;
+    z-index: 9;
+    background-color: #f1f1f1;
+    border: 1px solid #d3d3d3;
+    text-align: center;
     resize: vertical;
     overflow: hidden;
     overflow-y: visible;
     min-height: auto;
     min-height: fit-content;
     max-height: fit-content;
+    max-width: 140px;
 }
 
 #mydivheader {
@@ -25,18 +26,12 @@ body {
     
 }
 
-textarea {
-    resize: vertical;
-    overflow-wrap: normal;
-    word-wrap: break-word;
-}
-
 #text {
-    width: inherit;
+    max-width: 100%;
     padding-bottom: 10px; 
     resize: vertical;
     overflow-wrap: normal;
-    word-wrap: break-word;
+    word-break:break-all;
 }
 
 
