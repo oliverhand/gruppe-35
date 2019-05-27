@@ -1,82 +1,134 @@
 /* CSS */
 body {
     background-image: url(/images/grid_32.jpg);
-}
-
-.main-page-container {
-   
-}
-
-.ingress {
-    grid-area: ingress;
-    text-align: center;
-    padding-top: 25px;
-}
-
-.ingress h1{
-    font-size: 22px
-}
-
-.ingress p{
-    font-family: serif;
-    font-style: italic;
-    font-size: 20px;
-}
-
-#sideBar{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    background-color: aqua;
-    width: 100px;
-}
-
-.navigationBar {
-    text-align: center;
-    padding: 0;
     margin: 0;
-    list-style-type: none;
-    text-decoration: none;
-    font-size: 20px;
+    padding: 0;
 }
 
-.navigationBar li {
-    font-family: sans-serif;
-}
-
-/* Change the color of links on hover */
-.navigationBar a:hover {
-    background-color: #dddddd;
-    color: black;
-}
-
-/* Add a color to the active/current link */
-.navigationBar a.active {
-    padding-right: 20px;
-    color: blue;
-}
-
-.banner{
-    grid-area: banner;
-    align-content: center
-    
-}
-
-/* Add a black background color to the top navigation */
-.footer {
-    grid-area: footer;
-    text-align: center;
-    
-}
-/* Style the links inside the navigation bar */
-
-.logo {
+#navBar{
     display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
-    height: auto;
-    
 }
 
+.navbarHorizontal {
+  display: block;
+  position: absolute;
+  width: 100%;
+  background-color: rgb(50, 50, 50);
+}
 
+.navbarHorizontal a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.dropdownHorizontal {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdownHorizontal .dropbtnHorizontal {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: rgb(50, 50, 50);
+  margin: 0;
+}
+
+.navbarHorizontal a:hover, .dropdownHorizontal:hover .dropbtnHorizontal {
+  background-color: red;
+}
+
+.dropdown-contentHorizontal {
+  display: none;
+  position: absolute;
+  background-color: rgb(50, 50, 50);
+  min-width: 100px;
+  z-index: 1;
+  font-family: sans-serif;
+}
+
+.dropdown-contentHorizontal a {
+  float: none;
+  color: aliceblue;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-contentHorizontal a:hover {
+  background-color: red;
+}
+
+.dropdownHorizontal:hover .dropdown-contentHorizontal {
+  display: flex;
+  flex-direction: column;
+}
+
+.navbarVertical {
+  display: block;
+  position: absolute;
+  height: 100%;
+  background-color: rgb(50, 50, 50);
+}
+
+.navbarVertical a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.dropdownVertical {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdownVertical .dropbtnVertical {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: rgb(50, 50, 50);
+  margin: 0;
+}
+
+.navbarVertical a:hover, .dropdownVertical:hover .dropbtnVertical {
+  background-color: red;
+}
+
+.dropdown-contentVertical {
+  display: none;
+  position: absolute;
+  background-color: rgb(50, 50, 50);
+  min-width: 100px;
+  z-index: 1;
+  font-family: sans-serif;
+}
+
+.dropdown-contentVertical a {
+  float: none;
+  color: aliceblue;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-contentVertical a:hover {
+  background-color: red;
+}
+
+.dropdownVertical:hover .dropdown-contentVertical{
+  display: flex;
+  flex-direction: column;
+}
