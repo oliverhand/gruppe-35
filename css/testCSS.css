@@ -1,26 +1,11 @@
 /* CSS */
 body {
-
     background-image: url(/images/grid_32.jpg);
-    
 }
 
 .main-page-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    grid-template-areas: 
-    "banner banner"
-    "navigation navigation"
-    "ingress ingress"
-    "content-menu content-menu"
-    "content-info content-info"
-    "advert advert"
-    "footer footer";
-    grid-gap: 5px;
+   
 }
-
-
 
 .ingress {
     grid-area: ingress;
@@ -38,27 +23,38 @@ body {
     font-size: 20px;
 }
 
-.navigation {
-    grid-area: navigation;
-    color: #f2f2f2;
+#sideBar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: aqua;
+    width: 100px;
+}
+
+.navigationBar {
     text-align: center;
-    padding: 20px 5px;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
     text-decoration: none;
     font-size: 20px;
 }
 
+.navigationBar li {
+    font-family: sans-serif;
+}
+
 /* Change the color of links on hover */
-.navigation a:hover {
-    background-color: #ddd;
+.navigationBar a:hover {
+    background-color: #dddddd;
     color: black;
 }
 
 /* Add a color to the active/current link */
-.navigation a.active {
+.navigationBar a.active {
     padding-right: 20px;
     color: blue;
 }
-
 
 .banner{
     grid-area: banner;
@@ -66,16 +62,13 @@ body {
     
 }
 
-
 /* Add a black background color to the top navigation */
-
 .footer {
     grid-area: footer;
     text-align: center;
     
 }
 /* Style the links inside the navigation bar */
-
 
 .logo {
     display: block;
@@ -86,18 +79,4 @@ body {
     
 }
 
-@media screen and (min-width: 736px)
-{
-    .main-page-container {
-    display: grid;
-    grid-template-columns: 1fr 500px 500px 1fr;
-    grid-template-rows: 100px fit-content(100%) 1fr ;
-    grid-template-areas: 
-    ". banner banner ."
-    ". navigation navigation ."
-    ". ingress ingress ."
-    ". content-menu content-info ."
-    ". advert advert ."
-    ". footer footer .";
-}
-}
+
