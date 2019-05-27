@@ -8,8 +8,12 @@ body {
   background-color: #f1f1f1;
   border: 1px solid #d3d3d3;
   text-align: center;
-    resize: both;
+    resize: vertical;
     overflow: hidden;
+    overflow-y: visible;
+    min-height: auto;
+    min-height: fit-content;
+    max-height: fit-content;
 }
 
 #mydivheader {
@@ -18,4 +22,25 @@ body {
   z-index: 10;
   background-color: #2196F3;
   color: #fff;
+    
 }
+
+textarea {
+    resize: vertical;
+    overflow-wrap: normal;
+    word-wrap: break-word;
+}
+
+#text {
+    width: inherit;
+    padding-bottom: 10px; 
+    resize: vertical;
+    overflow-wrap: normal;
+    word-wrap: break-word;
+}
+
+
+
+#Content1, #Content2 {border-bottom: 1px solid #4588ba; margin-bottom:10px;}
+
+div p {background: #4588ba; line-height: 80px; font-size: 2em; font-family: sans-serif; color: white; margin: 0; padding-left: 30px;}
