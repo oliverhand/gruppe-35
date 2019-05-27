@@ -1,17 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-   
+
     
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <link rel="stylesheet" type="text/css" href="css/dragDrop.css">
     <title>Projectname</title>
+    
 </head>
     
 <body>
-  
+
     
+    <!-- Draggable DIV -->
+<div id="mydiv" draggable="true">
+  <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
+  <div id="mydivheader">Click here to move</div>
+  <p>+ name:String</p>
+  <p>+ address: Salary</p>
+  <p>+ ID:String</p>
+</div>
+
+    <script type="text/javascript" src="script/dragDrop.js">
+        dragElement();
+    </script>
+
 </body>
     
 </html>
