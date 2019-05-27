@@ -1,7 +1,4 @@
-
 /* CSS */
-
-
 body {
 
     background-image: url(/images/grid_32.jpg);
@@ -42,9 +39,7 @@ body {
 }
 
 .navigation {
-     grid-area: navigation;
-
-    
+    grid-area: navigation;
     color: #f2f2f2;
     text-align: center;
     padding: 20px 5px;
@@ -61,13 +56,12 @@ body {
 /* Add a color to the active/current link */
 .navigation a.active {
     padding-right: 20px;
-    
     color: blue;
 }
 
 
 .banner{
-     grid-area: banner;
+    grid-area: banner;
     align-content: center
     
 }
