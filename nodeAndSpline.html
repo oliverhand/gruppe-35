@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <link rel="stylesheet" type="text/css" href="css/nodeAndSpline.css">
-    <link rel="stylesheet" type="text/css" href="css/dragDrop.css">
+
   <head>
     <title>Spline Editor</title>    
 
@@ -33,12 +33,59 @@
     </ul>
       
       <canvas width="400" height="400" id="canvas" style="border:1px solid #000000;"></canvas>
-      <script>
-        
+      
+      <svg width="400" height="400" id="mySVG" style ="border:1px solid #000000;">
+       <!-- <circle id="au" class="spot" cx="200" cy="50" r="4"></circle>
+        <circle id="sl" class="spot" cx="100" cy="100" r="4"></circle>
+        <circle id="cp" class="spot2" cx="0" cy="0" r="4"></circle>
+        <path id="curve" d="M0 0" stroke="green" stroke-width="4" stroke-linecap="round" fill="transparent"></path>
+        -->
+          
+      <line x1="30" y1="80" x2="300" y2="300" style="stroke:rgb(255,0,0);stroke-width:2" />
+          
+      </svg>
+      
+      
 
+      
+      
+      <script>
+          
+          //draws curve between two points using a control point as a guide for the curvation
+          /* function x() {
+            var p1x = parseFloat(document.getElementById("au").getAttribute("cx"));
+            var p1y = parseFloat(document.getElementById("au").getAttribute("cy"));
+            var p2x = parseFloat(document.getElementById("sl").getAttribute("cx"));
+            var p2y = parseFloat(document.getElementById("sl").getAttribute("cy"));
+
+            // mid-point of line:
+            var mpx = (p2x + p1x) * 0.5;
+            var mpy = (p2y + p1y) * 0.5;
+
+            // angle of perpendicular to line:
+            var theta = Math.atan2(p2y - p1y, p2x - p1x) - Math.PI / 2;
+
+            // distance of control point from mid-point of line:
+            var offset = 30;
+
+            // location of control point:
+            var c1x = mpx + offset * Math.cos(theta);
+            var c1y = mpy + offset * Math.sin(theta);
+
+            // show where the control point is:
+            var c1 = document.getElementById("cp");
+            c1.setAttribute("cx", c1x);
+            c1.setAttribute("cy", c1y);
+
+            // construct the command to draw a quadratic curve
+            var curve = "M" + p1x + " " + p1y + " Q " + c1x + " " + c1y + " " + p2x + " " + p2y;
+            var curveElement = document.getElementById("curve");
+            curveElement.setAttribute("d", curve);
+        } */
+          
           
          //set up the canvas and context
-            var canvas = document.getElementById("canvas");
+            var canvas = document.getElementById("mySVG");
             var ctx = canvas.getContext("2d");
 
             //report the mouse position on click
@@ -46,7 +93,7 @@
                 var mousePos = getMousePos(canvas, evt);
             
                 
-          let cx = document.querySelector("canvas").getContext("2d");
+          let cx = document.querySelector("mySVG").getContext("2d");
           cx.beginPath();
           cx.moveTo(10, 10);
 

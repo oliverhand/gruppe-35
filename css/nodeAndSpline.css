@@ -69,3 +69,8 @@ circle {
     background: gray;
     border: 3px solid rgb(33, 33, 33);
 }
+
+
+svg { background-color: white; }
+        .spot { fill: orange; }
+        .spot2 { fill: red; }
