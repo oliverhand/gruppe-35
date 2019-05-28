@@ -1,5 +1,5 @@
 body {
-
+    background-image: url(../images/grid_32.jpg)
 }   
 
 #mydiv {
@@ -59,3 +59,46 @@ textarea {
 #Content1, #Content2 {border-bottom: 1px solid #4588ba; margin-bottom:10px;}
 
 div p {background: #4588ba; line-height: 80px; font-size: 2em; font-family: sans-serif; color: white; margin: 0; padding-left: 30px;}
+
+
+li {
+    list-style-type: none;
+}
+
+input[type=button] {
+    color:#08233e;
+    font:2.4em Futura, ‘Century Gothic’, AppleGothic, sans-serif;
+    font-size:70%;
+    /* ... other rules ... */
+    cursor:pointer;
+}
+
+input[type=button]:hover {
+    background-color:rgba(255,204,0,0.8);
+}
+
+.container{
+    /* background-color: brown; */
+    display: flex;
+    justify-content: space-between;
+}
+
+.nodeBase {
+    border-radius: 50%;
+    margin-right: 50px;
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+.type1 {
+
+    background: orange;
+    border: 3px solid rgb(33, 33, 33);
+    padding: 10px 10px;
+}
+
+.type2 {
+    background: gray;
+    border: 3px solid rgb(33, 33, 33);
+    padding: 10px 10px;
+}
