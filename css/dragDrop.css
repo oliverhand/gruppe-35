@@ -2,7 +2,7 @@ body {
 
 }   
 
-#mydiv,#newDiv {
+#myDiv,#newDiv {
 position: absolute;
   z-index: 11;
   background-color: #f1f1f1;
@@ -14,20 +14,7 @@ position: absolute;
     min-height: fit-content; 
     max-width: 150px;
 }
-/*
-#newDiv {
-position: absolute;
-  z-index: 12;
-  background-color: lightgreen;
-  border: 1px solid #d3d3d3;
-  text-align: center;
-    resize: vertical;
-    overflow: hidden;
-    overflow-y: visible;
-    min-height: fit-content; 
-    max-width: 150px;
-}*/
-#mydivheader, #newDivheader {
+#myDivHeader, #newDivHeader {
   padding: 10px;
   cursor: move;
   z-index: 2;
@@ -35,13 +22,11 @@ position: absolute;
   color: #fff;
 }
 
-
 textarea {
     resize: vertical;
     overflow-wrap: normal;
     word-wrap: break-word;
 }
-
 .text {
     width: inherit;
     padding-bottom: 10px; 
@@ -50,8 +35,24 @@ textarea {
     word-wrap: break-word;
 }
 
-
-
-#Content1, #Content2 {border-bottom: 1px solid #4588ba; margin-bottom:10px;}
-
-div p {background: #4588ba; line-height: 80px; font-size: 2em; font-family: sans-serif; color: white; margin: 0; padding-left: 30px;}
+#Content1, #Content2 {
+    border-bottom: 1px solid #4588ba; margin-bottom:10px;
+}
+div p {
+    background: #4588ba;
+    line-height: 80px;
+    font-size: 2em;
+    font-family:sans-serif;
+    color: white;
+    margin: 0;
+    padding-left: 30px;
+}
+#canvas{
+    position: absolute;
+    height: 400px;
+    width: 400px;
+    /*background-color: cornflowerblue;*/
+    left: 400px;
+    bottom: 200px;
+    border: 1px solid black;
+}

@@ -1,3 +1,73 @@
 body {
 
+}   
+#Div {
+position: absolute;
+  z-index: 11;
+  background-color: #f1f1f1;
+  border: 1px solid #d3d3d3;
+  text-align: center;
+    resize: vertical;
+    overflow: hidden;
+    overflow-y: visible;
+    min-height: fit-content; 
+    max-width: 150px;
+    left: 45%;
+    top:35%;
+    
+}
+#DivHeader {
+  padding: 10px;
+  cursor: move;
+  z-index: 2;
+  background-color: #2196F3;
+  color: #fff;
+}
+
+textarea {
+    resize: vertical;
+    overflow-wrap: normal;
+    word-wrap: break-word;
+}
+.text {
+    width: inherit;
+    padding-bottom: 10px; 
+    resize: vertical;
+    overflow-wrap: normal;
+    word-wrap: break-word;
+}
+
+#Content1, #Content2 {
+    border-bottom: 1px solid #4588ba; margin-bottom:10px;
+}
+div p {
+    background: #4588ba;
+    line-height: 80px;
+    font-size: 2em;
+    font-family:sans-serif;
+    color: white;
+    margin: 0;
+    padding-left: 30px;
+}
+
+#statusContainer{
+    position: absolute;
+    z-index: 2;
+    background-color: lightsalmon;
+    color: #fff;
+    max-height: 30px;
+    width: 150px;
+    bottom:0;
+    left:0;
+}
+.status{
+    position: relative;
+    cursor:pointer;
+    z-index: 2;
+    background-color: lightsalmon;
+    color: #fff;
+    flex: left;
+    max-height: 30px;
+    margin: 0px;
+    bottom:0;   
 }

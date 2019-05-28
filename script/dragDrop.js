@@ -4,9 +4,9 @@
 var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
 function dragElement(elmnt) {
   
-  if (document.getElementById(elmnt.id+"header")) {
+  if (document.getElementById(elmnt.id+"Header")) {
     // if present, the header is where you move the DIV from:
-    document.getElementById(elmnt.id+"header").onmousedown = dragMouseDown;
+    document.getElementById(elmnt.id+"Header").onmousedown = dragMouseDown;
   } else {
     // otherwise, move the DIV from anywhere inside the DIV: 
     elmnt.onmousedown = dragMouseDown;
@@ -45,27 +45,30 @@ function dragElement(elmnt) {
 
 //Creating new Div-elements.
 function addElement(){
-    var newElement= document.getElementById("mydiv").cloneNode(true);
+    var newElement= document.getElementById("myDiv").cloneNode(true);
     newElement.setAttribute('draggable',true);
     newElement.id="newDiv";
     newElement.firstChild.id="newDivheader";
     var text= document.querySelectorAll(".text");
     text[0].setAttribute('contentEditable',true);
     text[1].setAttribute('contentEditable',true);
-   //var taskContent = document.createTextNode(input.value); 
+    //var taskContent = document.createTextNode(input.value); 
     //task.appendChild(taskContent);   
     //var parent = document.getElementById("ToDoBox");
     document.body.appendChild(newElement);
     dragElement(newElement);
     
+    //Setting the position for new div's using the cursor position.
     var e =window.event;
     newElement.style.top = e.clientY + "px";
     newElement.style.left = e.clientX + "px";
     
 }
     
-    var trigger = document.getElementById("mydiv");
+    var trigger = document.getElementById("myDiv");
     trigger.addEventListener("dragend",addElement);
+
+
 
 
 
