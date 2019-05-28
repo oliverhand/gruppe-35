@@ -2,7 +2,7 @@ body {
     background-image: url(../images/grid_32.jpg)
 }   
 
-#mydiv {
+#mydiv,#newDiv {
 position: absolute;
   z-index: 11;
   background-color: #f1f1f1;
@@ -11,34 +11,30 @@ position: absolute;
     resize: vertical;
     overflow: hidden;
     overflow-y: visible;
-    min-height: fit-content;
-    max-height: fit-content;
+    min-height: fit-content; 
     max-width: 150px;
-    
-    
 }
+/*
 #newDiv {
 position: absolute;
-  z-index: 1;
-  background-color: red;
+  z-index: 12;
+  background-color: lightgreen;
   border: 1px solid #d3d3d3;
   text-align: center;
     resize: vertical;
     overflow: hidden;
     overflow-y: visible;
-    min-height: fit-content;
-    max-height: fit-content;
+    min-height: fit-content; 
     max-width: 150px;
-    
-    
-}
-#mydivheader {
+}*/
+#mydivheader, #newDivheader {
   padding: 10px;
   cursor: move;
-  z-index: 10;
+  z-index: 2;
   background-color: #2196F3;
   color: #fff;
 }
+
 
 textarea {
     resize: vertical;
@@ -46,7 +42,7 @@ textarea {
     word-wrap: break-word;
 }
 
-#text {
+.text {
     width: inherit;
     padding-bottom: 10px; 
     resize: vertical;
