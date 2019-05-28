@@ -5,33 +5,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/testCSS.css">
+    <link rel="stylesheet" type="text/css" href="css/indexCSS.css">
     <title>Projectname</title>
 </head>
-    
 <body>
     
-    <div class="main-page-container"> <!-- GRID container -->
+    <div class="mainPageContainer"> <!-- GRID container -->
     
         <div id="navBar">
             <div class="navbarHorizontal">
-                <button id="logInn"><strong>Log inn</strong></button>
+                
                 <button id="createProject"><strong>Create project</strong></button>
+                <div id=createProjectPopUp>
+                    <input id="setProjectName" placeholder="Set project name">
+                    <button id="closeCreateProjectPopUp"><strong>Create project</strong></button></div>
+                
                 <button id="addMembers"><strong>Add member</strong></button>
+                <div id="addMembersPopUp">
+                    <input id="setMember" placeholder="Add member">
+                    <button id="addMemberBtn">Add member</button>
+                    <button id="closeAddMemberPopUp"><strong>Close</strong></button></div>
+                
                 <div class="dropdownHorizontal" id="projectMembers">
                     <button class="dropbtnHorizontal"><strong>Project member</strong>
-                    <div class="dropdown-contentHorizontal">
-                        <a href="#">Jonas</a>
-                        <a href="#">Oliver</a>
-                        <a href="#">Dominic</a>
-                        <a href="#">Tobias</a>
+                    <div class="dropdown-contentHorizontal" id="projectMembersDropDown">
                     </div></button>
                 </div>
+                <div id="projectName" contenteditable="true"><strong>New project</strong></div>
+                <button id="logInn"><strong>Log inn</strong></button>
             </div>
             
             <div class="navbarVertical">
                 <div class="dropdownVertical">
-                    <button class="dropbtnVertical">Java
+                    <button class="dropbtnVertical"><strong>Java</strong>
                     <div class="dropdown-contentVertical">
                         <a href="#">Class</a>
                         <a href="#">Getter</a>
@@ -40,9 +46,10 @@
                 </div>
             </div>
         </div>
+        <div id="mainCanvas"></div>
         
     </div> <!-- end main-page-container -->
-    
+    <script src="script/indexTest.js"></script>
 </body>
     
 </html>
