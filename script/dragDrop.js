@@ -1,12 +1,12 @@
 // Make the DIV element draggable: //Calling the dragElement function
-dragElement(document.getElementById("mydiv"));
+//dragElement(document.getElementById("mydiv"));
 
-
+var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
 function dragElement(elmnt) {
-  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-  if (document.getElementById(elmnt.id + "header")) {
+  
+  if (document.getElementById(elmnt.id+"header")) {
     // if present, the header is where you move the DIV from:
-    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+    document.getElementById(elmnt.id+"header").onmousedown = dragMouseDown;
   } else {
     // otherwise, move the DIV from anywhere inside the DIV: 
     elmnt.onmousedown = dragMouseDown;
@@ -48,15 +48,24 @@ function addElement(){
     var newElement= document.getElementById("mydiv").cloneNode(true);
     newElement.setAttribute('draggable',true);
     newElement.id="newDiv";
+    newElement.firstChild.id="newDivheader";
+    var text= document.querySelectorAll(".text");
+    text[0].setAttribute('contentEditable',true);
+    text[1].setAttribute('contentEditable',true);
    //var taskContent = document.createTextNode(input.value); 
-    //task.appendChild(taskContent);  
-   var target = document.getElementById("mydiv"); 
+    //task.appendChild(taskContent);   
     //var parent = document.getElementById("ToDoBox");
-    document.body.insertBefore(newElement,target);
+    document.body.appendChild(newElement);
+    dragElement(newElement);
+    
+    var e =window.event;
+    newElement.style.top = e.clientY + "px";
+    newElement.style.left = e.clientX + "px";
     
 }
-    var button = document.getElementById("mydiv");
-    button.addEventListener("click",addElement);
+    
+    var trigger = document.getElementById("mydiv");
+    trigger.addEventListener("dragend",addElement);
 
-    dragElement(document.getElementById("newDiv"));
+
 
