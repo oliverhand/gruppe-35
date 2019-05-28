@@ -1,3 +1,71 @@
 body {
+  margin: 0;
+  font: 13px sans-serif;
+  position: relative;
+  width: 720px;
+  height: 410px;
+}
+form {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+svg:focus {
+  outline: none;
+}
 
-}   
+rect {
+  fill: none;
+  pointer-events: all;
+}
+
+circle,
+.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
+circle {
+  fill: #fff;
+  fill-opacity: .2;
+  cursor: move;
+}
+
+.selected {
+  fill: #ff7f0e;
+  stroke: #ff7f0e;
+}
+
+
+#canvas {
+    width: auto;
+}
+
+
+.nodeBase {
+    border-radius: 50%;
+}
+
+.container{
+    
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.type1 {
+    flex-wrap: wrap;
+    width: 15px;
+    height: 15px;
+    background: orange;
+    border: 3px solid rgb(33, 33, 33);
+}
+
+.type2 {
+    flex-wrap: wrap;
+    width: 15px;
+    height: 15px;
+    background: gray;
+    border: 3px solid rgb(33, 33, 33);
+}
