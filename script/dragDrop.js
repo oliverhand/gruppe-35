@@ -2,14 +2,17 @@
 //dragElement(document.getElementById("mydiv"));
 
 var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+    
 function dragElement(elmnt) {
   
-  if (document.getElementById(elmnt.id+"Header")) {
+  if (document.getElementById(elmnt.id + "header")) {
     // if present, the header is where you move the DIV from:
-    document.getElementById(elmnt.id+"Header").onmousedown = dragMouseDown;
+    document.getElementById('newDivHeader').onmousedown = dragMouseDown;
+      console.log("dette fungerer");
+      
   } else {
     // otherwise, move the DIV from anywhere inside the DIV: 
-    elmnt.onmousedown = dragMouseDown;
+      elmnt.childNodes[3].onmousedown = dragMouseDown; //FIKS HER
   }
 
   function dragMouseDown(e) {
@@ -21,6 +24,7 @@ function dragElement(elmnt) {
     document.onmouseup = closeDragElement;
     // call a function whenever the cursor moves:
     document.onmousemove = elementDrag;
+
   }
 
   function elementDrag(e) {
@@ -40,7 +44,7 @@ function dragElement(elmnt) {
     // stop moving when mouse button is released:
     document.onmouseup = null;
     document.onmousemove = null;
-  }
+  } 
 }
 
 //Creating new Div-elements.
@@ -48,10 +52,10 @@ function addElement(){
     var newElement= document.getElementById("myDiv").cloneNode(true);
     newElement.setAttribute('draggable',true);
     newElement.id="newDiv";
-    newElement.firstChild.id="newDivheader";
-    var text= document.querySelectorAll(".text");
+    newElement.childNodes[0].id="newDivHeader";
+    /*var text= document.querySelectorAll(".text");
     text[0].setAttribute('contentEditable',true);
-    text[1].setAttribute('contentEditable',true);
+    text[1].setAttribute('contentEditable',true);*/
     //var taskContent = document.createTextNode(input.value); 
     //task.appendChild(taskContent);   
     //var parent = document.getElementById("ToDoBox");
@@ -63,12 +67,30 @@ function addElement(){
     newElement.style.top = e.clientY + "px";
     newElement.style.left = e.clientX + "px";
     
-}
+
+    console.log("FirsChild: "+newElement.firstChild);
+    console.log("FirsChild: "+newElement.childNodes[0].id);
     
+    }
+
     var trigger = document.getElementById("myDiv");
     trigger.addEventListener("dragend",addElement);
 
+//===================HER MÅ DET JOBBES MED ===========================
+
+document.getElementById('DELETE1').addEventListener('mouseup', function(e)
+    {    
+   
+   document.getElementById('DELETE1').appendChild(e.target.id);
+    document.getElementById('DELETE1').removeChild(e.target.id);
+           
+            //document.getElementById('DELETE1').appendChild(item);
+    });
+   
+
+//======================================================================
+    
 
 
-
+//e.keydown==46
 

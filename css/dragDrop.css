@@ -4,7 +4,7 @@ body {
 
 #myDiv,#newDiv {
 position: absolute;
-  z-index: 11;
+  z-index: 10000;
   background-color: #f1f1f1;
   border: 1px solid #d3d3d3;
   text-align: center;
@@ -14,19 +14,18 @@ position: absolute;
     min-height: fit-content; 
     max-width: 150px;
 }
+#newDiv:focus,  #newDivHeader:focus{
+    background-color: lawngreen;
+}
+
 #myDivHeader, #newDivHeader {
   padding: 10px;
   cursor: move;
-  z-index: 2;
+  z-index: 12;
   background-color: #2196F3;
   color: #fff;
 }
 
-textarea {
-    resize: vertical;
-    overflow-wrap: normal;
-    word-wrap: break-word;
-}
 .text {
     width: inherit;
     padding-bottom: 10px; 
@@ -35,7 +34,7 @@ textarea {
     word-wrap: break-word;
 }
 
-#Content1, #Content2 {
+#Content1,#Content2 {
     border-bottom: 1px solid #4588ba; margin-bottom:10px;
 }
 div p {
@@ -47,12 +46,19 @@ div p {
     margin: 0;
     padding-left: 30px;
 }
-#canvas{
+
+#DELETE{
     position: absolute;
-    height: 400px;
-    width: 400px;
-    /*background-color: cornflowerblue;*/
-    left: 400px;
-    bottom: 200px;
-    border: 1px solid black;
+    left: 100px;
+    bottom: 100px;
+}
+#DELETE1{
+    position: absolute;
+  z-index: 10;
+  background-color: #f1f1f1;
+  border: 1px solid #d3d3d3;
+ width: 200px;
+    height: 100px;
+    float: left;
+    margin: 200px;
 }

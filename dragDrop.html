@@ -11,26 +11,35 @@
 </head>
     
 <body>
-
-    
-    <!-- Draggable DIV -->
-<div id="myDiv" draggable="true">
+    <svg width="960" height="660" id="svg" style= "border: 1px solid black; float: left; z-index: 0; overflow: hidden;">
+       <g style="">
+            <g transform="translate(60,41)" style="overflow:hidden;">
+                <foreignObject style="overflow:hidden;" pointer-events="all" width="200" height="660">
+                    <div id="myDiv" tabindex="1" draggable="true">
   <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
-  <div id="myDivHeader">Click here to move</div>
-  <div class="text" contentEditable="true">
+  <div id="myDivHeader" tabindex="1">Click here to move</div>
+  <div class="text" draggable="true" contentEditable="true">
         + name: String <br>
         + address: Address <br>
         + ID: String <br>
         + salary: int <br>
         + jobType: String <br>
     </div>
+    <img src="images/node_yellow.png" id="node" draggable="false";>
     <div id="Content1"></div>
-     <strong><div class="text" contentEditable="true"></div></strong>
-    <div id="Content2"></div>
-    
-    
+     <strong><div class="text" draggable="true" contentEditable="true"></div></strong>
+    <div id="Content2" draggable="true" contentEditable="true" ></div> 
+                        
+                         
 </div>
-
+                        
+ <div id="DELETE1" >DELETE1</div>
+                </foreignObject>
+            </g>
+        </g>
+    </svg>
+    
+         
     
 <script type="text/javascript" src="script/dragDrop.js">
     </script>
