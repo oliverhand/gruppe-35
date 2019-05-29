@@ -15,24 +15,27 @@
         <div id="navBar">
             <div class="navbarHorizontal">
                 
+                <!-- The create project part on the horizontal navigation bar -->
                 <button id="createProject"><strong>Create project</strong></button>
                 <div id=createProjectPopUp>
-                    <input id="setProjectName" placeholder="Set project name">
-                    <button id="closeCreateProjectPopUp"><strong>Create project</strong></button></div>
-                
+                    <input id="setProjectName" type="text" placeholder="Set project name">
+                    <button id="closeCreateProjectPopUp"><strong>Create project</strong></button>
+                </div>
+                        
+                <!-- The add member part on the horizontal navigation bar -->
                 <button id="addMembers"><strong>Add member</strong></button>
                 <div id="addMembersPopUp">
                     <input id="setMember" placeholder="Add member">
                     <button id="addMemberBtn">Add member</button>
-                    <button id="closeAddMemberPopUp"><strong>Close</strong></button></div>
-                
-                <div class="dropdownHorizontal" id="projectMembers">
-                    <button class="dropbtnHorizontal"><strong>Project member</strong>
-                    <div class="dropdown-contentHorizontal" id="projectMembersDropDown">
-                    </div></button>
+                    <button id="closeAddMemberPopUp"><strong>Close</strong></button>
                 </div>
+                
+                    <!-- The project members list on the horizontal navigation bar -->
+                    <button id = "projectMembers"><strong>Project members</strong>
+                    <div id = "projectMembersContent"></div></button>
+                
+                <!-- The field where the projects name is displayed -->
                 <div id="projectName" contenteditable="true"><strong>New project</strong></div>
-                <button id="logInn"><strong>Log inn</strong></button>
             </div>
             
             <div class="navbarVertical">
@@ -44,6 +47,11 @@
                         <a href="#">Setter</a>
                     </div></button>
                 </div>
+            </div>
+            <button id="logIn"><strong>Log in</strong></button>
+            <div id=showLogInPopUp><strong>Choose an option</strong>
+                <button id="createAccount"><strong>Create account</strong></button>
+                <button id="logInAsUser"><strong>Log in as guest</strong></button>
             </div>
         </div>
         <div id="mainCanvas"></div>
