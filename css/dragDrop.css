@@ -1,10 +1,13 @@
 body {
 
+    overflow: hidden;
+    height: auto;
+    width: auto;
 }   
 
-#myDiv,#newDiv {
+#myDiv,#newDiv,.newDiv {
 position: absolute;
-  z-index: 11;
+  z-index: 10;
   background-color: #f1f1f1;
   border: 1px solid #d3d3d3;
   text-align: center;
@@ -13,19 +16,16 @@ position: absolute;
     overflow-y: visible;
     min-height: fit-content; 
     max-width: 150px;
+    max-height: 100px;
 }
-#myDivHeader, #newDivHeader {
+#myDivHeader, #newDivHeader,.newDivHeader{
   padding: 10px;
-  cursor: move;
-  z-index: 2;
+  z-index: 12;
   background-color: #2196F3;
   color: #fff;
 }
-
-textarea {
-    resize: vertical;
-    overflow-wrap: normal;
-    word-wrap: break-word;
+#newDiv:focus-within{
+    border: 1.5px solid red;
 }
 .text {
     width: inherit;
@@ -35,7 +35,7 @@ textarea {
     word-wrap: break-word;
 }
 
-#Content1, #Content2 {
+#Content1,#Content2 {
     border-bottom: 1px solid #4588ba; margin-bottom:10px;
 }
 div p {
@@ -47,12 +47,55 @@ div p {
     margin: 0;
     padding-left: 30px;
 }
-#canvas{
+#svg{
     position: absolute;
-    height: 400px;
-    width: 400px;
-    /*background-color: cornflowerblue;*/
-    left: 400px;
-    bottom: 200px;
+    overflow: hidden;
+}
+
+.status{
+    position: relative;
+    cursor:pointer;
+    z-index: 200;
+    color: black;
+    flex: left;
+    max-height: 30px;  
+    bottom: 0%;
+    background-color: dimgray;
+}
+#inProgress,#newInProgress.newInProgress{
+     background-color: yellow;
+        border:1px solid black;
+    bottom: 0;
+}
+#done,#newDone,.newDone{
+        border:1px solid black;
+    margin-bottom: 10px;
+}
+#box1{
+  z-index: 12;
+  background-color: #2196F3;
+  color: #fff;
+    width: 150px;
+    height: 200px;
     border: 1px solid black;
+    display: none  ;
+}
+#newMember{
+    border: 1px solid black; width:100px; margin-left: 25px; margin-top: 10px;
+}
+
+#tempdiv {
+  position: absolute;
+  z-index: 9;
+  background-color: #f1f1f1;
+  border: 1px solid #d3d3d3;
+  text-align: center;
+}
+
+#tempdivheader {
+  padding: 10px;
+  cursor: move;
+  z-index: 10;
+  background-color: #2196F3;
+  color: #fff;
 }

@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <link rel="stylesheet" type="text/css" href="css/nodeAndSpline.css">
+    <link rel="stylesheet" type="text/css" href="css/dragDrop.css">
 
   <head>
     <title>Spline Editor</title>    
@@ -12,134 +13,174 @@
 
 
   </head>
-  <body>
-    
- <!--       <canvas class="canC" id="canV" width=1000 height=500></canvas> -->
+  <body>  
       
+      <!-- SVG -->
       
-     <!-- Draggable DIV -->
-      
-    <ul class="container">
-        
-        <li class="nodeBase type2"></li>
-        <li class="nodeBase type2"></li>
-         
-    </ul>
-    <ul class="container">
-        
-        <input type="button" class="nodeBase type1">
-        <input type="button" class="nodeBase type2">
-         
-    </ul>
-      
-      <canvas width="400" height="400" id="canvas" style="border:1px solid #000000;"></canvas>
-      
-      <svg width="400" height="400" id="mySVG" style ="border:1px solid #000000;">
-       <!-- <circle id="au" class="spot" cx="200" cy="50" r="4"></circle>
-        <circle id="sl" class="spot" cx="100" cy="100" r="4"></circle>
-        <circle id="cp" class="spot2" cx="0" cy="0" r="4"></circle>
-        <path id="curve" d="M0 0" stroke="green" stroke-width="4" stroke-linecap="round" fill="transparent"></path>
-        -->
+      <svg width="960" height="600" id="mySVG" style ="border:1px solid #000000;">
+
+          <g>
+          <path id="mySpline" style="stroke:rgb(247, 162, 4);stroke-width:5" fill="transparent"/>
+               <circle class="circleNode" cx="300" cy="300" r="10" style="stroke:rgb(247, 162, 4);stroke-width:5"/>
+              
+              
+            </g>
+       
+        <!--     <g>
+                        <rect x="10" y="10" id="myNode" fill="transparent">
+                        <image id="node" src="images/node_yellow.png" draggable="false";></image>
+                            </rect>
+                        </g> 
           
-      <line x1="30" y1="80" x2="300" y2="300" style="stroke:rgb(255,0,0);stroke-width:2" />
+         -->
+            <g style="">
+                <g id="g-container" transform="translate(60,41)" style="overflow: hidden;">
+                <foreignObject id="foreignContainer"style="overflow:hidden;" pointer-events="all" width="200" height="660">
+
+                <div id="myDiv" draggable="true">
+                  <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
+                  <div id="myDivHeader" >Click here to move</div>
+                  <div class="text" draggable="true" contentEditable="true">
+                        + name: String <br>
+                        + address: Address <br>
+                        + ID: String <br>
+                        + salary: int <br>
+                        + jobType: String <br>
+                    </div>
+                    
+                  
+                    <svg id="myNode" width="32" height="32" fill="transparent">
+                        <rect fill="transparent">
+                        <image src="images/node_yellow.png" draggable="false";/>
+                            </rect> 
+                        </svg>
+                    
+                    <div id="Content1"></div>
+                     <strong><div class="text" draggable="true" contentEditable="true"></div></strong>
+                    <div id="Content2" draggable="true" contentEditable="true" ></div> 
+                    <div class="status"  tabindex="1" id="inProgress">In-Progress</div>
+                    <div class="status"  tabindex="1" id="done">Done</div>
+                    <div id="expand" style="border: 1px solid black">Utvid</div>
+
+                    <div id="box1">
+                        <div id="members" >Assigned: </div><button id="btnAddMembers">Klikk her</button>
+                        <div id="newMember" contentEditable="true">Member 1</div>
+                    </div>
+
+
+
+                </div>
+                    
+ <div id="DELETE1" >DELETE1</div>
+                </foreignObject>
+            </g>
+        </g>
           
       </svg>
-      
-      
 
-      
-      
-      <script>
-          
-          //draws curve between two points using a control point as a guide for the curvation
-          /* function x() {
-            var p1x = parseFloat(document.getElementById("au").getAttribute("cx"));
-            var p1y = parseFloat(document.getElementById("au").getAttribute("cy"));
-            var p2x = parseFloat(document.getElementById("sl").getAttribute("cx"));
-            var p2y = parseFloat(document.getElementById("sl").getAttribute("cy"));
-
-            // mid-point of line:
-            var mpx = (p2x + p1x) * 0.5;
-            var mpy = (p2y + p1y) * 0.5;
-
-            // angle of perpendicular to line:
-            var theta = Math.atan2(p2y - p1y, p2x - p1x) - Math.PI / 2;
-
-            // distance of control point from mid-point of line:
-            var offset = 30;
-
-            // location of control point:
-            var c1x = mpx + offset * Math.cos(theta);
-            var c1y = mpy + offset * Math.sin(theta);
-
-            // show where the control point is:
-            var c1 = document.getElementById("cp");
-            c1.setAttribute("cx", c1x);
-            c1.setAttribute("cy", c1y);
-
-            // construct the command to draw a quadratic curve
-            var curve = "M" + p1x + " " + p1y + " Q " + c1x + " " + c1y + " " + p2x + " " + p2y;
-            var curveElement = document.getElementById("curve");
-            curveElement.setAttribute("d", curve);
-        } */
-          
-          
+      <!-- SCRIPT -->
+       <script>       
          //set up the canvas and context
-            var canvas = document.getElementById("mySVG");
-            var ctx = canvas.getContext("2d");
-
-            //report the mouse position on click
-            canvas.addEventListener("dragend", function (evt) {
-                var mousePos = getMousePos(canvas, evt);
+            var svg = document.getElementById("mySVG");
+          //  var ctx = svg.getContext("2d");
+             evt = window.Event;
             
-                
-          let cx = document.querySelector("mySVG").getContext("2d");
-          cx.beginPath();
-          cx.moveTo(10, 10);
+           
+           //sets mouse and node position as a global variable
+           var mousePos = getMousePos(svg, evt);
+            var mouseX = mousePos.x;
+            var mouseY = mousePos.y;
+           
+            var rect = document.getElementById("myNode").getBoundingClientRect();
 
-          cx.lineTo(mousePos.x, mousePos.y);
-          cx.stroke();
+           
+            //var nodeX = document.getElementsByTagName("circle")[0].getAttribute("cx");
+            //var nodeY = document.getElementsByTagName("circle")[0].getAttribute("cy");                       
+           
+       //     var nodeX = document.getElementById("myNode").getAttribute("x");
+            //var nodeY = document.getElementById("myNode").getAttribute("y");
+            
+           
+            //report the mouse position while it moves, then sets <path "d" /> to what toString returns.
+            svg.addEventListener("mousemove", function (evt) {
+                var mousePos = getMousePos(svg, evt);
+                var mouseX = mousePos.x;
+                var mouseY = mousePos.y;
+               
+                
+                document.querySelector( "#mySVG #mySpline").setAttribute("d", toString(mouseX,mouseY));
                 
             }, false);
+           
+           /*
+           // when you click and hold the left mouse button, the node will appear.
+           function addElement(){
+               document.getElementById("mySpline").cloneNode(true);
+               newElement.setAttribute()
+               newElement.id = "newSpline"
+               newElement.d = toString(mouseX,mouseY);
+           }
+           
+           // listening for the click event. (Hvis vi drar fra node så kjører den addElement funksjonen)
+           
+           var triggerNode = document.getElementById("newNode");
+           triggerNode.addEventListener("click",addElement);
+           
+           
+            */
+              
+           
+           // gets mouse X and Y coordinates and returns it as a string
+              function toString(mouseX, mouseY){
+                  
+                             var rectB = document.getElementById("newNode").getBoundingClientRect();
+            console.log(rect.x);
+                  
+                  var nodeX = rect.x;
+                  var nodeY = rect.y;
+                  var nodeBX = rectB.x;
+                  var nodeBY = rectB.y;
+                 /* 
+                 var nodeX = document.getElementById("myNode").getAttribute("x");
+                 var nodeY = document.getElementById("myNode").getAttribute("y");
+                 */
+                  // anchor points are control points on a bezier curve that bends the curve
+                  var nodeAnchor = nodeX + 50;
+                  var anchorPoint = mouseX - 5;
+                  
 
+                  
+                  // use this if you want to have a curve on the end!
+               //   return "M" + nodeX + " " + nodeY + " C " + nodeAnchor + " " + nodeY + ", " + mouseY + " " + anchorPoint + ", " + mouseX + " " + mouseY;
+                  
+                //  return "M" + nodeX + " " + nodeY +  ", " + mouseX + " " + mouseY;
+                  return "M" + nodeX + " " + nodeY +  ", " + nodeBX + " " + nodeBY;
+                  
+                //  d="M10 10 C 100 10, 300 300, 400 300"
+                  
+              }
+            
+           
             //Get Mouse Position
-            function getMousePos(canvas, evt) {
-                var rect = canvas.getBoundingClientRect();
+            function getMousePos(svg, evt) {
+                var rect = svg.getBoundingClientRect();
                 return {
                     x: evt.clientX - rect.left,
                     y: evt.clientY - rect.top
                 };
-            }
-
+            }  
+           
+           // !!! This may not be useful
+           
+           function setPointPos(dropZoneX,dropZoneY){
+            
+               
+               
+           }
+          
         </script>
-    
-
-<!--      
       
-<div id="mydiv" draggable="true">
-        <div class="nodeBase type1"></div>
-
-    
-      <div id="mydivheader">Click here to move</div>
-
-      <div id="text" contentEditable="true">
-            + name: String <br>
-            + address: Address <br>
-            + ID: String <br>
-            + salary: int <br>
-            + jobType: String <br>
-        </div>
-        <div id="Content1"></div>
-         <strong><div id="text" contentEditable="true"></div></strong>
-        <div id="Content2"></div>
-    
-</div> 
-    -->
-    <script type="text/javascript" src="script/protovis-r3.2.js">
-
+      <script type="text/javascript" src="script/dragDrop.js">
     </script>
-<script type="text/javascript" src="script/dragDrop.js">
-    </script>
-
     </body>
 </html>
