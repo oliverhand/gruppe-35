@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <link rel="stylesheet" type="text/css" href="css/nodeAndSpline.css">
+    <link rel="stylesheet" type="text/css" href="css/dragDrop.css">
 
   <head>
     <title>Spline Editor</title>    
@@ -13,29 +14,67 @@
 
   </head>
   <body>  
-    <ul class="container">
-        
-        <li class="nodeBase type2"></li>
-        <li class="nodeBase type2"></li>
-         
-    </ul>
-    <ul class="container">
-        
-        <input type="button" class="nodeBase type1">
-        <input type="button" class="nodeBase type2">
-         
-    </ul>
       
       <!-- SVG -->
       
       <svg width="960" height="600" id="mySVG" style ="border:1px solid #000000;">
 
-          <path id="mousePath" style="stroke:rgb(247, 162, 4);stroke-width:5" fill="transparent"/>
-               <circle class="dropZone" cx="300" cy="300" r="10" style="stroke:rgb(247, 162, 4);stroke-width:5"/>
-               <circle class="dropZone" cx="100" cy="220" r="10" style="stroke;stroke-width:5"/>
-         
-           
+          <g>
+          <path id="mySpline" style="stroke:rgb(247, 162, 4);stroke-width:5" fill="transparent"/>
+               <circle class="circleNode" cx="300" cy="300" r="10" style="stroke:rgb(247, 162, 4);stroke-width:5"/>
+              
+              
+            </g>
+       
+        <!--     <g>
+                        <rect x="10" y="10" id="myNode" fill="transparent">
+                        <image id="node" src="images/node_yellow.png" draggable="false";></image>
+                            </rect>
+                        </g> 
           
+         -->
+            <g style="">
+                <g id="g-container" transform="translate(60,41)" style="overflow: hidden;">
+                <foreignObject id="foreignContainer"style="overflow:hidden;" pointer-events="all" width="200" height="660">
+
+                <div id="myDiv" draggable="true">
+                  <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
+                  <div id="myDivHeader" >Click here to move</div>
+                  <div class="text" draggable="true" contentEditable="true">
+                        + name: String <br>
+                        + address: Address <br>
+                        + ID: String <br>
+                        + salary: int <br>
+                        + jobType: String <br>
+                    </div>
+                    
+                  
+                    <svg id="myNode" width="32" height="32" fill="transparent">
+                        <rect fill="transparent">
+                        <image src="images/node_yellow.png" draggable="false";/>
+                            </rect> 
+                        </svg>
+                    
+                    <div id="Content1"></div>
+                     <strong><div class="text" draggable="true" contentEditable="true"></div></strong>
+                    <div id="Content2" draggable="true" contentEditable="true" ></div> 
+                    <div class="status"  tabindex="1" id="inProgress">In-Progress</div>
+                    <div class="status"  tabindex="1" id="done">Done</div>
+                    <div id="expand" style="border: 1px solid black">Utvid</div>
+
+                    <div id="box1">
+                        <div id="members" >Assigned: </div><button id="btnAddMembers">Klikk her</button>
+                        <div id="newMember" contentEditable="true">Member 1</div>
+                    </div>
+
+
+
+                </div>
+                    
+ <div id="DELETE1" >DELETE1</div>
+                </foreignObject>
+            </g>
+        </g>
           
       </svg>
 
@@ -46,41 +85,82 @@
           //  var ctx = svg.getContext("2d");
              evt = window.Event;
             
-           //sets mouse position as a global variable
+           
+           //sets mouse and node position as a global variable
            var mousePos = getMousePos(svg, evt);
             var mouseX = mousePos.x;
             var mouseY = mousePos.y;
            
+            var rect = document.getElementById("myNode").getBoundingClientRect();
+
+           
+            //var nodeX = document.getElementsByTagName("circle")[0].getAttribute("cx");
+            //var nodeY = document.getElementsByTagName("circle")[0].getAttribute("cy");                       
+           
+       //     var nodeX = document.getElementById("myNode").getAttribute("x");
+            //var nodeY = document.getElementById("myNode").getAttribute("y");
+            
            
             //report the mouse position while it moves, then sets <path "d" /> to what toString returns.
             svg.addEventListener("mousemove", function (evt) {
                 var mousePos = getMousePos(svg, evt);
                 var mouseX = mousePos.x;
                 var mouseY = mousePos.y;
+               
                 
-                document.querySelector("#mySVG #mousePath").setAttribute("d", toString(mouseX,mouseY));
+                document.querySelector( "#mySVG #mySpline").setAttribute("d", toString(mouseX,mouseY));
+                
             }, false);
            
+           /*
+           // when you click and hold the left mouse button, the node will appear.
+           function addElement(){
+               document.getElementById("mySpline").cloneNode(true);
+               newElement.setAttribute()
+               newElement.id = "newSpline"
+               newElement.d = toString(mouseX,mouseY);
+           }
+           
+           // listening for the click event. (Hvis vi drar fra node så kjører den addElement funksjonen)
+           
+           var triggerNode = document.getElementById("newNode");
+           triggerNode.addEventListener("click",addElement);
+           
+           
+            */
               
+           
            // gets mouse X and Y coordinates and returns it as a string
               function toString(mouseX, mouseY){
                   
-                  var nodeX = 300;
-                  var nodeY = 300;
+                             var rectB = document.getElementById("newNode").getBoundingClientRect();
+            console.log(rect.x);
+                  
+                  var nodeX = rect.x;
+                  var nodeY = rect.y;
+                  var nodeBX = rectB.x;
+                  var nodeBY = rectB.y;
+                 /* 
+                 var nodeX = document.getElementById("myNode").getAttribute("x");
+                 var nodeY = document.getElementById("myNode").getAttribute("y");
+                 */
+                  // anchor points are control points on a bezier curve that bends the curve
                   var nodeAnchor = nodeX + 50;
                   var anchorPoint = mouseX - 5;
+                  
 
                   
                   // use this if you want to have a curve on the end!
                //   return "M" + nodeX + " " + nodeY + " C " + nodeAnchor + " " + nodeY + ", " + mouseY + " " + anchorPoint + ", " + mouseX + " " + mouseY;
-                  return "M" + nodeX + " " + nodeY +  ", " + mouseX + " " + mouseY;
-
+                  
+                //  return "M" + nodeX + " " + nodeY +  ", " + mouseX + " " + mouseY;
+                  return "M" + nodeX + " " + nodeY +  ", " + nodeBX + " " + nodeBY;
                   
                 //  d="M10 10 C 100 10, 300 300, 400 300"
                   
               }
+            
            
-
             //Get Mouse Position
             function getMousePos(svg, evt) {
                 var rect = svg.getBoundingClientRect();
@@ -90,17 +170,17 @@
                 };
             }  
            
-           function setPointPos(){
-               
-            var dropZoneX = document.getElementsByTagName("circle")[0].getAttribute("cx");
-            var dropZoneY = document.getElementsByTagName("circle")[0].getAttribute("cy");
+           // !!! This may not be useful
+           
+           function setPointPos(dropZoneX,dropZoneY){
             
-               console.log(dropZoneX);
-               console.log(dropZoneY);
+               
                
            }
-           setPointPos();
-           
+          
         </script>
+      
+      <script type="text/javascript" src="script/dragDrop.js">
+    </script>
     </body>
 </html>
