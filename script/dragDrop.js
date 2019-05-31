@@ -59,6 +59,8 @@ function addElement(){
     newElement.setAttribute('draggable',true);
     newElement.id="newDiv";
     newElement.childNodes[3].id="newDivHeader";
+    newElement.childNodes[7].id="newNode";
+    
     
     //Choose where we want this new element to be placed in the HTML.
     document.body.appendChild(newElement);

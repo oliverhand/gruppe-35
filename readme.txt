@@ -1,5 +1,4 @@
 Hei, dette er en test-fil.
 
-Dette er en ny linje med tekst.
-
-- Dette er en ny branch
+    newElement.childNodes[3].id="newDivHeader";
+62  newElement.childNodes[7].id="newNode"; <------ DENNE
