@@ -10,7 +10,9 @@ var domSetProjectNameValue;
 domCreateProject.addEventListener("click", showCreateProject);
     
 function showCreateProject() {
-        domCreateProjectPopUp.style.display = "block";
+        domCreateProjectPopUp.style.visibility = "visible";
+        domCreateProjectPopUp.style.opacity = "1";
+        domCreateProjectPopUp.style.top = "150px";
 }
 
 domCloseCreateProjectPopUp.addEventListener("click",closeCreateProject);
@@ -22,19 +24,25 @@ domSetProjectName.addEventListener("input", function(){
 function closeCreateProject() {
     // Control structure to check if you are both logged in, and have given your project a name
     if (domLogIn.innerHTML == "Logged in as guest" && domSetProjectNameValue != null) {
-    domCreateProjectPopUp.style.display = "none";
+    domCreateProjectPopUp.style.visibility = "hidden";
+    domCreateProjectPopUp.style.opacity = "0";
+    domCreateProjectPopUp.style.top = "800px";
     // Setting the input.value of the input field, as the innerHTML text of the projectName field
     domProjectName.innerHTML = domProjectName.innerHTML.replace("New project", domSetProjectNameValue);
     // Control structure checking what error you have to give the correct error message
     } else if (domLogIn.innerHTML != "Logged in as guest" && domSetProjectNameValue != null) {
         alert("You have to be logged in to create a project");
-        domCreateProjectPopUp.style.display = "none";
+        domCreateProjectPopUp.style.visibility = "hidden";
+        domCreateProjectPopUp.style.opacity = "0";
+        domCreateProjectPopUp.style.top = "800px";
     // Control structure checking what error you have to give the correct error message
     } else if (domLogIn.innerHTML == "Logged in as guest" && domSetProjectNameValue == null) {
         alert("You got to give your project a name");
     } else if (domLogIn.innerHTML != "Logged in as guest" && domSetProjectNameValue == null) {
-        domCreateProjectPopUp.style.display = "none";
         alert("Either your project does not have a name, or you are not logged in");
+        domCreateProjectPopUp.style.visibility = "hidden";
+        domCreateProjectPopUp.style.opacity = "0";
+        domCreateProjectPopUp.style.top = "800px";
     }
 }
 
@@ -42,20 +50,24 @@ function closeCreateProject() {
 // Getting the dom elements ID for the add members pop up
 var domAddMembers = document.getElementById("addMembers");
 var domAddMembersPopUp = document.getElementById("addMembersPopUp");
-var domcloseAddMemberPopUp = document.getElementById("closeAddMemberPopUp");
+var domCloseAddMemberPopUp = document.getElementById("closeAddMemberPopUp");
 
 
 // Adding eventlisteners to the buttons that open and close the "create project" tab, and creating the functions that display the pop up and close it
 domAddMembers.addEventListener("click", showAddMember);
 
 function showAddMember() {
-    domAddMembersPopUp.style.display = "block";
+    domAddMembersPopUp.style.visibility = "visible";
+    domAddMembersPopUp.style.opacity = "1"; 
+    domAddMembersPopUp.style.top = "150px";
 }
 
-domcloseAddMemberPopUp.addEventListener("click", closeAddMember);
+domCloseAddMemberPopUp.addEventListener("click", closeAddMember);
 
 function closeAddMember() {
-    domAddMembersPopUp.style.display = "none";
+    domAddMembersPopUp.style.visibility = "hidden";
+    domAddMembersPopUp.style.opacity = "0"; 
+    domAddMembersPopUp.style.top = "800px";
 }
 
 // Getting the dom elements ID for the Add Member input and output fields
@@ -67,7 +79,7 @@ var domAddMemberBtn = document.getElementById("addMemberBtn");
 domAddMemberBtn.addEventListener("click", addMember);
 
 function addMember() {
-    var outputField = document.createElement('a');
+    var outputField = document.createElement('li');
     var outputFieldValue = document.createTextNode(domSetMemberInput.value);
     outputField.appendChild(outputFieldValue);
     domSetMemberOutput.appendChild(outputField);
@@ -75,7 +87,7 @@ function addMember() {
 
 // Getting the dom elements ID for logg inn 
 var domLogIn = document.getElementById("logIn");
-var domShowLogInPopUp = document.getElementById("showLogInPopUp");
+var domLogInPopUp = document.getElementById("LogInPopUp");
 var domLogInAsUser = document.getElementById("logInAsUser");
 var domCreateAccount = document.getElementById("createAccount");
 
@@ -84,7 +96,9 @@ domLogIn.addEventListener("click", showLogInPopUp);
 
 function showLogInPopUp() {
     if(domLogIn.innerHTML != "Logged in as guest"){
-    domShowLogInPopUp.style.display = "block";    
+    domLogInPopUp.style.visibility = "visible";    
+    domLogInPopUp.style.opacity = "1";
+    domLogInPopUp.style.top = "150px";
     } else {
         alert("You are already logged in");
     }
@@ -93,7 +107,7 @@ function showLogInPopUp() {
 domLogInAsUser.addEventListener("click", logIn)
 
 function logIn() {
-    domShowLogInPopUp.style.display = "none";
+    domLogInPopUp.style.visibility = "hidden";
     domLogIn.innerHTML = "Logged in as guest";
 }
 

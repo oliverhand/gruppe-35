@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-   
     
 <head>
     <meta charset="UTF-8">
@@ -8,52 +7,72 @@
     <link rel="stylesheet" type="text/css" href="css/indexCSS.css">
     <title>Projectname</title>
 </head>
+    
 <body>
     
-    <div class="mainPageContainer"> <!-- GRID container -->
+    <div id="mainPageContainer"> <!-- GRID container -->
     
-        <div id="navBar">
-            <div class="navbarHorizontal">
-                
+        <!-- Container for the horizontal navigatio nbar -->            
+        <div id="navbarHorizontal">
+              
+            <div id="flexContainerFirstThree"> 
                 <!-- The create project part on the horizontal navigation bar -->
-                <button id="createProject"><strong>Create project</strong></button>
-                <div id=createProjectPopUp>
-                    <input id="setProjectName" type="text" placeholder="Set project name">
-                    <button id="closeCreateProjectPopUp"><strong>Create project</strong></button>
-                </div>
+                <button id="createProject" class="navbarHorizontalContent"><strong>Create project</strong></button>                
+            
                         
                 <!-- The add member part on the horizontal navigation bar -->
-                <button id="addMembers"><strong>Add member</strong></button>
-                <div id="addMembersPopUp">
-                    <input id="setMember" placeholder="Add member">
-                    <button id="addMemberBtn">Add member</button>
-                    <button id="closeAddMemberPopUp"><strong>Close</strong></button>
-                </div>
+                <button id="addMembers" class="navbarHorizontalContent"><strong>Add member</strong></button>
+            
                 
-                    <!-- The project members list on the horizontal navigation bar -->
-                    <button id = "projectMembers"><strong>Project members</strong>
-                    <div id = "projectMembersContent"></div></button>
+                <!-- The project members list on the horizontal navigation bar -->
+                <button id = "projectMembers" class="navbarHorizontalContent"><strong>Project members</strong>
+                </button>
+            </div>
                 
-                <!-- The field where the projects name is displayed -->
-                <div id="projectName" contenteditable="true"><strong>New project</strong></div>
+            <!-- The field where the projects name is displayed -->
+            <div id="projectName" class="navbarHorizontalContent" contenteditable="true"><strong>New project</strong></div>
+           
+            <button id="logIn" class="navbarHorizontalContent"><strong>Log in</strong></button>
+            
+    
+        </div>
+            
+        <!-- Container for the vertical navigation bar -->
+        <div id="navbarVertical">
+            
+            <button id="java"><strong>Java</strong></button>
+        
+        </div>
+        
+        <div id="dropDownContainer">
+            
+            <div id="projectMembersContent">
+                <a>Tobias</a>
             </div>
             
-            <div class="navbarVertical">
-                <div class="dropdownVertical">
-                    <button class="dropbtnVertical"><strong>Java</strong>
-                    <div class="dropdown-contentVertical">
-                        <a href="#">Class</a>
-                        <a href="#">Getter</a>
-                        <a href="#">Setter</a>
-                    </div></button>
-                </div>
-            </div>
-            <button id="logIn"><strong>Log in</strong></button>
-            <div id=showLogInPopUp><strong>Choose an option</strong>
-                <button id="createAccount"><strong>Create account</strong></button>
-                <button id="logInAsUser"><strong>Log in as guest</strong></button>
+            <div id="javaContent">
+                    <a href="#">Class</a>
+                    <a href="#">Getter</a>
+                    <a href="#">Setter</a>
             </div>
         </div>
+        
+        <div id="popUpContainer">
+            <div id=createProjectPopUp class="popUps">
+                 <input id="setProjectName" type="text" placeholder="Set project name" maxlength="50">
+                <button id="closeCreateProjectPopUp" class="popUpButtons"><strong>Create project</strong></button>
+            </div>
+            <div id="addMembersPopUp" class="popUps">
+                <input id="setMember" placeholder="Add member">
+                <button id="addMemberBtn" class="popUpButtons"><strong>Add member</strong></button>
+                <button id="closeAddMemberPopUp" class="popUpButtons"><strong>Close</strong></button>
+            </div>
+            <div id=LogInPopUp class="popUps"><strong>Choose an option</strong>
+                <button id="createAccount" class="popUpButtons"><strong>Create account</strong></button>
+                <button id="logInAsUser" class="popUpButtons"><strong>Log in as guest</strong></button>
+            </div>
+        </div>
+        
         <div id="mainCanvas"></div>
         
     </div> <!-- end main-page-container -->
