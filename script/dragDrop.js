@@ -1,8 +1,12 @@
-// Make the DIV element draggable: //Calling the dragElement function
-//dragElement(document.getElementById("mydiv"));
 
-var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-    
+//Testing av hva som registrers som e.targer.=============LA STÅ
+document.body.addEventListener('click',function(e){
+    console.log(e.target);
+});
+//===============================================================
+
+//===================DraggingFunction==================================
+var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;    
 function dragElement(elmnt) {
   
   if (document.getElementById(elmnt.id + "header")) {
@@ -46,39 +50,80 @@ function dragElement(elmnt) {
     document.onmousemove = null;
   } 
 }
+//==============DraggingFunction-END==================================
 
-//Creating new Div-elements.
+//===================Creating new Div-elements=====================.
 function addElement(){
+    //Cloning and setting new values to the cloned element.
     var newElement= document.getElementById("myDiv").cloneNode(true);
     newElement.setAttribute('draggable',true);
     newElement.id="newDiv";
-    newElement.childNodes[0].id="newDivHeader";
-    /*var text= document.querySelectorAll(".text");
-    text[0].setAttribute('contentEditable',true);
-    text[1].setAttribute('contentEditable',true);*/
-    //var taskContent = document.createTextNode(input.value); 
-    //task.appendChild(taskContent);   
-    //var parent = document.getElementById("ToDoBox");
+    newElement.childNodes[3].id="newDivHeader";
+    
+    //Choose where we want this new element to be placed in the HTML.
     document.body.appendChild(newElement);
     dragElement(newElement);
     
-    //Setting the position for new div's using the cursor position.
+    //Setting the position for new element equal to the cursors position.
     var e =window.event;
     newElement.style.top = e.clientY + "px";
     newElement.style.left = e.clientX + "px";
-    
-
-    console.log("FirsChild: "+newElement.firstChild);
-    console.log("FirsChild: "+newElement.childNodes[0].id);
-    
     }
+//===================Creating new Div-elements-END=================.
 
+//listening for the drag event. (Hvis vi drar fra myDiv, så kjører den addElement funksjonen)
     var trigger = document.getElementById("myDiv");
     trigger.addEventListener("dragend",addElement);
 
-//===================HER MÅ DET JOBBES MED ===========================
+//Setting the status from inProgress(default), to done(changing color).
+    document.body.addEventListener("click",function(e){
+        
+        //if the element our mouse is hovering has the id of done then run.
+        if(e.target.id=="done"){
+            document.getElementById('done').style.backgroundColor="lawngreen";
+            document.getElementById('inProgress').style.backgroundColor="grey";
+        }
+        //if the element our mouse is hovering has the id of inProgress then run.
+        else if(e.target.id=="inProgress"){
+            document.getElementById('done').style.backgroundColor="grey";
+            document.getElementById('inProgress').style.backgroundColor="yellow";
+        }      
+});
 
-document.getElementById('DELETE1').addEventListener('mouseup', function(e)
+   
+var btnAddMembers = document.getElementById("btnAddMembers");
+    btnAddMembers.addEventListener("click",addMembers);
+function addMembers(){
+    var newMember= document.createElement('div');
+    newMember.id=('newMember');
+    newMember.setAttribute('contentEditable',true);
+    newMember.innerHTML="Add name here";
+    document.getElementById('box1').appendChild(newMember);
+    
+}
+
+document.getElementById('expand').addEventListener('click',hideMembersbar);
+
+function hideMembersbar(){
+    if(document.getElementById('box1').style.display == 'none'){
+        console.log("!== none");
+        document.getElementById('box1').style.display= 'block';
+    }
+    else if(document.getElementById('box1').style.display == 'block'){
+        console.log('!== block');
+        document.getElementById('box1').style.display = 'none';
+    }
+}
+
+
+
+
+
+
+
+//===================HER MÅ DET JOBBES MED EN DELETE FUNKSJON ===========================
+
+/*document.getElementById('DELETE1').addEventListener('mouseup', function(e)
     {    
    
    document.getElementById('DELETE1').appendChild(e.target.id);
@@ -86,11 +131,8 @@ document.getElementById('DELETE1').addEventListener('mouseup', function(e)
            
             //document.getElementById('DELETE1').appendChild(item);
     });
-   
+   */
 
 //======================================================================
-    
-
-
 //e.keydown==46
 

@@ -1,10 +1,13 @@
 body {
 
+    overflow: hidden;
+    height: auto;
+    width: auto;
 }   
 
 #myDiv,#newDiv {
 position: absolute;
-  z-index: 10000;
+  z-index: 10;
   background-color: #f1f1f1;
   border: 1px solid #d3d3d3;
   text-align: center;
@@ -14,16 +17,14 @@ position: absolute;
     min-height: fit-content; 
     max-width: 150px;
 }
-#newDiv:focus,  #newDivHeader:focus{
-    background-color: lawngreen;
-}
-
 #myDivHeader, #newDivHeader {
   padding: 10px;
-  cursor: move;
   z-index: 12;
   background-color: #2196F3;
   color: #fff;
+}
+#newDiv:focus-within{
+    border: 1.5px solid red;
 }
 
 .text {
@@ -61,4 +62,40 @@ div p {
     height: 100px;
     float: left;
     margin: 200px;
+}
+#svg{
+    position: absolute;
+    overflow: hidden;
+}
+
+.status{
+    position: relative;
+    cursor:pointer;
+    z-index: 200;
+    color: black;
+    flex: left;
+    max-height: 30px;  
+    bottom: 0%;
+    background-color: dimgray;
+}
+#inProgress{
+     background-color: yellow;
+        border:1px solid black;
+    bottom: 0;
+}
+#done{
+        border:1px solid black;
+    margin-bottom: 10px;
+}
+#box1{
+  z-index: 12;
+  background-color: #2196F3;
+  color: #fff;
+    width: 150px;
+    height: 200px;
+    border: 1px solid black;
+    display: none;
+}
+#newMember{
+    border: 1px solid black; width:100px; margin-left: 25px; margin-top: 10px
 }
