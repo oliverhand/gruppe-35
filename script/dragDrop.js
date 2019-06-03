@@ -68,6 +68,8 @@ var i=0;
         newElement.childNodes[15].className="newInProgress";
         newElement.childNodes[17].className="newDone";
         
+        
+        
         i++;
     
         console.log(i);
@@ -76,7 +78,9 @@ var i=0;
         newElement.childNodes[3].id="newDivHeader"+i;
         newElement.childNodes[15].id="newInProgress"+i;
         newElement.childNodes[17].id="newDone"+i;
-        console.log(newElement.id);
+        newElement.childNodes[7].id="newNode"+i;
+        console.log(newElement.childNodes);
+        
     
         
         //Setting Done or in-progress on the cards.

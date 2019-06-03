@@ -21,7 +21,7 @@
 
           <g>
           <path id="mySpline" style="stroke:rgb(247, 162, 4);stroke-width:5" fill="transparent"/>
-               <circle class="circleNode" cx="300" cy="300" r="10" style="stroke:rgb(247, 162, 4);stroke-width:5"/>
+               <!-- <circle class="circleNode" cx="300" cy="300" r="10" style="stroke:rgb(247, 162, 4);stroke-width:5"/> -->
               
               
             </g>
@@ -39,7 +39,7 @@
 
                 <div id="myDiv" draggable="true">
                   <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
-                  <div id="myDivHeader" >Click here to move</div>
+                  <div id="myDivHeader">Click here to move</div>
                   <div class="text" draggable="true" contentEditable="true">
                         + name: String <br>
                         + address: Address <br>
@@ -48,12 +48,14 @@
                         + jobType: String <br>
                     </div>
                     
+                        <img onClick="getClickCoordinate(this.id)" id="myNode" src="images/node_yellow.png" draggable="false";/>
+                    
                   
-                    <svg id="myNode" width="32" height="32" fill="transparent">
+                 <!--   <svg width="32" height="32" fill="transparent">
                         <rect fill="transparent">
-                        <image src="images/node_yellow.png" draggable="false";/>
+                        <image onClick="getClickCoordinate(this.id)" id="myNode" src="images/node_yellow.png" draggable="false";/>
                             </rect> 
-                        </svg>
+                        </svg> -->
                     
                     <div id="Content1"></div>
                      <strong><div class="text" draggable="true" contentEditable="true"></div></strong>
@@ -71,7 +73,7 @@
 
                 </div>
                     
- <div id="DELETE1" >DELETE1</div>
+                    <div id="DELETE1" >DELETE1</div>
                 </foreignObject>
             </g>
         </g>
@@ -83,26 +85,26 @@
          //set up the canvas and context
             var svg = document.getElementById("mySVG");
           //  var ctx = svg.getContext("2d");
-             evt = window.Event;
+             var evt = window.Event;
             
            
            //sets mouse and node position as a global variable
            var mousePos = getMousePos(svg, evt);
             var mouseX = mousePos.x;
             var mouseY = mousePos.y;
+            var mouseCoordinate = mouseX + ", " + mouseY;
+            var mouseClick; //defines it so we can assign it as we click
            
-            var rect = document.getElementById("myNode").getBoundingClientRect();
 
-           
-            //var nodeX = document.getElementsByTagName("circle")[0].getAttribute("cx");
-            //var nodeY = document.getElementsByTagName("circle")[0].getAttribute("cy");                       
-           
-       //     var nodeX = document.getElementById("myNode").getAttribute("x");
-            //var nodeY = document.getElementById("myNode").getAttribute("y");
+
+            var i = 0;
+
+            var nodeX = document.getElementById("myNode").getAttribute("x");
+            var nodeY = document.getElementById("myNode").getAttribute("y");
             
            
             //report the mouse position while it moves, then sets <path "d" /> to what toString returns.
-            svg.addEventListener("mousemove", function (evt) {
+            svg.addEventListener("click", function (evt) {
                 var mousePos = getMousePos(svg, evt);
                 var mouseX = mousePos.x;
                 var mouseY = mousePos.y;
@@ -112,34 +114,63 @@
                 
             }, false);
            
-           /*
-           // when you click and hold the left mouse button, the node will appear.
-           function addElement(){
-               document.getElementById("mySpline").cloneNode(true);
+           
+           
+           // when you click the left mouse button, the node will appear.
+           
+        /*   function addElement(){
+               
+               
+               
+               var = newElement = document.getElementById("mySpline").cloneNode(true);
                newElement.setAttribute()
-               newElement.id = "newSpline"
+               newElement.id = "newSpline";
                newElement.d = toString(mouseX,mouseY);
+               
+           } */
+           
+
+           
+          // var triggerNode = document.getElementById("newNode");
+          // triggerNode.addEventListener("click",addElement);
+           
+           //document.body.addEventListener("click", getClickCoordinate);
+           
+           function getClickCoordinate(clicked_id){
+               
+               if(clicked_id === "myNode"){
+                   
+                   var mouseClick = clicked_id;
+                   return mouseClick;
+               } else if(clicked_id === "newNode1"){
+                   var mouseClick = clicked_id;
+                   return mouseClick;
+               } 
+               
            }
-           
-           // listening for the click event. (Hvis vi drar fra node så kjører den addElement funksjonen)
-           
-           var triggerNode = document.getElementById("newNode");
-           triggerNode.addEventListener("click",addElement);
-           
-           
-            */
-              
+            
+            
            
            // gets mouse X and Y coordinates and returns it as a string
-              function toString(mouseX, mouseY){
+              function toString(mouseCoordinate , clicked_id){
+                
+                var getClickID = getClickCoordinate(clicked_id);
+                
+                // gets Element ID of the element you click on  
+                var rectA = document.getElementById("myNode").getBoundingClientRect();  
+                var rectB = document.getElementById(mouseClick).getBoundingClientRect();
+            // console.log(rect.x, rect.y);
                   
-                             var rectB = document.getElementById("newNode").getBoundingClientRect();
-            console.log(rect.x);
+               //   var nodeX = rectA.x;
+                //  var nodeY = rectA.y;
+                  //var nodeBX = rectB.x;
+                  //var nodeBY = rectB.y;
                   
-                  var nodeX = rect.x;
-                  var nodeY = rect.y;
-                  var nodeBX = rectB.x;
-                  var nodeBY = rectB.y;
+                  // cleaner formatting
+                  var nodeA = rectA.x + " " + rectA.y;
+                  var nodeB = rectB.x + " " + rectB.y;
+                  
+                  
                  /* 
                  var nodeX = document.getElementById("myNode").getAttribute("x");
                  var nodeY = document.getElementById("myNode").getAttribute("y");
@@ -154,7 +185,7 @@
                //   return "M" + nodeX + " " + nodeY + " C " + nodeAnchor + " " + nodeY + ", " + mouseY + " " + anchorPoint + ", " + mouseX + " " + mouseY;
                   
                 //  return "M" + nodeX + " " + nodeY +  ", " + mouseX + " " + mouseY;
-                  return "M" + nodeX + " " + nodeY +  ", " + nodeBX + " " + nodeBY;
+                  return "M" + nodeA +  ", " + mouseCoordinate;
                   
                 //  d="M10 10 C 100 10, 300 300, 400 300"
                   
@@ -170,13 +201,7 @@
                 };
             }  
            
-           // !!! This may not be useful
-           
-           function setPointPos(dropZoneX,dropZoneY){
-            
-               
-               
-           }
+
           
         </script>
       
