@@ -76,6 +76,7 @@ body{
     visibility: hidden;
     opacity: 0;
     transition: top 2s ease, opacity 1.5s ease;
+    
 }
 
 .popUpButtons{
