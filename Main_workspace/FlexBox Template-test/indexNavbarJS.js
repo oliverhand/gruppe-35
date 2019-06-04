@@ -11,6 +11,7 @@ var domAddMemberBtn = document.getElementById("addMemberBtn");
 var domBtnAssignMembers = document.getElementById("btnAssignMembers");
 var domBox1 = document.getElementById("box");
 var domAddMemberNameValue;
+var domMemberAddedFeedback = document.getElementById("memberAddedFeedback");
 
 // Adding eventlisteners to the buttons that open and close the "create project" tab, and creating the functions that display the pop up and close it
 domCreateProject.addEventListener("click", showCreateProject);
@@ -74,6 +75,7 @@ function closeAddMember() {
     domAddMembersPopUp.style.visibility = "hidden";
     domAddMembersPopUp.style.opacity = "0"; 
     domAddMembersPopUp.style.top = "800px";
+    domMemberAddedFeedback.style.visibility = "hidden";
 }
 
 // Getting the dom elements ID for the Add Member and the Assign Member input and output fields. 
@@ -83,7 +85,7 @@ function closeAddMember() {
 domAddMemberBtn.addEventListener("click", addMember);
 
 function addMember() {
-    if(domProjectName.innerHTML != "<strong>New project</strong>" && domAddMemberNameValue != null) {
+    if(domProjectName.innerHTML != "<strong>New project</strong>" && domSetMemberInput.value != "Add member") {
     var optionField = document.createElement("option");
     var optionFieldAssign = document.createElement("option");
     var optionFieldValue = document.createTextNode(domSetMemberInput.value);
@@ -92,21 +94,19 @@ function addMember() {
     optionFieldAssign.appendChild(optionFieldValueAssign);
     domSetMemberOutput.appendChild(optionField);    
     document.getElementById('boxAssignMembersContent21').appendChild(optionFieldAssign);
-    
-    
     document.getElementById('boxAssignMembersContent21').selectedIndex = domSetMemberOutput.selectedIndex;
+    domMemberAddedFeedback.style.visibility = "visible";
         
-        
-    } else if(domProjectName.innerHTML != "<strong>New project</strong>" && domAddMemberNameValue == null){
+    } else if(domProjectName.innerHTML != "<strong>New project</strong>" && domSetMemberInput.value == "Add member"){
         alert("You can not add a member without a name.");
-    } else if(domProjectName.innerHTML == "<strong>New project</strong>" && domAddMemberNameValue != null){
+    } else if(domProjectName.innerHTML == "<strong>New project</strong>" && domSetMemberInput.value != "Add member"){
         alert("You can not add a member to a project that does not exist.");
-    } else if(domProjectName.innerHTML == "<strong>New project</strong>" && domAddMemberNameValue == null){
-        alert("You are either trying to add a member to a project that does not exist, or the member you are trying to add does not have a name.");
+    } else if(domProjectName.innerHTML == "<strong>New project</strong>" && domSetMemberInput.value == "Add member"){
+        alert("You are either trying to add a member to a project that does not exist, or a member without a name");
     }
 }
 domSetMemberInput.addEventListener("input", function(){
-    domAddMemberNameValue = domSetMemberInput.value; 
+    domMemberAddedFeedback.style.visibility = "hidden";
 });
 
 document.body.addEventListener('click',assignMember)
@@ -162,4 +162,8 @@ domCreateAccount.addEventListener("click", createAccount);
 
 function createAccount() {
     alert("We do not support that feature yet");
+}
+
+function removeMemberAddedFeedback(){   
+    domMemberAddedFeedback.style.visibility = "hidden";
 }
