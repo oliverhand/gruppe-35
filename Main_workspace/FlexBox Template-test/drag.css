@@ -9,7 +9,7 @@ body {
 position: absolute;
   z-index: 10;
   background-color: #f1f1f1;
-  border: 1px solid black;
+  outline: 2px solid black;
   text-align: center; 
     overflow-y: visible;
     min-height: fit-content; 
@@ -22,26 +22,28 @@ position: absolute;
   padding: 10px;
   z-index: 12;
   background-color: grey;
-  color: #fff;
+  color: #000;
+    font-weight: bold;
 }
 .newDivHeader:hover{
     background-color: green;
     cursor: pointer;
 }
-#newDiv:focus-within{
-    border: 1.5px solid red;
+.newDiv:focus-within{
+    outline: 2.5px solid blue;
 }
 .node{
     position: absolute;
+    width: 20px;
 }
 
 #w {
-    top: 144px;
-    left: -16px;
+    top: 104px;
+    left: -12px;
 }
 #e{
-    top: 144px;
-    left: 136px; 
+    top: 104px;
+    left: 141px; 
     transform: scaleX(-1);
 }
 .text {
@@ -86,16 +88,16 @@ div p {
     display: block;
     float: right;
     font-size: 12px;
-     border:1px solid black;
+     outline:2px solid black;
 }
 .box{
     z-index: 12;
-    background-color: darkgrey;
+    background-color: #f1f1f1;
     color: #000; /*black*/
     width: 148px;
     min-height:fit-content;
     height: 130px;
-    border: 1px solid black;
+    outline: 2px solid black;
     display: none;
     margin-top: 2px;
 }
@@ -105,4 +107,23 @@ div p {
     margin-left:25px;
     margin-top: 10px;
 }
+#dateInput{
+    align-content: center;
+}
+#deleteButton{
+    position: absolute;
+    right:0px;
+    margin: 1px;
+}
+.template{
+     outline: 2px solid black;
+    max-width: fit-content;
+    margin-left:25px;
+    margin-top: 10px;
+    padding: 5px;
+    font-size: 19px;
+    flex-flow: nowrap;
+    
+}
+
 

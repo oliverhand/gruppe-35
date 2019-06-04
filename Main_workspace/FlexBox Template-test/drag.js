@@ -11,19 +11,17 @@ var i=0;
 //===================DraggingFunction==================================
     var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;    
     function dragElement(elmnt) {
-
-      if (document.getElementById(elmnt.id + "header")) {
-        // if present, the header is where you move the DIV from:
-        document.getElementById('newDivHeader').onmousedown = dragMouseDown;
-          console.log("dette fungerer");
-
-      } else {
-        // otherwise, move the DIV from anywhere inside the DIV: 
-          elmnt.childNodes[3].onmousedown = dragMouseDown; //FIKS HER
+        if(elmnt.id=="template1" || elmnt.id=="template2" || elmnt.id=="template3") {
+          console.log('template213');
+          elmnt.onmousedown = dragMouseDown;
       }
+        else{
+          elmnt.childNodes[3].onmousedown = dragMouseDown; //FIKS HER
+            console.log('nederste else');
+        }
 
       function dragMouseDown(e) {
-        e = e || window.event;
+        e = window.event;
         e.preventDefault();
         // get the mouse cursor position at startup:
         pos3 = e.clientX;
@@ -35,7 +33,7 @@ var i=0;
       }
 
       function elementDrag(e) {
-        e = e || window.event;
+        e = window.event;
         e.preventDefault();
         // calculate the new cursor position:
         pos1 = pos3 - e.clientX;
@@ -61,30 +59,23 @@ var i=0;
         //Cloning and setting new values to the cloned element.
         var newElement= document.getElementById("myDiv").cloneNode(true);
         newElement.setAttribute('draggable',true);
-        newElement.id="newDiv";
         newElement.className="newDiv"
         newElement.style.visibility="visible";
         
         newElement.childNodes[3].className="newDivHeader";
-        newElement.childNodes[3].setAttribute('contentEditable',true);
+        newElement.childNodes[3].setAttribute('contentEditable','true');
         newElement.childNodes[3].innerHTML='Change name here:';
         newElement.childNodes[19].className="newInProgress";
         newElement.childNodes[21].className="newDone";
         
-        
         i++;
-    
-        console.log(i);
+        // we add indexes to every child element we are going to change, becouse when we do the change we only do it on the 1 div, instead of all of them...
         newElement.id="newDiv"+i;
-       ;
         newElement.childNodes[3].id="newDivHeader"+i;
         newElement.childNodes[19].id="newInProgress"+i;
         newElement.childNodes[21].id="newDone"+i;
         newElement.childNodes[25].id="box"+i;
     
-        console.log(newElement.childNodes);
-    
-        
         //Setting Done or in-progress on the cards.
         document.body.addEventListener("click",function(e){
         
@@ -94,14 +85,16 @@ var i=0;
             console.log(e.target.previousElementSibling);
             document.getElementById(e.target.previousElementSibling.id).style.backgroundColor="grey";
             e.target.parentElement.childNodes[3].style.backgroundColor="lawngreen";
-            e.target.parentElement.style.border="1px solid lawngreen";
+            e.target.parentElement.style.outline="2px solid lawngreen";
+            e.target.parentElement.style.border="1px solid black";
         }
         //if the element our mouse is hovering has the id of inProgress then run.
         else if(e.target.className=="newInProgress"){
             document.getElementById(e.target.nextElementSibling.id).style.backgroundColor="grey";
             document.getElementById(e.target.id).style.backgroundColor="yellow";
             e.target.parentElement.childNodes[3].style.backgroundColor="yellow";
-            e.target.parentElement.style.border="1px solid yellow";
+            e.target.parentElement.style.outline="2px solid yellow";
+            e.target.parentElement.style.border="1px solid black";
           }
         });  
   
@@ -112,9 +105,10 @@ var i=0;
         
         //Choose where we want this new element to be placed in the HTML.
        document.getElementById('foreignContainer').appendChild(newElement);
+        
         dragElement(newElement);
         dateSetter();
-        console.log("X"+e.clientX+" Y"+e.clientY)
+       
 }
         
 //===================Creating new Div-elements-END=================.
@@ -132,8 +126,9 @@ function dateSetter(){
         
       
         function setDateValue(){
-             var testValue=this.value;
-                console.log("heisan"+testValue);  
+             var dateValue=this.value;
+            
+        
         }
                
 }
@@ -167,3 +162,57 @@ function deleteElement(e){
     }
 }
 //===============DELETE END==============================
+//=====================Added templates===================
+
+    var template1=document.getElementById('template1');
+    var template2=document.getElementById('template2');
+    var template3=document.getElementById('template3');
+    
+    function addTemplates1(){
+        var newTemplate=document.getElementById("template1").cloneNode(true);
+         document.getElementById('foreignContainer').appendChild(newTemplate);
+        
+        var e =window.event;
+        newTemplate.style.top = e.clientY-80 + "px";
+        newTemplate.style.left = e.clientX-300 + "px";
+        newTemplate.setAttribute('draggable',true);
+        
+        dragElement(newTemplate);
+    } 
+    function addTemplates2(){
+        var newTemplate=document.getElementById("template2").cloneNode(true);
+        document.getElementById('foreignContainer').appendChild(newTemplate);
+
+        var e =window.event;
+        newTemplate.style.top = e.clientY-80 + "px";
+        newTemplate.style.left = e.clientX-300 + "px";
+        newTemplate.setAttribute('draggable',true);
+        
+        dragElement(newTemplate);
+        }
+    function addTemplates3(){
+        var newTemplate=document.getElementById("template3").cloneNode(true);
+        document.getElementById('foreignContainer').appendChild(newTemplate);
+        
+        var e =window.event;
+        newTemplate.style.top = e.clientY-80 + "px";
+        newTemplate.style.left = e.clientX-300 + "px";
+        newTemplate.setAttribute('draggable',true);
+        
+        dragElement(newTemplate);
+        }
+
+    template1.addEventListener("dragend",addTemplates1); 
+    template2.addEventListener("dragend",addTemplates2); 
+    template3.addEventListener("dragend",addTemplates3); 
+//=====================Added templates END===============
+
+
+
+
+
+
+
+
+
+
