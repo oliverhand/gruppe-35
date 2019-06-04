@@ -7,7 +7,8 @@
 <link rel="stylesheet" href="index.css">
 <link rel="stylesheet" href="login.css">
 <link rel="stylesheet" href="drag.css">
-
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -25,7 +26,7 @@
          <!-- The project members list on the horizontal navigation bar -->
          <button id= "projectMembers" class="navbarHorizontalContent"><strong>Project members</strong>
              <select id="projectMembersContent">
-                
+                 <option disabled selected value> -- See members -- </option>
              </select>
         </button>
     </div>
@@ -38,11 +39,11 @@
 <!-- The flexible grid (content) -->
 <div class="row">
     <div class="sideBar">
-      <h2>About Me</h2>
-        <img class="image"src="Images/CardTemplate.png">
+        <img id= "testTemplate"class="image"src="Images/CardTemplate.png" draggable="true">
       <div id="myDiv" draggable="true">
   <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
   <div id="myDivHeader" >Click here to move</div>
+          <button class= "deleteButton" id="deleteButton"></button>
   <div class="text" draggable="true" contentEditable="true">
         + name: String <br>
         + address: Address <br>
@@ -57,9 +58,10 @@
     <div id="Content1"></div>
      <strong><div class="text" draggable="true" contentEditable="true"></div></strong>
     <div id="Content2" draggable="true" contentEditable="true" ></div> 
+    <input type=date id="dateInput" class="dateInput">
     <div class="status"  tabindex="1" id="inProgress">In-Progress</div>
     <div class="status"  tabindex="1" id="done">Done</div>
-    <div id="expand" class="expand" style="border: 1px solid black">Utvid</div>
+    <img class="expand" id="expand" src="Images/expand-button.png">
     <div class= "box" id="box">
         <button id="mainButton" class="AssignMembers">Legg til medlem 
         </button>
@@ -71,27 +73,10 @@
     </div>
 
 <div class="mainContent">
-
-    <div class="form" id= "mainForm">
-        <form class="register-form">
-          <input type="text" placeholder="name"/>
-          <input type="password" placeholder="password"/>
-          <input type="text" placeholder="email address"/>
-          <button>create</button>
-          <p class="message">Already registered? <a href="#">Sign In</a></p>
-        </form>
-        <form class="login-form">
-          <input type="text" placeholder="username"/>
-          <input type="password" placeholder="password"/>
-          <button>login</button>
-          <p class="message">Not registered? <a href="#">Create an account</a></p>
-        </form>
-    </div>
-    <svg width="960" height="660" id="svg" style="border: 1px solid black; overflow:hidden;">
+    <svg id="svg" style="border: 1px solid black; overflow:hidden;">
        <g style="">
-            <g id="g-container" transform="translate(60,41)" style="overflow: hidden;">
-                <foreignObject id="foreignContainer"style="overflow:hidden;" pointer-events="all" width="200" height="660">  
-                    
+            <g id="g-container">
+                <foreignObject id="foreignContainer"style="border:2px solid red;" pointer-events="all">  
                 </foreignObject>
             </g>
         </g>
@@ -99,17 +84,18 @@
     
     <div id="popUpContainer">
             <div id=createProjectPopUp class="popUps">
-                 <input id="setProjectName" type="text" placeholder="Set project name" maxlength="50">
-                <button id="closeCreateProjectPopUp" class="popUpButtons"><strong>Create project</strong></button>
+                 <input id="setProjectName" type="text" onfocus ="this.value=''" value="Set project name" maxlength="50">
+                <button id="closeCreateProjectPopUp" class="popUpButtons2"><strong>Create project</strong></button>
             </div>
             <div id="addMembersPopUp" class="popUps">
-                <input id="setMember" placeholder="Add member">
-                <button id="addMemberBtn" class="popUpButtons"><strong>Add member</strong></button>
-                <button id="closeAddMemberPopUp" class="popUpButtons"><strong>Close</strong></button>
+                <input id="setMember" onfocus ="this.value=''" value="Add member">
+                <a id="memberAddedFeedback">Member added successfully</a>
+                <button id="addMemberBtn" class="popUpButtons1"><strong>Add member</strong></button>
+                <button id="closeAddMemberPopUp" class="popUpButtons2"><strong>Close</strong></button>
             </div>
-            <div id=LogInPopUp class="popUps"><strong>Choose an option</strong>
-                <button id="createAccount" class="popUpButtons"><strong>Create account</strong></button>
-                <button id="logInAsUser" class="popUpButtons"><strong>Log in as guest</strong></button>
+            <div id="LogInPopUp" class="popUps"><a id="LogInPopUpA"><strong>Choose an option</strong></a>
+                <button id="logInAsUser" class="popUpButtons2" ><strong>Log in as guest</strong></button>
+                <a id="createAccount"><strong>Create Account</strong></a>
             </div>
 </div>
 </div>

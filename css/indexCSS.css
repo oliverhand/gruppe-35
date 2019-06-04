@@ -65,14 +65,14 @@ body{
 }
 
 .popUps{
-    border-radius: 10%;
+    border-radius: 5%;
     position: absolute;
     top: 600px;
     left: 875px;
     width: 200px;
     height: 300px;
     z-index: 2;
-    background-color: rgb(124, 211, 30);
+    background-color: rgb(40, 40, 40);
     visibility: hidden;
     opacity: 0;
     transition: top 2s ease, opacity 1.5s ease;
