@@ -19,12 +19,12 @@
       
       <svg width="960" height="600" id="mySVG" style ="border:1px solid #000000;">
 
-          <g>
+          
           <path id="mySpline" style="stroke:rgb(247, 162, 4);stroke-width:5" fill="transparent"/>
                <!-- <circle class="circleNode" cx="300" cy="300" r="10" style="stroke:rgb(247, 162, 4);stroke-width:5"/> -->
               
               
-            </g>
+            
        
         <!--     <g>
                         <rect x="10" y="10" id="myNode" fill="transparent">
@@ -48,7 +48,7 @@
                         + jobType: String <br>
                     </div>
                     
-                        <img onClick="getClickedNodeID(this.id)" id="myNode" class="node" src="images/node_yellow.png" draggable="false";/>
+                        <img onclick="connectNodes(evt)" id="myNode" x="100" y="200" class="node" src="images/node_yellow_whole.png" draggable="false";/>
                     
                   
                  <!--   <svg width="32" height="32" fill="transparent">
@@ -82,28 +82,31 @@
 
       <!-- SCRIPT -->
        <script>       
-         //set up the canvas and context
+            //set up the SVG
             var svg = document.getElementById("mySVG");
-          //  var ctx = svg.getContext("2d");
-             var evt = window.Event;
+            var evt = window.Event;
             
            
            //sets mouse and node position as a global variable
            var mousePos = getMousePos(svg, evt);
             var mouseX = mousePos.x;
             var mouseY = mousePos.y;
+            //use this when 
             var mouseCoordinate = mouseX + ", " + mouseY;
-            var mouseClick = document.getElementById("newNode1"); //defines it so we can assign it as we click
+            // var mouseClick = document.getElementById("newNode1"); //defines it so we can assign it as we click
+           
+            var nodeX1 = document.getElementsByClassName("node");
+            var nodeY1 = document.getElementsByClassName("node");
+            
            
 
-
+           // if we need to increment the ID name suffix
             var i = 0;
-
-            var nodeX = document.getElementById("myNode").getAttribute("x");
-            var nodeY = document.getElementById("myNode").getAttribute("y");
+            
+            
            
-            var nodeBX = document.getElementById("newNode1").getAttribute("x");
-            var nodeBY = document.getElementById("newNode1").getAttribute("y");
+            //var nodeBX = document.getElementById("newNode2").getAttribute("x");
+            //var nodeBY = document.getElementById("newNode2").getAttribute("y");
             
            
             //report the mouse position while it moves, then sets <path "d" /> to what toString returns.
@@ -112,8 +115,8 @@
                 var mouseX = mousePos.x;
                 var mouseY = mousePos.y;
                
+                document.querySelector("#mySVG #mySpline").setAttribute("d",toString(mouseX,mouseY));
                 
-                document.querySelector( "#mySVG #mySpline").setAttribute("d", toString(mouseX,mouseY,mouseClick));
                 
             }, false);
            
@@ -138,41 +141,49 @@
           // triggerNode.addEventListener("click",addElement);
            
            //document.body.addEventListener("click", getClickCoordinate);
-           
-           function getClickedNodeID(clicked_id){
+           var index = false;            
+           var nodeTrigger = document.getElementsByClassName("node");
+           document.body.addEventListener("click",connectNodes);
+            
+           function connectNodes(evt){
                
-               if(clicked_id === "myNode"){
+
+               
+               //asks if the class name we click on is named "node"
+               if(evt.target.className == "node" && index === true){
+                 
+                    var index = true;
+                    //document.querySelector("#mySVG #mySpline").setAttribute("d",toString(nodeX1,nodeY1));
                    
-                   var mouseClick = clicked_id;
-                   return mouseClick;
-               } else if(clicked_id === "newNode1"){
-                   var mouseClick = clicked_id;
-                   return mouseClick;
-               } else if(clicked_id === "newNode2"){
-                   var mouseClick = clicked_id;
-                   console.log(mouseClick);
-               } 
+                   
+                 //return evt.target.getAttribute("x") + evt.target.getAttribute("y");
+                console.log(evt.target.getAttribute("x") + " " + evt.target.getAttribute("y"));
+                   
+                 
+               } else if(evt.target.className == "node" && index === false){
+                   
+                   alert("You clicked on a node class");
+               } else if (index = false){
+                   //return coordinate of A
+
+                  
+               }
                
            }
-            
-           var nodeTrigger = document.getElementsByClassName("node");
-           nodeTrigger.addEventListener("click",getClickedNodeID);
            
-            function toStringID(mouseClick){
-                
-            }
-            
+           
+             
            // gets mouse X and Y coordinates and returns it as a string
-              function toString(mouseX, mouseY , mouseClick){
+              function toString(nodeA, nodeB){
                 
-                
+                var nodeX = document.getElementById("newNode1").getAttribute("x");
+                var nodeY = document.getElementById("newNode1").getAttribute("y");
                 // gets Element ID of the element you click on  
-                var rectA = document.getElementById("myNode").getBoundingClientRect();  
-                var rectB = document.getElementById("newNode1").getBoundingClientRect();
-                console.log(mouseClick);
-                  
-                  var nodeX = rectA.x;
-                  var nodeY = rectA.y;
+                var rectA = document.getElementById("newNode1").getBoundingClientRect();  
+                var rectB = document.getElementById("newNode2").getBoundingClientRect();
+                
+                  var nodeAX = rectA.x;
+                  var nodeAY = rectA.y;
                   //var nodeBX = rectB.x;
                   //var nodeBY = rectB.y;
                   
@@ -180,24 +191,13 @@
                   var nodeA = rectA.x + " " + rectA.y;
                   var nodeB = rectB.x + " " + rectB.y;
                   
-                  
-                 /* 
-                 var nodeX = document.getElementById("myNode").getAttribute("x");
-                 var nodeY = document.getElementById("myNode").getAttribute("y");
-                 */
                   // anchor points are control points on a bezier curve that bends the curve
-                  var nodeAnchor = nodeX + 50;
-                  var anchorPoint = mouseX - 5;
+                  //var nodeAnchor = nodeX + 50;
+                  //var anchorPoint = mouseX - 5;
                   
-
-                  
-                  // use this if you want to have a curve on the end!
-               //   return "M" + nodeX + " " + nodeY + " C " + nodeAnchor + " " + nodeY + ", " + mouseY + " " + anchorPoint + ", " + mouseX + " " + mouseY;
-                  
-                //  return "M" + nodeX + " " + nodeY +  ", " + mouseX + " " + mouseY;
-                  return "M" + nodeA +  ", " + nodeBX + " " + nodeBY;
-                  
-                //  d="M10 10 C 100 10, 300 300, 400 300"
+                  //returns the coordinates as a string
+                  return "M" + nodeA +  ", " + nodeB;
+                  //return "M" + nodeX + " " + nodeY +  ", " + mouseX + " " + mouseY;
                   
               }
             
@@ -208,6 +208,7 @@
                 return {
                     x: evt.clientX - rect.left,
                     y: evt.clientY - rect.top
+                    
                 };
             }  
            
