@@ -48,7 +48,7 @@
                         + jobType: String <br>
                     </div>
                     
-                        <img onClick="getClickCoordinate(this.id)" id="myNode" src="images/node_yellow.png" draggable="false";/>
+                        <img onClick="getClickedNodeID(this.id)" id="myNode" class="node" src="images/node_yellow.png" draggable="false";/>
                     
                   
                  <!--   <svg width="32" height="32" fill="transparent">
@@ -93,7 +93,7 @@
             var mouseX = mousePos.x;
             var mouseY = mousePos.y;
             var mouseCoordinate = mouseX + ", " + mouseY;
-            var mouseClick; //defines it so we can assign it as we click
+            var mouseClick = document.getElementById("newNode1"); //defines it so we can assign it as we click
            
 
 
@@ -101,16 +101,19 @@
 
             var nodeX = document.getElementById("myNode").getAttribute("x");
             var nodeY = document.getElementById("myNode").getAttribute("y");
+           
+            var nodeBX = document.getElementById("newNode1").getAttribute("x");
+            var nodeBY = document.getElementById("newNode1").getAttribute("y");
             
            
             //report the mouse position while it moves, then sets <path "d" /> to what toString returns.
-            svg.addEventListener("click", function (evt) {
+            svg.addEventListener("mousemove", function (evt) {
                 var mousePos = getMousePos(svg, evt);
                 var mouseX = mousePos.x;
                 var mouseY = mousePos.y;
                
                 
-                document.querySelector( "#mySVG #mySpline").setAttribute("d", toString(mouseX,mouseY));
+                document.querySelector( "#mySVG #mySpline").setAttribute("d", toString(mouseX,mouseY,mouseClick));
                 
             }, false);
            
@@ -136,7 +139,7 @@
            
            //document.body.addEventListener("click", getClickCoordinate);
            
-           function getClickCoordinate(clicked_id){
+           function getClickedNodeID(clicked_id){
                
                if(clicked_id === "myNode"){
                    
@@ -145,24 +148,31 @@
                } else if(clicked_id === "newNode1"){
                    var mouseClick = clicked_id;
                    return mouseClick;
+               } else if(clicked_id === "newNode2"){
+                   var mouseClick = clicked_id;
+                   console.log(mouseClick);
                } 
                
            }
             
-            
+           var nodeTrigger = document.getElementsByClassName("node");
+           nodeTrigger.addEventListener("click",getClickedNodeID);
            
-           // gets mouse X and Y coordinates and returns it as a string
-              function toString(mouseCoordinate , clicked_id){
+            function toStringID(mouseClick){
                 
-                var getClickID = getClickCoordinate(clicked_id);
+            }
+            
+           // gets mouse X and Y coordinates and returns it as a string
+              function toString(mouseX, mouseY , mouseClick){
+                
                 
                 // gets Element ID of the element you click on  
                 var rectA = document.getElementById("myNode").getBoundingClientRect();  
-                var rectB = document.getElementById(mouseClick).getBoundingClientRect();
-            // console.log(rect.x, rect.y);
+                var rectB = document.getElementById("newNode1").getBoundingClientRect();
+                console.log(mouseClick);
                   
-               //   var nodeX = rectA.x;
-                //  var nodeY = rectA.y;
+                  var nodeX = rectA.x;
+                  var nodeY = rectA.y;
                   //var nodeBX = rectB.x;
                   //var nodeBY = rectB.y;
                   
@@ -185,7 +195,7 @@
                //   return "M" + nodeX + " " + nodeY + " C " + nodeAnchor + " " + nodeY + ", " + mouseY + " " + anchorPoint + ", " + mouseX + " " + mouseY;
                   
                 //  return "M" + nodeX + " " + nodeY +  ", " + mouseX + " " + mouseY;
-                  return "M" + nodeA +  ", " + mouseCoordinate;
+                  return "M" + nodeA +  ", " + nodeBX + " " + nodeBY;
                   
                 //  d="M10 10 C 100 10, 300 300, 400 300"
                   
@@ -201,7 +211,7 @@
                 };
             }  
            
-
+           
           
         </script>
       
