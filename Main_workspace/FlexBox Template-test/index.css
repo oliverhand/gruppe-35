@@ -47,7 +47,7 @@ body {
     background-color: inherit;
     color: rgb(240, 240, 240);
     border: 0;
-    font-family: sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 16px;
 }
 
@@ -71,8 +71,8 @@ body {
 #projectName{
     margin-top:15px;
     font-size: 16px;
-    font-family: sans-serif;
-    color: dodgerblue;
+    font-family: 'Roboto', sans-serif;
+    color: rgb(240, 240, 240);
 }
 
 /* Column container */
@@ -114,22 +114,6 @@ body {
     width: 150px;
     height: 200px;
     border: 1px solid black;
-}
-
-#navbarVertical{
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: flex-start;
-    background-color: rgb(50, 50, 50);
-    height: 1000px;
-    width: 50px;
-}
-
-#navbarVertical button {
-    background-color: inherit;
-    border: 0;
-    font-family: "Roboto", sans-serif;
-    font-size: 16px;
 }
 
 .popUps{
@@ -175,7 +159,7 @@ body {
     top: 15px;
     width: 200px;
     color: black;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Roboto', sans-serif;
     text-align: center;
 }
 
@@ -186,14 +170,13 @@ body {
     width: 150px;
     height: 50px;
     color: black;
-    font-family: sans-serif;
     font: 18px;
     background-color: rgb(250, 250, 250);
     border-style: solid;
     border-color: black;
     border-width: 1px;
     color: black;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Roboto', sans-serif;
     text-align: center;
 }
 
@@ -204,14 +187,13 @@ body {
     width: 150px;
     height: 50px;
     color: black;
-    font-family: sans-serif;
     font: 18px;
     background-color: rgb(250, 250, 250);
     border-style: solid;
     border-color: black;
     border-width: 1px;
     color: black;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Roboto', sans-serif;
     text-align: center;
 }
 
@@ -230,7 +212,7 @@ body {
     top: 175px;
     width: 200px;
     color: black;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 12px;
     text-align: center;
     color: rgb(60, 0, 255);

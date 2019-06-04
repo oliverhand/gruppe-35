@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="index.css">
 <link rel="stylesheet" href="login.css">
 <link rel="stylesheet" href="drag.css">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -38,9 +39,11 @@
 <!-- The flexible grid (content) -->
 <div class="row">
     <div class="sideBar">
+        <img id= "testTemplate"class="image"src="Images/CardTemplate.png" draggable="true">
       <div id="myDiv" draggable="true">
   <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
   <div id="myDivHeader" >Click here to move</div>
+          <button class= "deleteButton" id="deleteButton"></button>
   <div class="text" draggable="true" contentEditable="true">
         + name: String <br>
         + address: Address <br>
@@ -49,15 +52,16 @@
         + jobType: String <br>
     </div>
     <g>
-    <img class="node" id="w" src="Images/Node_Grey_Whole.png" draggable="false";>
-    <img class="node" id="e" src="Images/Node_Grey_Whole.png" draggable="false";>
+    <img class="node" id="w" src="/Images/Node_Grey_Whole.png" draggable="false";>
+    <img class="node" id="e" src="/Images/Node_Grey_Whole.png" draggable="false";>
         </g>
     <div id="Content1"></div>
      <strong><div class="text" draggable="true" contentEditable="true"></div></strong>
     <div id="Content2" draggable="true" contentEditable="true" ></div> 
+    <input type=date id="dateInput" class="dateInput">
     <div class="status"  tabindex="1" id="inProgress">In-Progress</div>
     <div class="status"  tabindex="1" id="done">Done</div>
-    <div id="expand" class="expand" style="border: 1px solid black">Utvid</div>
+    <img class="expand" id="expand" src="Images/expand-button.png">
     <div class= "box" id="box">
         <button id="mainButton" class="AssignMembers">Legg til medlem 
         </button>
@@ -68,12 +72,11 @@
 </div> 
     </div>
 
-<div id="mainContent" class="mainContent">
-    <svg width="960" height="660" id="svg" style="border: 1px solid black; overflow:hidden;">
+<div class="mainContent">
+    <svg id="svg" style="border: 1px solid black; overflow:hidden;">
        <g style="">
-            <g id="g-container" transform="translate(60,41)" >
-                <foreignObject id="foreignContainer"style="overflow:hidden;" pointer-events="all" width="200" height="660">  
-                    
+            <g id="g-container">
+                <foreignObject id="foreignContainer"style="border:2px solid red;" pointer-events="all">  
                 </foreignObject>
             </g>
         </g>

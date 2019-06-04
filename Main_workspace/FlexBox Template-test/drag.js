@@ -1,4 +1,4 @@
-
+var dateElement = document.getElementById("dateInput");
 //Testing av hva som registrers som e.targer.=============LA STÅ
 document.body.addEventListener('click',function(e){
     console.log(e.target);
@@ -57,16 +57,20 @@ var i=0;
 
 //===================Creating new Div-elements=====================.
     function addElement(){
+
         //Cloning and setting new values to the cloned element.
-        
         var newElement= document.getElementById("myDiv").cloneNode(true);
         newElement.setAttribute('draggable',true);
         newElement.id="newDiv";
         newElement.className="newDiv"
+        newElement.style.visibility="visible";
         
         newElement.childNodes[3].className="newDivHeader";
-        newElement.childNodes[15].className="newInProgress";
-        newElement.childNodes[17].className="newDone";
+        newElement.childNodes[3].setAttribute('contentEditable',true);
+        newElement.childNodes[3].innerHTML='Change name here:';
+        newElement.childNodes[19].className="newInProgress";
+        newElement.childNodes[21].className="newDone";
+        
         
         i++;
     
@@ -74,9 +78,9 @@ var i=0;
         newElement.id="newDiv"+i;
        ;
         newElement.childNodes[3].id="newDivHeader"+i;
-        newElement.childNodes[15].id="newInProgress"+i;
-        newElement.childNodes[17].id="newDone"+i;
-        newElement.childNodes[21].id="box"+i;
+        newElement.childNodes[19].id="newInProgress"+i;
+        newElement.childNodes[21].id="newDone"+i;
+        newElement.childNodes[25].id="box"+i;
     
         console.log(newElement.childNodes);
     
@@ -89,48 +93,52 @@ var i=0;
             document.getElementById(e.target.id).style.backgroundColor="lawngreen";
             console.log(e.target.previousElementSibling);
             document.getElementById(e.target.previousElementSibling.id).style.backgroundColor="grey";
+            e.target.parentElement.childNodes[3].style.backgroundColor="lawngreen";
+            e.target.parentElement.style.border="1px solid lawngreen";
         }
         //if the element our mouse is hovering has the id of inProgress then run.
         else if(e.target.className=="newInProgress"){
             document.getElementById(e.target.nextElementSibling.id).style.backgroundColor="grey";
             document.getElementById(e.target.id).style.backgroundColor="yellow";
+            e.target.parentElement.childNodes[3].style.backgroundColor="yellow";
+            e.target.parentElement.style.border="1px solid yellow";
           }
-        });      
+        });  
   
         //Setting the position for new element equal to the cursors position.
         var e =window.event;
-        newElement.style.top = e.clientY + "px";
-        newElement.style.left = e.clientX + "px";
+        newElement.style.top = e.clientY-80 + "px";
+        newElement.style.left = e.clientX-300 + "px";
         
         //Choose where we want this new element to be placed in the HTML.
-        document.body.appendChild(newElement);
+       document.getElementById('foreignContainer').appendChild(newElement);
         dragElement(newElement);
-    }
+        dateSetter();
+        console.log("X"+e.clientX+" Y"+e.clientY)
+}
         
 //===================Creating new Div-elements-END=================.
 
 //listening for the drag event. (Hvis vi drar fra myDiv, så kjører den addElement funksjonen)
-    var trigger = document.getElementById("myDiv");
-    trigger.addEventListener("dragend",addElement);    
+var trigger = document.getElementById("testTemplate");
+trigger.addEventListener("dragend",addElement); 
 
-//============Adding members======================================   
-
-
-//======================Adding members-END=========================
-//===================Expand/Close members box =====================
-    /*document.getElementById('expand').addEventListener('click',hideMembersbar);
-
-    function hideMembersbar(){
-        if(document.getElementById('box1').style.display == 'block'){
-            document.getElementById('box1').style.display= 'none';
+//=============DateSETTER==========================
+function dateSetter(){
+    var classname= document.getElementsByClassName("dateInput");
+        for (var i = 0; i < classname.length; i++) {
+            classname[i].addEventListener('change', setDateValue, false);
+        }   
+        
+      
+        function setDateValue(){
+             var testValue=this.value;
+                console.log("heisan"+testValue);  
         }
-        else {
-            console.log('!== block');
-            document.getElementById('box1').style.display = 'block';
-        }
-    }*/
-//======================================================================
-
+               
+}
+//================DATE END==============================
+//================Expand box=============================
 document.body.addEventListener('click',hideMembersbar);
  function hideMembersbar(e){
      
@@ -138,24 +146,24 @@ document.body.addEventListener('click',hideMembersbar);
             if(e.target.nextElementSibling.style.display == 'block'){
             e.target.nextElementSibling.style.display= 'none';
             console.log("Show none");
-        }
+            e.target.style.transform="rotate(0deg)";
+            }
         else {
             e.target.nextElementSibling.style.display = 'block';
             console.log("Show block");
+            e.target.style.transform="rotate(180deg)";
         }
     }
  }
-
-//===================HER MÅ DET JOBBES MED EN DELETE FUNKSJON ===========================
-
-/*document.getElementById('DELETE1').addEventListener('mouseup', function(e)
-    {    
-   
-   document.getElementById('DELETE1').appendChild(e.target.id);
-    document.getElementById('DELETE1').removeChild(e.target.id);
-           
-            //document.getElementById('DELETE1').appendChild(item);
-    });
-   */
-
-//=====================================================================
+//===============Expand box END==========================
+//===============DELETE=================================
+document.body.addEventListener('click',deleteElement);
+function deleteElement(e){
+    console.log("hei");
+    if(e.target.className=="deleteButton"){
+         
+    var divElement= e.target.parentNode; //newDiv
+    divElement.parentNode.removeChild(divElement);
+    }
+}
+//===============DELETE END==============================
