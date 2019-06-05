@@ -165,7 +165,54 @@ function removeMemberAddedFeedback(){
     domMemberAddedFeedback.style.visibility = "hidden";
 }
 
+var domDarkLightMode = document.getElementById("darkLightMode");
 
+domDarkLightMode.addEventListener("click", changeTheme);
+
+var toggleTheme = false;
+function changeTheme() {
+    var domSvg = document.getElementById("svg");
+    var className= document.getElementsByClassName("newDivHeader");
+    if(toggleTheme == false){
+        console.log(toggleTheme);
+        toggleTheme = !toggleTheme ;
+        domSvg.style.backgroundImage = "url('Images/grid_32_hc.jpg')";
+        document.getElementById("g-container").style.backgroundImage = "url('Images/grid_32_hc.jpg')";
+        document.getElementById("foreignContainer").style.backgroundImage = "url('Images/grid_32_hc.jpg')";
+        document.getElementById("navbarHorizontal").style.backgroundColor = "rgb(240, 240, 240)";
+        document.getElementById("createProject").style.color = "rgb(20, 20, 20)";
+        document.getElementById("addMembers").style.color = "rgb(20, 20, 20)";
+        document.getElementById("projectMembers").style.color = "rgb(20, 20, 20)";
+        document.getElementById("projectName").style.color = "rgb(20, 20, 20)";
+        document.getElementById("logIn").style.color = "rgb(20, 20, 20)";
+        document.getElementById("sideBar").style.backgroundColor = "rgb(240, 240, 240)";
+        document.getElementById("navbarHorizontal").style.borderBottomColor = "rgb(20, 20, 20)";
+        document.getElementById("sideBar").style.borderRightColor = "rgb(20, 20, 20)";
+        for (var i = 0; i < className.length; i++){
+            className[i].style.backgroundColor = "rgb(220, 220, 220)";
+        }
+        console.log(toggleTheme);
+    } else if(toggleTheme) {
+        console.log(toggleTheme);
+        toggleTheme = !toggleTheme;
+        domSvg.style.backgroundImage = "url('Images/grid_32.jpg')";
+        document.getElementById("g-container").style.backgroundImage = "url('Images/grid_32.jpg')";
+        document.getElementById("foreignContainer").style.backgroundImage = "url('Images/grid_32.jpg')";
+        document.getElementById("navbarHorizontal").style.backgroundColor = "rgb(50, 50, 50)";
+        document.getElementById("createProject").style.color = "rgb(240, 240, 240)";
+        document.getElementById("addMembers").style.color = "rgb(240, 240, 240)";
+        document.getElementById("projectMembers").style.color = "rgb(240, 240, 240)";
+        document.getElementById("projectName").style.color = "rgb(240, 240, 240)";
+        document.getElementById("logIn").style.color = "rgb(240, 240, 240)";
+        document.getElementById("sideBar").style.backgroundColor = "rgb(50, 50, 50)";
+        document.getElementById("navbarHorizontal").style.borderBottomColor = "rgb(240, 240, 240)";
+        document.getElementById("sideBar").style.borderRightColor = "rgb(240, 240, 240)";
+        for (var i = 0; i < className.length; i++){
+            className[i].style.backgroundColor = "grey";
+        }  
+        console.log(toggleTheme);
+    }
+}
 
 
 

@@ -63,8 +63,8 @@ var i=0;
         newElement.style.visibility="visible";
         
         newElement.childNodes[3].className="newDivHeader";
-        newElement.childNodes[3].setAttribute('contentEditable','true');
-        newElement.childNodes[3].innerHTML='Change name here:';
+        newElement.childNodes[3].setAttribute('contentEditable',"true");
+        newElement.childNodes[3].innerHTML="<i>Your class name here</i>";
         newElement.childNodes[19].className="newInProgress";
         newElement.childNodes[21].className="newDone";
         

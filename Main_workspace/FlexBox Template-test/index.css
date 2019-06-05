@@ -95,7 +95,7 @@ body {
 
 /* Create two unequal columns that sits next to each other */
 /* Sidebar/left column */
-.sideBar {
+#sideBar {
     background-color: rgb(50,50,50);
     padding: 20px;
     width:10%;
@@ -233,4 +233,14 @@ body {
 #logInAsUser{
     top: 60px;
     background-color: rgb(240, 240, 255);
+}
+
+#darkLightMode{
+    position: absolute;
+    left: 4%;
+    bottom: 50px;
+}
+
+#darkLightMode:hover{
+    cursor: pointer;
 }

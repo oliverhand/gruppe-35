@@ -39,7 +39,7 @@
 
 <!-- The flexible grid (content) -->
 <div class="row">
-    <div class="sideBar">
+    <div id="sideBar" class="sideBar">
         <img id= "testTemplate"class="image"src="Images/CardTemplate.png" draggable="true">
         <div class="template" id="template1" draggable="true">+main() :void</div>
         <div class="template" id="template2" draggable="true">-variable :data_type</div>
@@ -69,9 +69,9 @@
             <option>Eyyyyo</option>
             <option>Tor-Bias</option>
         </select>
-    </div>
-                                              
+    </div>                                         
 </div> 
+        <img id="darkLightMode" src="Images/day-and-night.png">
     </div>
 
 <div class="mainContent">
@@ -87,7 +87,7 @@
     <div id="popUpContainer">
             <div id=createProjectPopUp class="popUps">
                  <input id="setProjectName" type="text" onfocus ="this.value=''" value="Set project name" maxlength="50">
-                <button id="closeCreateProjectPopUp" class="popUpButtons2"><strong>Create project</strong></button>
+                <button id="closeCreateProjectPopUp" class="popUpButtons2"><strong>Create new project</strong></button>
             </div>
             <div id="addMembersPopUp" class="popUps">
                 <input id="setMember" onfocus ="this.value=''" value="Add member">
