@@ -1,5 +1,5 @@
 var dateElement = document.getElementById("dateInput");
-//Testing av hva som registrers som e.targer.=============LA STÅ
+//Testing av hva som registrers som e.target.=============LA STÅ
 document.body.addEventListener('click',function(e){
     console.log(e.target);
 });
@@ -154,7 +154,6 @@ document.body.addEventListener('click',hideMembersbar);
 //===============DELETE=================================
 document.body.addEventListener('click',deleteElement);
 function deleteElement(e){
-    console.log("hei");
     if(e.target.className=="deleteButton"){
          
     var divElement= e.target.parentNode; //newDiv
@@ -206,13 +205,3 @@ function deleteElement(e){
     template2.addEventListener("dragend",addTemplates2); 
     template3.addEventListener("dragend",addTemplates3); 
 //=====================Added templates END===============
-
-
-
-
-
-
-
-
-
-

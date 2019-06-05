@@ -35,7 +35,8 @@ function closeCreateProject() {
     domCreateProjectPopUp.style.opacity = "0";
     domCreateProjectPopUp.style.top = "800px";
     // Setting the input.value of the input field, as the innerHTML text of the projectName field
-    domProjectName.innerHTML = domProjectName.innerHTML.replace("New project", domSetProjectNameValue);
+    domProjectName.innerHTML = domSetProjectNameValue;
+    document.getElementById("foreignContainer").innerHTML = null;
     // Control structure checking what error you have to give the correct error message
     } else if (domLogIn.innerHTML != "Logged in as guest" && domSetProjectNameValue != null) {
         alert("You have to be logged in to create a project");
@@ -109,29 +110,25 @@ domSetMemberInput.addEventListener("input", function(){
     domMemberAddedFeedback.style.visibility = "hidden";
 });
 
+var selectedMemberIndex;
+function getMemberIndex(index){
+    selectedMemberIndex = index;
+}
+
 document.body.addEventListener('click',assignMember)
-function assignMember(e) { 
+function assignMember(e){ 
     if(e.target.className=="AssignMembers"){
         
         var newMember= document.createElement('div');
-        /*var selected= domBoxAssignMembersContent[ipa].value;
-        console.log(ipa);*/
         
-        /*var selectedOptionIndex = document.getElementById("boxAssignMembersContent21").selectedIndex;
-        console.log(selectedOptionIndex);
-        var selectedOptionIndexValue = document.getElementById("boxAssignMembersContent21")[selectedOptionIndex].value;
+        var selectedOptionIndexValue = document.getElementById("boxAssignMembersContent21")[selectedMemberIndex].value;
         var textNode= document.createTextNode(selectedOptionIndexValue);
-        newMember.appendChild(textNode);*/
+        newMember.appendChild(textNode);
         newMember.className="newMember";
-        e.target.parentElement.appendChild(newMember);  
         
-        
-        
+        e.target.parentElement.appendChild(newMember);          
     }
-    else{console.log('dette gikk til helvete');}
-    
 }
-
 // Getting the dom elements ID for logg inn 
 var domLogIn = document.getElementById("logIn");
 var domLogInPopUp = document.getElementById("LogInPopUp");

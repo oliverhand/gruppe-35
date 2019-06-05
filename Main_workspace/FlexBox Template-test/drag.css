@@ -91,7 +91,7 @@ div p {
      outline:2px solid black;
 }
 .box{
-    z-index: 12;
+    z-index: 3;
     background-color: #f1f1f1;
     color: #000; /*black*/
     width: 148px;
@@ -112,6 +112,7 @@ div p {
 }
 #deleteButton{
     position: absolute;
+    top: 0px;
     right:0px;
     margin: 1px;
 }
@@ -123,7 +124,11 @@ div p {
     padding: 5px;
     font-size: 19px;
     flex-flow: nowrap;
-    
 }
+
+#expand:hover, #deleteButton:hover, #dateInput:hover{
+    cursor: pointer;
+}
+
 
 

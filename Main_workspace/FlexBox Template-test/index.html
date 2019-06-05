@@ -16,7 +16,7 @@
 <div id="navbarHorizontal">
     <div id="flexContainerFirstThree"> 
         <!-- The create project part on the horizontal navigation bar -->
-        <button id="createProject" class="navbarHorizontalContent"><strong>Create project</strong></button>                
+        <button id="createProject" class="navbarHorizontalContent"><strong>Create new project</strong></button>                
             
                         
         <!-- The add member part on the horizontal navigation bar -->
@@ -50,8 +50,8 @@
       <img class= "deleteButton" id="deleteButton" src="Images/delete.png">
   <div class="text" draggable="true" contentEditable="true"></div>
     <g>
-    <img class="node" id="w" src="/Images/Node_Grey_Whole.png" draggable="false";>
-    <img class="node" id="e" src="/Images/Node_Grey_Whole.png" draggable="false";>
+    <img class="node" id="w" src="Images/Node_Grey_Whole.png" draggable="false";>
+    <img class="node" id="e" src="Images/Node_Grey_Whole.png" draggable="false";>
         </g>
     <div id="Content1"></div>
      <strong><div class="text" draggable="true" contentEditable="true"></div></strong>
@@ -61,11 +61,15 @@
     <div class="status"  tabindex="1" id="done">Done</div>
     <img class="expand" id="expand" src="Images/expand-button.png">
     <div class= "box" id="box">
-        <button id="mainButton" class="AssignMembers">Legg til medlem 
+        <button id="btnAssignMembers" class="AssignMembers">Legg til medlem 
         </button>
-            <select id="boxAssignMembersContent21"></select>
+        <select id="boxAssignMembersContent21" onchange = "getMemberIndex(this.selectedIndex)">
+            <option disabled selected value> -- See members -- </option>
+            <option>Ruth-Helene</option>
+            <option>Eyyyyo</option>
+            <option>Tor-Bias</option>
+        </select>
     </div>
-        
                                               
 </div> 
     </div>
