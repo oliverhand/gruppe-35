@@ -78,7 +78,7 @@ var i=0;
         newElement.childNodes[3].id="newDivHeader"+i;
         newElement.childNodes[15].id="newInProgress"+i;
         newElement.childNodes[17].id="newDone"+i;
-        newElement.childNodes[7].id="newNode"+i;
+        //newElement.childNodes[7].id="newNode"+i;
         console.log(newElement.childNodes);
         
     
