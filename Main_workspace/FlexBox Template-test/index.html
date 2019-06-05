@@ -30,9 +30,10 @@
              </select>
         </button>
     </div>
-      <!-- The field where the projects name is displayed -->
-    <div id="projectName" class="navbarHorizontalContent" contenteditable="true"><strong>New project</strong></div>
-           
+    <div id="flexContainerProjectName"> 
+        <!-- The field where the projects name is displayed -->
+        <div id="projectName" class="navbarHorizontalContent" contenteditable="true"><strong>New project</strong></div>
+    </div>  
     <button id="logIn" class="navbarHorizontalContent"><strong>Log in</strong></button>
 </div>
 
@@ -45,10 +46,9 @@
         <div class="template" id="template3" draggable="true">implement</div>
       <div id="myDiv" draggable="true">
   <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
-  <div id="myDivHeader" >Click here to move</div>
-          <img class= "deleteButton" id="deleteButton" src="Images/delete.png">
-  <div class="text" draggable="true" contentEditable="true">
-    </div>
+  <div id="myDivHeader" contentEditable="true" >Click here to move</div>
+      <img class= "deleteButton" id="deleteButton" src="Images/delete.png">
+  <div class="text" draggable="true" contentEditable="true"></div>
     <g>
     <img class="node" id="w" src="/Images/Node_Grey_Whole.png" draggable="false";>
     <img class="node" id="e" src="/Images/Node_Grey_Whole.png" draggable="false";>
@@ -74,7 +74,7 @@
     <svg id="svg" style="border: 1px solid black; overflow:hidden;">
        <g style="">
             <g id="g-container">
-                <foreignObject id="foreignContainer"style="border:2px solid red;" pointer-events="all">  
+                <foreignObject id="foreignContainer" pointer-events="all">  
                 </foreignObject>
             </g>
         </g>
