@@ -79,7 +79,7 @@ var i=0;
         newElement.childNodes[3].id="newDivHeader"+i;
         newElement.childNodes[15].id="newInProgress"+i;
         newElement.childNodes[17].id="newDone"+i;
-        //newElement.childNodes[7].id="newNode"+i;
+        newElement.childNodes[5].id="newNode"+i;
         console.log(newElement.childNodes);
         
     
@@ -161,8 +161,6 @@ document.body.addEventListener('click',hideMembersbar);
 
    //set up the SVG
             var svg = document.getElementById("mySVG");
-            var evt = window.Event;
-
                var index = false;
                var nodeAxClick;
                var nodeAyClick;
@@ -170,17 +168,8 @@ document.body.addEventListener('click',hideMembersbar);
                var nodeByClick;
                var d_value;
                 
-                document.body.addEventListener("mousedown",function(e){
-                    if(e.target.className=="newDivHeader"){
-                        var imageCords= e.target.parentElement.childNodes[5].getBoundingClientRect();
-                        banan = imageCords.x; 
-                }
-});
-
-               
-    
-        
-               document.body.addEventListener("click",connectNodes);
+                
+               /*document.body.addEventListener("click",connectNodes);
 
                function connectNodes(e){
                    if(e.target.className == "node" && index == false){
@@ -196,23 +185,13 @@ document.body.addEventListener('click',hideMembersbar);
                        var rect = e.target.getBoundingClientRect();
                        nodeBxClick=rect.x;
                        nodeByClick=rect.y;
-                       
-                       addSpline();
+                
                    }  
-            }
+            }*/
 
                 //Get Mouse Position
 
-                function addSpline(){
-                   var newPath=document.getElementById('mySpline').cloneNode('true');
-                   newPath.id="newPath";
-                    
-                    var d_value="M"+nodeAxClick + " " + nodeAyClick +", "+ nodeBxClick + " " + nodeByClick;
-                    newPath.setAttribute("d",d_value);
-                    
-                    document.getElementById('mySVG').appendChild(newPath);
-
-               } 
+             
 
               // var triggerNode = document.getElementById("newNode");
               // triggerNode.addEventListener("click",addElement);
@@ -222,5 +201,39 @@ document.body.addEventListener('click',hideMembersbar);
                         nodeAxClick, nodeAyClick = node_bilde.getBoundingClientRect.x og .y
                         addElement();
                     }*/
+                document.body.addEventListener("click",function test(e){
+                  
+                    //if(e.target.className=="newDivHeader"){
+                        if(e.target.className == "node" && index == false){
+                        
+                        index = true;
+                        var rect = e.target.parentElement.childNodes[5].getBoundingClientRect();
+                         nodeAxClick=rect.x;
+                         nodeAyClick=rect.y;
+                            console.log("AX:"+rect.x)
+                            console.log("AY:"+rect.y)
 
+                   } 
+                    else if(e.target.className == "node" && index){
+
+                       index = false;
+                       var rect = e.target.parentElement.childNodes[5].getBoundingClientRect();
+                       nodeBxClick=rect.x;
+                       nodeByClick=rect.y;
+                        console.log("BX:"+rect.x)
+                        console.log("BY:"+rect.y)
+                       var d_value="M"+nodeAxClick + " " + nodeAyClick +", "+ nodeBxClick + " " + nodeByClick; 
+                       
+                   var newPath=document.getElementById('mySpline').cloneNode('true');
+                   newPath.id="newPath";
+                    newPath.setAttribute("d",d_value);
+                    
+                    document.getElementById('mySVG').appendChild(newPath);
+                
+                   }
+                        
+                   // }
+                });
+                       
+                    
 
