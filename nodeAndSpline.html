@@ -21,6 +21,7 @@
 
           
           <path id="mySpline" style="stroke:rgb(247, 162, 4);stroke-width:5" fill="transparent"/>
+          <line id="myLine" style="stroke:rgb(247, 162, 4);stroke-width:5" fill="transparent"/>
                <!-- <circle class="circleNode" cx="300" cy="300" r="10" style="stroke:rgb(247, 162, 4);stroke-width:5"/> -->
               
               
@@ -48,7 +49,7 @@
                         + jobType: String <br>
                     </div>
                     
-                        <img onclick="connectNodes(evt)" id="myNode" x="100" y="200" class="node" src="images/node_yellow_whole.png" draggable="false";/>
+                        <img onclick="connectNodes(this.id)" id="node" class="node" src="images/node_yellow_whole.png" draggable="false";/>
                     
                   
                  <!--   <svg width="32" height="32" fill="transparent">
@@ -97,14 +98,10 @@
            
             var nodeX1 = document.getElementsByClassName("node");
             var nodeY1 = document.getElementsByClassName("node");
-            
            
-
-           // if we need to increment the ID name suffix
-            var i = 0;
             
             
-           
+            
             //var nodeBX = document.getElementById("newNode2").getAttribute("x");
             //var nodeBY = document.getElementById("newNode2").getAttribute("y");
             
@@ -141,46 +138,65 @@
           // triggerNode.addEventListener("click",addElement);
            
            //document.body.addEventListener("click", getClickCoordinate);
-           var index = false;            
+           
+           var index = 0;
+           
+           var nodeAClick = undefined;
+           var nodeBClick = undefined;
+           
            var nodeTrigger = document.getElementsByClassName("node");
            document.body.addEventListener("click",connectNodes);
             
            function connectNodes(evt){
                
-
+               //var nodeA = document.getElementsByClassName("node").getBoundingClientRect();
                
-               //asks if the class name we click on is named "node"
-               if(evt.target.className == "node" && index === true){
-                 
-                    var index = true;
-                    //document.querySelector("#mySVG #mySpline").setAttribute("d",toString(nodeX1,nodeY1));
+               //asks if the class name we click on is named "node" AND if the index boolean is false
+               if(evt.target.className == "node" && index == false){
+                    
+
+                    index = !index;
+                    //nodeAClick = evt.target.getAttribute("x") + " " + evt.target.getAttribute("y");
+                    //console.log(nodeAClick);
                    
+                    var rect = document.getElementById("node").getBoundingClientRect();
+                    console.log("position is " + rect.top + "," + rect.left);
+                   
+                    return evt.target.getAttribute("x") + " " + evt.target.getAttribute("y");
+                    console.log("Returning coordinates of A");
+                    //document.querySelector("#mySVG #myLine").setAttribute("x1",toString(nodeAClick));
                    
                  //return evt.target.getAttribute("x") + evt.target.getAttribute("y");
-                console.log(evt.target.getAttribute("x") + " " + evt.target.getAttribute("y"));
+                //console.log(evt.target.getAttribute("x") + " " + evt.target.getAttribute("y"));
                    
                  
-               } else if(evt.target.className == "node" && index === false){
+               } else if(evt.target.className == "node" && index){
                    
-                   alert("You clicked on a node class");
-               } else if (index = false){
-                   //return coordinate of A
-
-                  
-               }
+                   index = !index;
+                   // nodeBClick = evt.target.getAttribute("x") + " " + evt.target.getAttribute("y") ;
+                   // console.log(nodeBClick);
+                   
+                   var rect = document.getElementById("node").getBoundingClientRect();
+                    console.log("position is " + rect.top + " " + rect.left);
+                   
+                   
+                   return evt.target.getAttribute("x") + " " + evt.target.getAttribute("y");
+                   console.log("Returning coordinates of B");
+                   
+               } 
                
            }
            
            
              
            // gets mouse X and Y coordinates and returns it as a string
-              function toString(nodeA, nodeB){
+              function toString(nodeAClick, nodeBClick, evt){
                 
-                var nodeX = document.getElementById("newNode1").getAttribute("x");
-                var nodeY = document.getElementById("newNode1").getAttribute("y");
+                var nodeX = document.getElementsByClassName("node").getAttribute("x");
+                var nodeY = document.getElementsByClassName("node").getAttribute("y");
                 // gets Element ID of the element you click on  
-                var rectA = document.getElementById("newNode1").getBoundingClientRect();  
-                var rectB = document.getElementById("newNode2").getBoundingClientRect();
+                var rectA = document.getElementsByClassName("node").getBoundingClientRect();  
+                var rectB = document.getElementsByClassName("node").getBoundingClientRect();
                 
                   var nodeAX = rectA.x;
                   var nodeAY = rectA.y;
@@ -200,7 +216,21 @@
                   //return "M" + nodeX + " " + nodeY +  ", " + mouseX + " " + mouseY;
                   
               }
-            
+           /*
+            function findAbsolutePosition(htmlElement) {
+              var x = htmlElement.offsetLeft;
+              var y = htmlElement.offsetTop;
+              for (var x=0, y=0, el=htmlElement; 
+                   el != null; 
+                   el = el.offsetParent) {
+                     x += el.offsetLeft;
+                     y += el.offsetTop;
+              }
+              return {
+                  "x": x,
+                  "y": y
+              };
+            } */
            
             //Get Mouse Position
             function getMousePos(svg, evt) {
@@ -211,12 +241,11 @@
                     
                 };
             }  
-           
-           
           
         </script>
       
       <script type="text/javascript" src="script/dragDrop.js">
     </script>
+      <script src="script/jsplumb.min.js "></script>
     </body>
 </html>
