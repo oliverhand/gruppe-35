@@ -1,20 +1,17 @@
-// Getting the dom elements ID for the create project popUp
+// Fetching the html elements needed for the create project function
 var domCreateProject = document.getElementById("createProject");
 var domCreateProjectPopUp = document.getElementById("createProjectPopUp");
 var domCloseCreateProjectPopUp = document.getElementById("closeCreateProjectPopUp");
 var domProjectName = document.getElementById("projectName");
 var domSetProjectName = document.getElementById("setProjectName");
 var domSetProjectNameValue;
-var domSetMemberInput = document.getElementById("setMember");
-var domSetMemberOutput = document.getElementById("projectMembersContent");
-var domAddMemberBtn = document.getElementById("addMemberBtn");
-var domBtnAssignMembers = document.getElementById("btnAssignMembers");
-var domBox1 = document.getElementById("box");
-var domAddMemberNameValue;
-var domMemberAddedFeedback = document.getElementById("memberAddedFeedback");
 
-// Adding eventlisteners to the buttons that open and close the "create project" tab, and creating the functions that display the pop up and close it
+// Adding eventlisteners to the html elements that open and close the create project, also onto the input field that reads the project name 
 domCreateProject.addEventListener("click", showCreateProject);
+domCloseCreateProjectPopUp.addEventListener("click",closeCreateProject);
+domSetProjectName.addEventListener("input", function(){
+    domSetProjectNameValue = domSetProjectName.value; 
+});
     
 function showCreateProject() {
         domCreateProjectPopUp.style.visibility = "visible";
@@ -22,11 +19,7 @@ function showCreateProject() {
         domCreateProjectPopUp.style.top = "150px";
 }
 
-domCloseCreateProjectPopUp.addEventListener("click",closeCreateProject);
 
-domSetProjectName.addEventListener("input", function(){
-    domSetProjectNameValue = domSetProjectName.value; 
-});
 
 function closeCreateProject() {
     // Control structure to check if you are both logged in, and have given your project a name
@@ -53,6 +46,16 @@ function closeCreateProject() {
         domCreateProjectPopUp.style.top = "800px";
     }
 }
+
+
+var domSetMemberInput = document.getElementById("setMember");
+var domSetMemberOutput = document.getElementById("projectMembersContent");
+var domAddMemberBtn = document.getElementById("addMemberBtn");
+var domBtnAssignMembers = document.getElementById("btnAssignMembers");
+
+var domBox1 = document.getElementById("box");
+var domAddMemberNameValue;
+var domMemberAddedFeedback = document.getElementById("memberAddedFeedback");
 
 
 // Getting the dom elements ID for the add members pop up
@@ -178,13 +181,13 @@ function changeTheme() {
     var className= document.getElementsByClassName("newDivHeader");
     if(toggleTheme == false){
         toggleTheme = !toggleTheme;
-        domIndexCSS.setAttribute("href", "lightModeCSS.css")
+        domIndexCSS.setAttribute("href", "stylesheets/lightModeCSS.css")
         for (var i = 0; i < className.length; i++){
             className[i].style.backgroundColor = "rgb(220, 220, 220)";
         }
     } else if(toggleTheme) {
         toggleTheme = !toggleTheme;
-        domIndexCSS.setAttribute("href", "index.css")
+        domIndexCSS.setAttribute("href", "stylesheets/index.css")
         for (var i = 0; i < className.length; i++){
             className[i].style.backgroundColor = "grey";
         }

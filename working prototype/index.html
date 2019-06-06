@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>KanBan UML</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="stylesheets/index.css" id="indexCSS">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <!-- Navigation Bar START -->
+    <div id="navbarHorizontal">
+        <!-- A container for the first three elements in the horizontal navigation bar -->
+        <div id="flexContainerFirstThree"> 
+            <!-- The create project part on the horizontal navigation bar -->
+            <button id="createProject" class="navbarHorizontalContent"><strong>Create new project</strong></button>                
+            <!-- The add member part on the horizontal navigation bar -->
+            <button id="addMembers" class="navbarHorizontalContent"><strong>Add member</strong></button>
+            <!-- The project members list on the horizontal navigation bar -->
+            <button id= "projectMembers" class="navbarHorizontalContent"><strong>Project members</strong>
+                <select id="projectMembersContent">
+                    <option disabled selected value> -- See members -- </option>
+                </select>
+            </button>
+        </div>
+        <!-- The field where the projects name is displayed -->
+        <div id="flexContainerProjectName"> 
+            <div id="projectName" class="navbarHorizontalContent" contenteditable="true"><strong>New project</strong></div>
+        </div>  
+        <button id="logIn" class="navbarHorizontalContent"><strong>Log in</strong></button>
+    <!-- Navigation Bar END -->
+    </div>
+
+    <!-- The flexible grid (content) START -->
+    <div class="row">
+        <div id="sideBar" class="sideBar">
+            
+            <div id="sidebarContainer">
+                <img id= "testTemplate"class="image"src="images/CardTemplate.png" draggable="true">
+                <img id= "testTemplateCheckbox"class="image"src="images/CardTemplateCheckbox.jpg" draggable="true">
+            </div>
+        
+            <div id="myDiv" draggable="true">
+                <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
+                <div id="myDivHeader" contentEditable="true" >Click here to move</div>
+                <img class= "deleteButton" id="deleteButton" src="images/delete.png">
+                <div class="text" draggable="true" contentEditable="true">-field: type</div>
+                
+                <div id="rightNode">
+                    <img class="node" src="images/Node_Grey_Whole.png" draggable="false";>
+                </div>
+                <div id="leftNode">
+                    <img class="node" src="images/Node_Grey_Whole.png" draggable="false";>
+                </div>
+                
+                <div id="Content1"></div>
+                <strong><div class="text" draggable="true" contentEditable="true">+method(type):type</div></strong>
+                <input type=date id="dateInput" class="dateInput">
+                <div class="status"  tabindex="1" id="inProgress">In-Progress</div>
+                <div class="status"  tabindex="1" id="done">Done</div>
+                <img class="expand" id="expand" src="images/expand-button.png">
+                <div class= "expandableBox" id="expandableBox">
+                    <button id="btnAssignMembers" class="AssignMembers">Legg til medlem</button>
+                    <select id="boxAssignMembersContent21" onchange = "getMemberIndex(this.selectedIndex)">
+                        <option disabled selected value> -- See members -- </option>
+                    </select>
+                </div>                                         
+            </div> 
+            
+            <div id="myCheckbox" draggable="true">
+                
+                <div class="CheckboxHeader" id="myCheckboxHeader" contentEditable="true" >Click here to move</div>
+                <img class= "deleteButton" id="deleteButton" src="images/delete.png">
+                <div id="rightNodeCheckbox">
+                    <img class="node" src="images/Node_Grey_Whole.png" draggable="false";>
+                </div>
+                <div id="leftNodeCheckbox">
+                    <img class="node" src="images/Node_Grey_Whole.png" draggable="false";>
+                </div>
+                
+                <div id="checkbox_container">
+                    <input type="checkbox" class="checkbox" id="checkbox">
+                    <div class="text" draggable="true" contentEditable="true" id="textBoxCheckBox">Sub-task 1</div><br>
+                    <input type="checkbox" class="checkbox" id="checkbox">
+                    <div class="text" draggable="true" contentEditable="true" id="textBoxCheckBox">Sub-task 2</div><br>
+                    <input type="checkbox" class="checkbox" id="checkbox">
+                    <div class="text" draggable="true" contentEditable="true" id="textBoxCheckBox">Sub-task 3</div><br>
+                </div>
+                
+                <input type=date id="dateInput" class="dateInput">
+                <div class="status"  tabindex="1" id="inProgress">In-Progress</div>
+                <div class="status"  tabindex="1" id="done">Done</div>
+                <img class="expand" id="expand" src="images/expand-button.png">
+                <div class= "box" id="box">
+                    <button id="btnAssignMembers" class="AssignMembers">Legg til medlem </button>
+                    <select id="boxAssignMembersContent21" onchange = "getMemberIndex(this.selectedIndex)">
+                        <option disabled selected value> -- See members -- </option>
+                    </select>
+                </div>
+            </div>
+            
+            <img id="darkLightMode" src="images/day-and-night.png">
+        </div>
+        
+        <div class="mainContent" id="mainContent">
+            
+            <svg id="svg">
+                <g id="g-container" >
+                    <foreignObject id="foreignContainer" pointer-events="all">  
+                    <!--- BOXES WILL END UP HERE---->
+                    </foreignObject>
+                    <svg id="pathContainer">
+                        <path id="mySpline" class="path"/>
+                    </svg>
+                </g>
+            </svg>
+            <!-- Container for all the pop up boxes (for easier manipulating) -->
+            <div id="popUpContainer">
+                
+                <!-- The create project pop up with it's respective buttons and text -->
+                <div id=createProjectPopUp class="popUps">
+                    <input id="setProjectName" type="text" onfocus ="this.value=''" value="Set project name" maxlength="50">
+                    <button id="closeCreateProjectPopUp" class="popUpButtons2"><strong>Create new project</strong></button>
+                </div>
+                
+                <!-- The add member pop up with it's respective buttons and text -->
+                <div id="addMembersPopUp" class="popUps">
+                    <input id="setMember" onfocus ="this.value=''" value="Add member">
+                    <a id="memberAddedFeedback">Member added successfully</a>
+                    <button id="addMemberBtn" class="popUpButtons1"><strong>Add member</strong></button>
+                    <button id="closeAddMemberPopUp" class="popUpButtons2"><strong>Close</strong></button>
+                </div>
+                
+                <!-- The log in pop up with it's respective buttons and text -->
+                <div id="LogInPopUp" class="popUps"><a id="LogInPopUpA"><strong>Choose an option</strong></a>
+                    <button id="logInAsUser" class="popUpButtons2" ><strong>Log in as guest</strong></button>
+                    <a id="createAccount"><strong>Create Account</strong></a>
+                </div>
+                
+            </div>
+        </div>
+     
+    <!-- The flexible grid (content) END -->
+    </div>
+    <script src="scripts/drag.js"></script>
+    <script src="scripts/indexNavbarJS.js"></script>
+    <script src="scripts/splines.js"></script>
+</body>
+</html>
