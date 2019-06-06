@@ -1,112 +1,97 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Page Title</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="index.css">
-<link rel="stylesheet" href="login.css">
-<link rel="stylesheet" href="drag.css">
-<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <title>Page Title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="index.css" id="indexCSS">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
-
+    
 <!-- Navigation Bar -->
-<div id="navbarHorizontal">
-    <div id="flexContainerFirstThree"> 
-        <!-- The create project part on the horizontal navigation bar -->
-        <button id="createProject" class="navbarHorizontalContent"><strong>Create new project</strong></button>                
+    <div id="navbarHorizontal">
+        <div id="flexContainerFirstThree"> 
+            <!-- The create project part on the horizontal navigation bar -->
+            <button id="createProject" class="navbarHorizontalContent"><strong>Create new project</strong></button>                
             
                         
-        <!-- The add member part on the horizontal navigation bar -->
-        <button id="addMembers" class="navbarHorizontalContent"><strong>Add member</strong></button>
+            <!-- The add member part on the horizontal navigation bar -->
+            <button id="addMembers" class="navbarHorizontalContent"><strong>Add member</strong></button>
             
                 
-         <!-- The project members list on the horizontal navigation bar -->
-         <button id= "projectMembers" class="navbarHorizontalContent"><strong>Project members</strong>
-             <select id="projectMembersContent">
-                 <option disabled selected value> -- See members -- </option>
-             </select>
-        </button>
-    </div>
-    <div id="flexContainerProjectName"> 
-        <!-- The field where the projects name is displayed -->
-        <div id="projectName" class="navbarHorizontalContent" contenteditable="true"><strong>New project</strong></div>
-    </div>  
-    <button id="logIn" class="navbarHorizontalContent"><strong>Log in</strong></button>
-</div>
-
-<!-- The flexible grid (content) -->
-<div class="row">
-    <div id="sideBar" class="sideBar">
-        <img id= "testTemplate"class="image"src="Images/CardTemplate.png" draggable="true">
-        <div class="template" id="template1" draggable="true">+main() :void</div>
-        <div class="template" id="template2" draggable="true">-variable :data_type</div>
-        <div class="template" id="template3" draggable="true">implement</div>
-      <div id="myDiv" draggable="true">
-  <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
-  <div id="myDivHeader" contentEditable="true" >Click here to move</div>
-      <img class= "deleteButton" id="deleteButton" src="Images/delete.png">
-  <div class="text" draggable="true" contentEditable="true"></div>
-    <g>
-    <img class="node" id="w" src="Images/Node_Grey_Whole.png" draggable="false";>
-    <img class="node" id="e" src="Images/Node_Grey_Whole.png" draggable="false";>
-        </g>
-    <div id="Content1"></div>
-     <strong><div class="text" draggable="true" contentEditable="true"></div></strong>
-    <div id="Content2" draggable="true" contentEditable="true" ></div> 
-    <input type=date id="dateInput" class="dateInput">
-    <div class="status"  tabindex="1" id="inProgress">In-Progress</div>
-    <div class="status"  tabindex="1" id="done">Done</div>
-    <img class="expand" id="expand" src="Images/expand-button.png">
-    <div class= "box" id="box">
-        <button id="btnAssignMembers" class="AssignMembers">Legg til medlem 
-        </button>
-        <select id="boxAssignMembersContent21" onchange = "getMemberIndex(this.selectedIndex)">
-            <option disabled selected value> -- See members -- </option>
-            <option>Ruth-Helene</option>
-            <option>Eyyyyo</option>
-            <option>Tor-Bias</option>
-        </select>
-    </div>                                         
-</div> 
-        <img id="darkLightMode" src="Images/day-and-night.png">
+            <!-- The project members list on the horizontal navigation bar -->
+            <button id= "projectMembers" class="navbarHorizontalContent"><strong>Project members</strong>
+                <select id="projectMembersContent">
+                    <option disabled selected value> -- See members -- </option>
+                </select>
+            </button>
+        </div>
+        <div id="flexContainerProjectName"> 
+            <!-- The field where the projects name is displayed -->
+            <div id="projectName" class="navbarHorizontalContent" contenteditable="true"><strong>New project</strong></div>
+        </div>  
+        <button id="logIn" class="navbarHorizontalContent"><strong>Log in</strong></button>
     </div>
 
-<div class="mainContent">
-    <svg id="svg" style="border: 1px solid black; overflow:hidden;">
-       <g style="">
-            <g id="g-container">
-                <foreignObject id="foreignContainer" pointer-events="all">  
-                </foreignObject>
-            </g>
-        </g>
-    </svg>
-    
-    <div id="popUpContainer">
-            <div id=createProjectPopUp class="popUps">
-                 <input id="setProjectName" type="text" onfocus ="this.value=''" value="Set project name" maxlength="50">
-                <button id="closeCreateProjectPopUp" class="popUpButtons2"><strong>Create new project</strong></button>
+    <!-- The flexible grid (content) -->
+    <div class="row">
+        <div id="sideBar" class="sideBar">
+            <img id= "testTemplate"class="image"src="Images/CardTemplate.png" draggable="true">
+            <div id="myDiv" draggable="true">
+                <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
+                <div id="myDivHeader" contentEditable="true" >Click here to move</div>
+                <img class= "deleteButton" id="deleteButton" src="Images/delete.png">
+                <div class="text" draggable="true" contentEditable="true">-field: type</div>
+                <g>
+                    <img class="node" id="w" src="Images/Node_Grey_Whole.png" draggable="false";>
+                    <img class="node" id="e" src="Images/Node_Grey_Whole.png" draggable="false";>
+                </g>
+                <div id="Content1"></div>
+                <strong><div class="text" draggable="true" contentEditable="true"></div></strong>
+                <div id="Content2" draggable="true" contentEditable="true" ></div> 
+                <input type=date id="dateInput" class="dateInput">
+                <div class="status"  tabindex="1" id="inProgress">In-Progress</div>
+                <div class="status"  tabindex="1" id="done">Done</div>
+                <img class="expand" id="expand" src="Images/expand-button.png">
+                <div class= "box" id="box">
+                    <button id="btnAssignMembers" class="AssignMembers">Legg til medlem</button>
+                    <select id="boxAssignMembersContent21" onchange = "getMemberIndex(this.selectedIndex)">
+                        <option disabled selected value> -- See members -- </option>
+                    </select>
+                </div>                                         
+            </div> 
+            <img id="darkLightMode" src="Images/day-and-night.png">
+        </div>
+        
+        <div class="mainContent">
+            <svg id="svg" style="border: 1px solid black; overflow:hidden;">
+                <g style="">
+                    <g id="g-container">
+                        <foreignObject id="foreignContainer" pointer-events="all"></foreignObject>
+                    </g>
+                </g>
+            </svg>
+            <div id="popUpContainer">
+                <div id=createProjectPopUp class="popUps">
+                    <input id="setProjectName" type="text" onfocus ="this.value=''" value="Set project name" maxlength="50">
+                    <button id="closeCreateProjectPopUp" class="popUpButtons2"><strong>Create new project</strong></button>
+                </div>
+                <div id="addMembersPopUp" class="popUps">
+                    <input id="setMember" onfocus ="this.value=''" value="Add member">
+                    <a id="memberAddedFeedback">Member added successfully</a>
+                    <button id="addMemberBtn" class="popUpButtons1"><strong>Add member</strong></button>
+                    <button id="closeAddMemberPopUp" class="popUpButtons2"><strong>Close</strong></button>
+                </div>
+                <div id="LogInPopUp" class="popUps"><a id="LogInPopUpA"><strong>Choose an option</strong></a>
+                    <button id="logInAsUser" class="popUpButtons2" ><strong>Log in as guest</strong></button>
+                    <a id="createAccount"><strong>Create Account</strong></a>
+                </div>
             </div>
-            <div id="addMembersPopUp" class="popUps">
-                <input id="setMember" onfocus ="this.value=''" value="Add member">
-                <a id="memberAddedFeedback">Member added successfully</a>
-                <button id="addMemberBtn" class="popUpButtons1"><strong>Add member</strong></button>
-                <button id="closeAddMemberPopUp" class="popUpButtons2"><strong>Close</strong></button>
-            </div>
-            <div id="LogInPopUp" class="popUps"><a id="LogInPopUpA"><strong>Choose an option</strong></a>
-                <button id="logInAsUser" class="popUpButtons2" ><strong>Log in as guest</strong></button>
-                <a id="createAccount"><strong>Create Account</strong></a>
-            </div>
-</div>
-</div>
-    
-      
-
-    
-</div>
-<script src="drag.js"></script>
-<script src="indexNavbarJS.js"></script>
+        </div>
+        
+    </div>
+    <script src="drag.js"></script>
+    <script src="indexNavbarJS.js"></script>
 </body>
 </html>

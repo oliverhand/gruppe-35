@@ -30,7 +30,7 @@ domSetProjectName.addEventListener("input", function(){
 
 function closeCreateProject() {
     // Control structure to check if you are both logged in, and have given your project a name
-    if (domLogIn.innerHTML == "Logged in as guest" && domSetProjectNameValue != null) {
+    if (domLogIn.innerHTML == "<strong>Logged in as guest</strong>" && domSetProjectNameValue != null) {
     domCreateProjectPopUp.style.visibility = "hidden";
     domCreateProjectPopUp.style.opacity = "0";
     domCreateProjectPopUp.style.top = "800px";
@@ -38,15 +38,15 @@ function closeCreateProject() {
     domProjectName.innerHTML = domSetProjectNameValue;
     document.getElementById("foreignContainer").innerHTML = null;
     // Control structure checking what error you have to give the correct error message
-    } else if (domLogIn.innerHTML != "Logged in as guest" && domSetProjectNameValue != null) {
+    } else if (domLogIn.innerHTML != "<strong>Logged in as guest</strong>" && domSetProjectNameValue != null) {
         alert("You have to be logged in to create a project");
         domCreateProjectPopUp.style.visibility = "hidden";
         domCreateProjectPopUp.style.opacity = "0";
         domCreateProjectPopUp.style.top = "800px";
     // Control structure checking what error you have to give the correct error message
-    } else if (domLogIn.innerHTML == "Logged in as guest" && domSetProjectNameValue == null) {
+    } else if (domLogIn.innerHTML == "<strong>Logged in as guest</strong>" && domSetProjectNameValue == null) {
         alert("You got to give your project a name");
-    } else if (domLogIn.innerHTML != "Logged in as guest" && domSetProjectNameValue == null) {
+    } else if (domLogIn.innerHTML != "<strong>Logged in as guest</strong>" && domSetProjectNameValue == null) {
         alert("Either your project does not have a name, or you are not logged in");
         domCreateProjectPopUp.style.visibility = "hidden";
         domCreateProjectPopUp.style.opacity = "0";
@@ -129,6 +129,7 @@ function assignMember(e){
         e.target.parentElement.appendChild(newMember);          
     }
 }
+
 // Getting the dom elements ID for logg inn 
 var domLogIn = document.getElementById("logIn");
 var domLogInPopUp = document.getElementById("LogInPopUp");
@@ -139,7 +140,7 @@ var domCreateAccount = document.getElementById("createAccount");
 domLogIn.addEventListener("click", showLogInPopUp);
 
 function showLogInPopUp() {
-    if(domLogIn.innerHTML != "Logged in as guest"){
+    if(domLogIn.innerHTML != "<strong>Logged in as guest</strong>"){
     domLogInPopUp.style.visibility = "visible";    
     domLogInPopUp.style.opacity = "1";
     domLogInPopUp.style.top = "150px";
@@ -152,7 +153,7 @@ domLogInAsUser.addEventListener("click", logIn)
 
 function logIn() {
     domLogInPopUp.style.visibility = "hidden";
-    domLogIn.innerHTML = "Logged in as guest";
+    domLogIn.innerHTML = "<strong>Logged in as guest</strong>";
 }
 
 domCreateAccount.addEventListener("click", createAccount);
@@ -167,6 +168,8 @@ function removeMemberAddedFeedback(){
 
 var domDarkLightMode = document.getElementById("darkLightMode");
 
+
+var domIndexCSS = document.getElementById("indexCSS");
 domDarkLightMode.addEventListener("click", changeTheme);
 
 var toggleTheme = false;
@@ -174,46 +177,19 @@ function changeTheme() {
     var domSvg = document.getElementById("svg");
     var className= document.getElementsByClassName("newDivHeader");
     if(toggleTheme == false){
-        console.log(toggleTheme);
-        toggleTheme = !toggleTheme ;
-        domSvg.style.backgroundImage = "url('Images/grid_32_hc.jpg')";
-        document.getElementById("g-container").style.backgroundImage = "url('Images/grid_32_hc.jpg')";
-        document.getElementById("foreignContainer").style.backgroundImage = "url('Images/grid_32_hc.jpg')";
-        document.getElementById("navbarHorizontal").style.backgroundColor = "rgb(240, 240, 240)";
-        document.getElementById("createProject").style.color = "rgb(20, 20, 20)";
-        document.getElementById("addMembers").style.color = "rgb(20, 20, 20)";
-        document.getElementById("projectMembers").style.color = "rgb(20, 20, 20)";
-        document.getElementById("projectName").style.color = "rgb(20, 20, 20)";
-        document.getElementById("logIn").style.color = "rgb(20, 20, 20)";
-        document.getElementById("sideBar").style.backgroundColor = "rgb(240, 240, 240)";
-        document.getElementById("navbarHorizontal").style.borderBottomColor = "rgb(20, 20, 20)";
-        document.getElementById("sideBar").style.borderRightColor = "rgb(20, 20, 20)";
+        toggleTheme = !toggleTheme;
+        domIndexCSS.setAttribute("href", "lightModeCSS.css")
         for (var i = 0; i < className.length; i++){
             className[i].style.backgroundColor = "rgb(220, 220, 220)";
         }
-        console.log(toggleTheme);
     } else if(toggleTheme) {
-        console.log(toggleTheme);
         toggleTheme = !toggleTheme;
-        domSvg.style.backgroundImage = "url('Images/grid_32.jpg')";
-        document.getElementById("g-container").style.backgroundImage = "url('Images/grid_32.jpg')";
-        document.getElementById("foreignContainer").style.backgroundImage = "url('Images/grid_32.jpg')";
-        document.getElementById("navbarHorizontal").style.backgroundColor = "rgb(50, 50, 50)";
-        document.getElementById("createProject").style.color = "rgb(240, 240, 240)";
-        document.getElementById("addMembers").style.color = "rgb(240, 240, 240)";
-        document.getElementById("projectMembers").style.color = "rgb(240, 240, 240)";
-        document.getElementById("projectName").style.color = "rgb(240, 240, 240)";
-        document.getElementById("logIn").style.color = "rgb(240, 240, 240)";
-        document.getElementById("sideBar").style.backgroundColor = "rgb(50, 50, 50)";
-        document.getElementById("navbarHorizontal").style.borderBottomColor = "rgb(240, 240, 240)";
-        document.getElementById("sideBar").style.borderRightColor = "rgb(240, 240, 240)";
+        domIndexCSS.setAttribute("href", "index.css")
         for (var i = 0; i < className.length; i++){
             className[i].style.backgroundColor = "grey";
-        }  
-        console.log(toggleTheme);
+        }
     }
 }
-
 
 
 
