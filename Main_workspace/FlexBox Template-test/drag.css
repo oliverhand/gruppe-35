@@ -32,6 +32,67 @@ position: absolute;
 .newDiv:focus-within{
     outline: 2.5px solid blue;
 }
+
+
+/*---------------------------------------------- */
+#sidebarContainer{
+    display: flex;
+    flex-direction: column;
+    height: 70vh;
+    width: 100%;
+    
+}
+#testTemplate{
+    order: 1;
+}
+#testTemplateCheckbox{
+    top:40%;
+    order: 2;
+}
+#checkbox{
+position: absolute;
+    left: 0;
+}
+
+#textBoxCheckBox{
+    margin-top: 7px;
+    margin-left: 17px;
+    max-width: 145px;
+    width: 89%;
+    height: 20px;
+    border-width: 1px;
+    border-color: black;
+}
+
+#myCheckbox,#newCheckbox,.newCheckbox {
+position: absolute;
+  z-index: 10;
+  background-color: #f1f1f1;
+  outline: 2px solid black;
+  text-align: center; 
+    overflow-y: visible;
+    min-height: fit-content; 
+    max-width: 150px;
+    max-height: 80px;
+    border-radius: 4px;
+    visibility: hidden;
+}
+#myCheckboxHeader, #newCheckboxHeader,.newCheckboxHeader{
+  padding: 10px;
+  z-index: 12;
+  background-color: grey;
+  color: #000;
+    font-weight: bold;
+}
+.newCheckboxHeader:hover{
+    background-color: green;
+    cursor: pointer;
+}
+.newCheckbox:focus-within{
+    outline: 2.5px solid blue;
+}
+
+/*---------------------------------------------- */
 .node{
     position: absolute;
     width: 20px;

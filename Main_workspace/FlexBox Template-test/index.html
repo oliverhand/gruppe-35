@@ -40,21 +40,22 @@
 <!-- The flexible grid (content) -->
 <div class="row">
     <div id="sideBar" class="sideBar">
-        <img id= "testTemplate"class="image"src="Images/CardTemplate.png" draggable="true">
-        <div class="template" id="template1" draggable="true">+main() :void</div>
-        <div class="template" id="template2" draggable="true">-variable :data_type</div>
-        <div class="template" id="template3" draggable="true">implement</div>
+        <div id="sidebarContainer">
+            <img id= "testTemplate"class="image"src="Images/CardTemplate.png" draggable="true">
+            <img id= "testTemplateCheckbox"class="image"src="Images/CardTemplateCheckbox.jpg" draggable="true">
+        </div>
+       
       <div id="myDiv" draggable="true">
   <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
   <div id="myDivHeader" contentEditable="true" >Click here to move</div>
       <img class= "deleteButton" id="deleteButton" src="Images/delete.png">
-  <div class="text" draggable="true" contentEditable="true"></div>
+  <div class="text" draggable="true" contentEditable="true">-field:type<br></div>
     <g>
     <img class="node" id="w" src="Images/Node_Grey_Whole.png" draggable="false";>
     <img class="node" id="e" src="Images/Node_Grey_Whole.png" draggable="false";>
         </g>
     <div id="Content1"></div>
-     <strong><div class="text" draggable="true" contentEditable="true"></div></strong>
+     <strong><div class="text" draggable="true" contentEditable="true">+method(type):type</div></strong>
     <div id="Content2" draggable="true" contentEditable="true" ></div> 
     <input type=date id="dateInput" class="dateInput">
     <div class="status"  tabindex="1" id="inProgress">In-Progress</div>
@@ -71,6 +72,39 @@
         </select>
     </div>                                         
 </div> 
+        <div id="myCheckbox" draggable="true">
+  
+  <div class="CheckboxHeader" id="myCheckboxHeader" contentEditable="true" >Click here to move</div>
+      <img class= "deleteButton" id="deleteButton" src="Images/delete.png">
+  
+    <g>
+    <img class="node" id="w" src="Images/Node_Grey_Whole.png" draggable="false";>
+    <img class="node" id="e" src="Images/Node_Grey_Whole.png" draggable="false";>
+        </g>
+   <div id="checkbox_container">
+       <input type="checkbox" class="checkbox" id="checkbox">
+            <div class="text" draggable="true" contentEditable="true" id="textBoxCheckBox">Sub-task 1
+            </div><br>
+       <input type="checkbox" class="checkbox" id="checkbox">
+            <div class="text" draggable="true" contentEditable="true" id="textBoxCheckBox">Sub-task 2
+            </div><br>
+       <input type="checkbox" class="checkbox" id="checkbox">
+            <div class="text" draggable="true" contentEditable="true" id="textBoxCheckBox">Sub-task 3
+            </div><br>
+    </div>
+    <input type=date id="dateInput" class="dateInput">
+    <div class="status"  tabindex="1" id="inProgress">In-Progress</div>
+    <div class="status"  tabindex="1" id="done">Done</div>
+    <img class="expand" id="expand" src="Images/expand-button.png">
+    <div class= "box" id="box">
+        <button id="btnAssignMembers" class="AssignMembers">Legg til medlem 
+        </button>
+        <select id="boxAssignMembersContent21" onchange = "getMemberIndex(this.selectedIndex)">
+            <option disabled selected value> -- See members -- </option>
+            <option>Ruth-Helene</option>
+        </select>
+    </div>                                         
+</div>  
         <img id="darkLightMode" src="Images/day-and-night.png">
     </div>
 

@@ -124,6 +124,13 @@ body {
     border: 1px solid black;
 }
 
+#testTemplateCheckbox{
+    position: absolute;
+    left: 9px;
+    width: 8%;
+    border: 1px solid black;
+}
+
 .popUps{
     position: absolute;
     top: 600px;
