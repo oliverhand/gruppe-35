@@ -12,15 +12,15 @@ domCloseCreateProjectPopUp.addEventListener("click",closeCreateProject);
 domSetProjectName.addEventListener("input", function(){
     domSetProjectNameValue = domSetProjectName.value; 
 });
-    
+
+// Displaying the pop up
 function showCreateProject() {
         domCreateProjectPopUp.style.visibility = "visible";
         domCreateProjectPopUp.style.opacity = "1";
         domCreateProjectPopUp.style.top = "150px";
 }
 
-
-
+/* Depending on the result of the control structure, will either let you "create" a project or not. Will give you corresponding error messages depending on which criteria you have not fulfilled */
 function closeCreateProject() {
     // Control structure to check if you are both logged in, and have given your project a name
     if (domLogIn.innerHTML == "<strong>Logged in as guest</strong>" && domSetProjectNameValue != null) {
@@ -30,13 +30,11 @@ function closeCreateProject() {
     // Setting the input.value of the input field, as the innerHTML text of the projectName field
     domProjectName.innerHTML = domSetProjectNameValue;
     document.getElementById("foreignContainer").innerHTML = null;
-    // Control structure checking what error you have to give the correct error message
     } else if (domLogIn.innerHTML != "<strong>Logged in as guest</strong>" && domSetProjectNameValue != null) {
         alert("You have to be logged in to create a project");
         domCreateProjectPopUp.style.visibility = "hidden";
         domCreateProjectPopUp.style.opacity = "0";
         domCreateProjectPopUp.style.top = "800px";
-    // Control structure checking what error you have to give the correct error message
     } else if (domLogIn.innerHTML == "<strong>Logged in as guest</strong>" && domSetProjectNameValue == null) {
         alert("You got to give your project a name");
     } else if (domLogIn.innerHTML != "<strong>Logged in as guest</strong>" && domSetProjectNameValue == null) {
@@ -47,26 +45,19 @@ function closeCreateProject() {
     }
 }
 
-
+// Fetching the html elements needed for the add member function
 var domSetMemberInput = document.getElementById("setMember");
 var domSetMemberOutput = document.getElementById("projectMembersContent");
 var domAddMemberBtn = document.getElementById("addMemberBtn");
 var domBtnAssignMembers = document.getElementById("btnAssignMembers");
-
-var domBox1 = document.getElementById("box");
-var domAddMemberNameValue;
 var domMemberAddedFeedback = document.getElementById("memberAddedFeedback");
-
-
-// Getting the dom elements ID for the add members pop up
 var domAddMembers = document.getElementById("addMembers");
 var domAddMembersPopUp = document.getElementById("addMembersPopUp");
 var domCloseAddMemberPopUp = document.getElementById("closeAddMemberPopUp");
 
-
-// Adding eventlisteners to the buttons that open and close the "create project" tab, and creating the functions that display the pop up and close it
 domAddMembers.addEventListener("click", showAddMember);
 
+// Simple functions to add and display the pop up
 function showAddMember() {
     domAddMembersPopUp.style.visibility = "visible";
     domAddMembersPopUp.style.opacity = "1"; 
@@ -82,14 +73,13 @@ function closeAddMember() {
     domMemberAddedFeedback.style.visibility = "hidden";
 }
 
-// Getting the dom elements ID for the Add Member and the Assign Member input and output fields. 
-
-
-// Adding a eventlistener to the add member button, and creating a function that adds the member to the projectmembers field
 domAddMemberBtn.addEventListener("click", addMember);
 
+// Depending on if you are logged in, and if the member you are trying to add has a name, adds a member to the project
+// Appends the textnode both to the dropdown menu in navigation bar, and onto the boxes we create themselves
 function addMember() {
     if(domProjectName.innerHTML != "<strong>New project</strong>" && domSetMemberInput.value != "Add member") {
+        
     var optionField = document.createElement("option");
     var optionFieldAssign = document.createElement("option");
     var optionFieldValue = document.createTextNode(domSetMemberInput.value);
@@ -97,10 +87,9 @@ function addMember() {
     optionField.appendChild(optionFieldValue);
     optionFieldAssign.appendChild(optionFieldValueAssign);
     domSetMemberOutput.appendChild(optionField);    
-    document.getElementById('boxAssignMembersContent21').appendChild(optionFieldAssign);
-    document.getElementById('boxAssignMembersContent21').selectedIndex = domSetMemberOutput.selectedIndex;
+    document.getElementById("boxAssignMembersContent21").appendChild(optionFieldAssign);    
     domMemberAddedFeedback.style.visibility = "visible";
-        
+           
     } else if(domProjectName.innerHTML != "<strong>New project</strong>" && domSetMemberInput.value == "Add member"){
         alert("You can not add a member without a name.");
     } else if(domProjectName.innerHTML == "<strong>New project</strong>" && domSetMemberInput.value != "Add member"){
@@ -109,17 +98,28 @@ function addMember() {
         alert("You are either trying to add a member to a project that does not exist, or a member without a name");
     }
 }
+/*function refreshSelectors(optionToBeRefreshed){
+    
+    var selectorsByTag = document.getElementsByClassName("assignMemberSelector");
+    for(var i = 0; i < selectorsByTag.length; i++ ){
+        selectorsByTag[i].appendChild(optionToBeRefreshed);
+    }    
+}*/
+
+// A function to hide the feedback message when you add a member successfully
 domSetMemberInput.addEventListener("input", function(){
     domMemberAddedFeedback.style.visibility = "hidden";
 });
 
 var selectedMemberIndex;
+// Because this.selectedIndex was different depending on if you tested in the html or javascript, this function is called 'onchange' in the html element
 function getMemberIndex(index){
     selectedMemberIndex = index;
 }
 
 document.body.addEventListener('click',assignMember)
-function assignMember(e){ 
+// The button would not register a press, so a workaround was to have an eventlistener on the whole body, but only run the function if the target's classname was the classname // of the button. 
+// Adds the selected member to the cloned copy of the box so it live updates, instead of appending it to the parent box which wont update until you create another box 
     if(e.target.className=="AssignMembers"){
         
         var newMember= document.createElement('div');
@@ -133,15 +133,17 @@ function assignMember(e){
     }
 }
 
-// Getting the dom elements ID for logg inn 
+
+// Fetching the html elements for the log in function
 var domLogIn = document.getElementById("logIn");
 var domLogInPopUp = document.getElementById("LogInPopUp");
 var domLogInAsUser = document.getElementById("logInAsUser");
 var domCreateAccount = document.getElementById("createAccount");
 
-// Adding eventlisteners to the buttons that open and close the "log in" tab, and creating the functions that display the pop up and close it
+
 domLogIn.addEventListener("click", showLogInPopUp);
 
+// Checks if the user is logged in allready or not
 function showLogInPopUp() {
     if(domLogIn.innerHTML != "<strong>Logged in as guest</strong>"){
     domLogInPopUp.style.visibility = "visible";    
@@ -154,6 +156,7 @@ function showLogInPopUp() {
 
 domLogInAsUser.addEventListener("click", logIn)
 
+// Changes the innerHTML text to give the illusion of being logged inn
 function logIn() {
     domLogInPopUp.style.visibility = "hidden";
     domLogIn.innerHTML = "<strong>Logged in as guest</strong>";
@@ -165,17 +168,14 @@ function createAccount() {
     alert("We do not support that feature yet");
 }
 
-function removeMemberAddedFeedback(){   
-    domMemberAddedFeedback.style.visibility = "hidden";
-}
 
 var domDarkLightMode = document.getElementById("darkLightMode");
-
-
 var domIndexCSS = document.getElementById("indexCSS");
+var toggleTheme = false;
+
 domDarkLightMode.addEventListener("click", changeTheme);
 
-var toggleTheme = false;
+// Changes the stylesheet that we link to in html to give either dark mode or light mode, depending on which one you were in when pressing the button
 function changeTheme() {
     var domSvg = document.getElementById("svg");
     var className= document.getElementsByClassName("newDivHeader");
