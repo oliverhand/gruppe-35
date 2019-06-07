@@ -107,42 +107,18 @@ function addCheckboxElement(){
         newCheckboxElement.setAttribute('draggable',true);
         newCheckboxElement.className="newCheckbox"
         newCheckboxElement.style.visibility="visible";
-        
         newCheckboxElement.childNodes[1].id="newCheckboxHeader";
-    
-            //Setting Done or in-progress on the cards.
-        document.body.addEventListener("click",function(e){
-        
-        //if the element our mouse is hovering has the id of done then run.
-        if(e.target.className=="newDone"){
-            document.getElementById(e.target.id).style.backgroundColor="lawngreen";
-            document.getElementById(e.target.previousElementSibling.id).style.backgroundColor="grey";
-            e.target.parentElement.childNodes[3].style.backgroundColor="lawngreen";
-            e.target.parentElement.style.outline="2px solid lawngreen";
-            e.target.parentElement.style.border="1px solid black";
-        }
-        //if the element our mouse is hovering has the id of inProgress then run.
-        else if(e.target.className=="newInProgress"){
-            document.getElementById(e.target.nextElementSibling.id).style.backgroundColor="grey";
-            document.getElementById(e.target.id).style.backgroundColor="yellow";
-            e.target.parentElement.childNodes[3].style.backgroundColor="yellow";
-            e.target.parentElement.style.outline="2px solid yellow";
-            e.target.parentElement.style.border="1px solid black";
-          }
-        });  
   
         //Setting the position for new element equal to the cursors position.
         var e =window.event;
         newCheckboxElement.style.top = e.clientY-80 + "px";
         newCheckboxElement.style.left = e.clientX-300 + "px";
-        
         //Choose where we want this new element to be placed in the HTML.
        document.getElementById('foreignContainer').appendChild(newCheckboxElement);
         
         dragElement(newCheckboxElement);
         dateSetter();
-}
-      
+}     
 //listening for the drag event to create new elements.
 document.getElementById("testTemplate").addEventListener("dragend",addElement); //First template
 document.getElementById("testTemplateCheckbox").addEventListener("dragend",addCheckboxElement); //Second template
