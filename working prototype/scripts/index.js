@@ -1,3 +1,4 @@
+//========================== Create project START =================================================================
 // Fetching the html elements needed for the create project function
 var domCreateProject = document.getElementById("createProject");
 var domCreateProjectPopUp = document.getElementById("createProjectPopUp");
@@ -44,6 +45,10 @@ function closeCreateProject() {
         domCreateProjectPopUp.style.top = "800px";
     }
 }
+
+//========================== Create project END ====================================================================
+
+//========================== Adding and assigning members START ==================================================== 
 
 // Fetching the html elements needed for the add member function
 var domSetMemberInput = document.getElementById("setMember");
@@ -128,6 +133,9 @@ function assignMember(e){
     }       
 }
 
+//========================== Adding and assigning members END ====================================================== 
+
+//========================== Log in START ========================================================================== 
 
 // Fetching the html elements for the log in function
 var domLogIn = document.getElementById("logIn");
@@ -162,8 +170,9 @@ domCreateAccount.addEventListener("click", createAccount);
 function createAccount() {
     alert("We do not support that feature yet");
 }
+//========================== Log in END ============================================================================ 
 
-
+//========================== Changing themes START ================================================================= 
 var domDarkLightMode = document.getElementById("darkLightMode");
 var domIndexCSS = document.getElementById("indexCSS");
 var toggleThemeDarkLight = false;
@@ -203,9 +212,4 @@ function changeToKanBan() {
         domIndexCSS.setAttribute("href", "stylesheets/indexKanBan.css")   
     }
 }
-    
-
-
-
- 
-
+//========================== Changing theme END ==================================================================== 

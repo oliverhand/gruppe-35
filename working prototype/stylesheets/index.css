@@ -355,10 +355,17 @@ div p {
     left: 65px;
 }
 
+#rightNode:hover{
+    cursor: pointer;
+}
+
 #leftNode{
     position: relative;
     top: 0px;
     left: -86.5px; 
+}
+#leftNode:hover{
+    cursor: pointer;
 }
 
 #sidebarContainer{
@@ -394,13 +401,12 @@ div p {
 }
 
 #textBoxCheckBox{
-    margin-top: 7px;
-    margin-left: 17px;
+    margin-left: 5px;
     max-width: 145px;
-    width: 89%;
-    height: 20px;
+    max-height: 20px;
     border-width: 1px;
     border-color: black;
+    overflow: hidden;
 }
 
 #myCheckbox,#newCheckbox,.newCheckbox {
