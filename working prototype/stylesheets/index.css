@@ -1,0 +1,432 @@
+* {
+  box-sizing: border-box;
+}
+
+/* Style the body */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    overflow: hidden;
+    height: auto;
+    width: auto;
+}
+
+#navbarHorizontal{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    background-color: rgb(50, 50, 50);
+    height: 50px;
+    border-bottom:2px solid rgb(250, 250, 250);
+}
+
+#navbarHorizontal button{
+    background-color: inherit;
+    color: rgb(240, 240, 240);
+    border: 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+}
+
+#navbarHorizontal button:hover{
+    background-color: rgb(220, 30, 30);
+    cursor: pointer;
+}
+
+#flexContainerFirstThree{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    width: 50%;
+}
+
+#projectMembersContent{
+    background-color: rgb(40, 40, 40);
+    color: rgb(240, 240, 240);
+}
+
+#flexContainerProjectName{
+    justify-content: flex-start;
+    width: 40%;
+}
+
+#projectName{
+    margin-top:15px;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    color: rgb(240, 240, 240);
+}
+
+#projectName:hover{
+    cursor: pointer;
+}
+
+/* Column container */
+.row {  
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 100vh;
+} 
+
+/* Create two unequal columns that sits next to each other */
+/* Sidebar/left column */
+#sideBar {
+    background-color: rgb(50,50,50);
+    padding: 20px;
+    width:10%;
+    border-right: 2px solid rgb(250, 250, 250);
+}
+
+/* Main column */
+.mainContent {
+    display: flex;
+    width: 90%;
+    overflow: hidden;
+}
+
+.popUps{
+    position: absolute;
+    top: 600px;
+    left: 50%;
+    width: 200px;
+    height: 200px;
+    background-color: rgb(250, 250,250);
+    visibility: hidden;
+    opacity: 0;
+    transition: top 0.5s ease, opacity 1.5s ease;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+}
+
+.popUps input{
+    position: absolute;
+    width: 180px;
+    top: 10px;
+    left: 7.5px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.popUps input::placeholder{
+    color: black;
+}
+
+#memberAddedFeedback{
+    position: absolute;
+    color: rgb(100, 100, 100);
+    font-size: 12px;
+    top: 35px;
+    left: 10px;
+    text-shadow: 0px 1px 1px rgb(80, 80, 80);
+    visibility: hidden;
+}
+
+#LogInPopUpA{
+    position: absolute;
+    top: 15px;
+    width: 200px;
+    color: black;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+}
+
+.popUpButtons1{
+    position: absolute;
+    top: 60px;
+    left: 25px;
+    width: 150px;
+    height: 50px;
+    color: black;
+    font: 18px;
+    background-color: rgb(250, 250, 250);
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    color: black;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+}
+
+.popUpButtons2{
+    position: absolute;
+    top: 125px;
+    left: 25px;
+    width: 150px;
+    height: 50px;
+    color: black;
+    font: 18px;
+    background-color: rgb(250, 250, 250);
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    color: black;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+}
+
+.popUpButtons1:hover {
+    cursor: pointer;
+    box-shadow: 0 0 7px 0px rgb(110, 130, 190);
+}
+
+.popUpButtons2:hover{
+    cursor: pointer;
+    box-shadow: 0 0 7px 0px rgb(110, 130, 190);
+}
+
+#createAccount{
+    position: absolute;
+    top: 175px;
+    width: 200px;
+    color: black;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    text-align: center;
+    color: rgb(60, 0, 255);
+}
+
+#createAccount:hover{
+    cursor: pointer;
+}
+
+#logInAsUser{
+    top: 60px;
+    background-color: rgb(240, 240, 255);
+}
+
+#darkLightMode{
+    position: absolute;
+    left: 4%;
+    bottom: 50px;
+}
+
+#darkLightMode:hover{
+    cursor: pointer;
+}
+
+.newMember{
+    border: 0;
+    padding: 0;
+    margin: 0;
+    color: rgb(50, 50, 50);
+}
+
+#myDiv,#newDiv,.newDiv {
+    position: absolute;
+    background-color: #f1f1f1;
+    outline: 2px solid black;
+    text-align: center; 
+    overflow-y: visible;
+    min-height: fit-content; 
+    max-width: 150px;
+    max-height: 80px;
+    border-radius: 4px;
+    visibility: hidden;
+}
+
+#myDivHeader, #newDivHeader,.newDivHeader{
+    padding: 10px;
+    background-color: grey;
+    color: #000;
+    font-weight: bold;
+}
+
+.newDivHeader:hover{
+    background-color: green;
+    cursor: pointer;
+}
+
+.newDiv:focus-within{
+    outline: 2.5px solid blue;
+}
+
+.node{
+    position: absolute;
+    width: 20px;
+}
+
+.text {
+    width: inherit;
+    padding-bottom: 10px; 
+    resize: vertical;
+    overflow-wrap: normal;
+    word-wrap: break-word;
+}
+
+#Content1,#Content2 {
+    border-bottom: 1px solid #4588ba; margin-bottom:10px;
+}
+
+div p {
+    background: #4588ba;
+    line-height: 80px;
+    font-size: 2em;
+    font-family:sans-serif;
+    color: white;
+    margin: 0;
+    padding-left: 30px;
+}
+
+#svg,#g-container,#foreignContainer{
+    position: relative;
+    overflow: hidden;
+    height: 100vh;
+    width: 100%;
+}
+
+.mainContent{
+    background-image: url(../images/grid_32.jpg);
+}
+
+#inProgress,#newInProgress,.newInProgress,#done,#newDone,.newDone{
+    position: relative;
+    cursor:pointer;
+    color: black;
+    font-weight:bold;
+    flex: left;
+    max-height: 20px;  
+    bottom: 0%;
+    background-color: ghostwhite;
+    min-width: 74px;
+    padding: 1px;
+    display: block;
+    float: right;
+    font-size: 12px;
+    outline:2px solid black;
+}
+
+.expandableBox{
+    background-color: #f1f1f1;
+    color: #000; /*black*/
+    width: 148px;
+    min-height:fit-content;
+    height: 130px;
+    outline: 2px solid black;
+    display: none;
+    margin-top: 2px;
+}
+
+#dateInput{
+    align-content: center;
+}
+
+#deleteButton{
+    position: absolute;
+    top: 0px;
+    right:0px;
+    margin: 0px;
+    opacity: 0.3;
+}   
+
+#expand:hover, #deleteButton:hover, #dateInput:hover{
+    cursor: pointer;
+}
+
+#deleteButton:hover{
+    opacity: 1;
+}
+
+.path{
+    stroke:rgb(247, 162, 4);
+    stroke-width:5;
+}
+
+.path:focus{
+    stroke:red;
+    stroke-width:5;
+}
+
+#rightNode{
+    position: relative;
+    top: 0px;
+    left: 65px;
+}
+
+#rightNodeCheckbox{
+    position: relative;
+    top: -9px;
+    left: 65px;
+}
+
+#leftNode{
+    position: relative;
+    top: 0px;
+    left: -86.5px; 
+}
+
+#leftNodeCheckbox{
+    position: relative;
+    top: -9px;
+    left: -86.5px; 
+}
+
+#sidebarContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 70vh;
+    width: 100%;
+}
+
+#testTemplate{
+    height: 25%;
+    width: 100%;
+}
+
+#testTemplate:hover{
+    cursor: pointer;
+}
+
+#testTemplateCheckbox{
+    height: 25%;
+    width: 100%;
+    margin-top: 60px;
+}
+
+#testTemplateCheckbox:hover{
+    cursor: pointer;
+}
+
+#checkbox{
+    position: absolute;
+    left: 0;
+}
+
+#textBoxCheckBox{
+    margin-top: 7px;
+    margin-left: 17px;
+    max-width: 145px;
+    width: 89%;
+    height: 20px;
+    border-width: 1px;
+    border-color: black;
+}
+
+#myCheckbox,#newCheckbox,.newCheckbox {
+    position: absolute;
+    background-color: #f1f1f1;
+    outline: 2px solid black;
+    text-align: center; 
+    overflow-y: visible;
+    min-height: fit-content; 
+    max-width: 150px;
+    max-height: 80px;
+    border-radius: 4px;
+    visibility: hidden;
+}
+
+#myCheckboxHeader, #newCheckboxHeader,.newCheckboxHeader{
+    padding: 10px;
+    background-color: grey;
+    color: #000;
+    font-weight: bold;
+}
+
+.newCheckboxHeader:hover{
+    background-color: green;
+    cursor: pointer;
+}
+
+.newCheckbox:focus-within{
+    outline: 2.5px solid blue;
+}

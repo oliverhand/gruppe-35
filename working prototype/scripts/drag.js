@@ -1,8 +1,8 @@
 var dateElement = document.getElementById("dateInput");
 //Testing av hva som registrers som e.target.=============LA STÅ
-document.body.addEventListener('click',function(e){
+/*document.body.addEventListener('click',function(e){
     console.log(e.target);
-});
+});*/
 //===============================================================
 
 //Index for cards.
@@ -12,13 +12,11 @@ var i=0;
     var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;    
     function dragElement(elmnt) {
         if(elmnt.id=="template1" || elmnt.id=="template2" || elmnt.id=="template3") {
-          console.log('template213');
           elmnt.onmousedown = dragMouseDown;
       } 
         else{
           elmnt.childNodes[3].onmousedown = dragMouseDown; 
             elmnt.childNodes[1].onmousedown = dragMouseDown;//FIKS HER
-            console.log('nederste else');
         }
 
       function dragMouseDown(e) {
@@ -69,7 +67,6 @@ var i=0;
         newElement.childNodes[3].innerHTML="<i>Your class name here</i>";
         newElement.childNodes[19].className="newInProgress";
         newElement.childNodes[21].className="newDone";
-        console.log(newElement.childNodes);
         
         i++;
         // we add indexes to every child element we are going to change, because when we do the change we only do it on the 1 div, instead of all of them...
@@ -85,7 +82,6 @@ var i=0;
         //if the element our mouse is hovering has the id of done then run.
         if(e.target.className=="newDone"){
             document.getElementById(e.target.id).style.backgroundColor="lawngreen";
-            console.log(e.target.previousElementSibling);
             document.getElementById(e.target.previousElementSibling.id).style.backgroundColor="grey";
             e.target.parentElement.childNodes[3].style.backgroundColor="lawngreen";
             e.target.parentElement.style.outline="2px solid lawngreen";
@@ -122,11 +118,6 @@ function addCheckboxElement(){
         newCheckboxElement.style.visibility="visible";
         
         newCheckboxElement.childNodes[1].id="newCheckboxHeader";
-       
-        console.log(newCheckboxElement.childNodes);
-    
-    
-    
     
             //Setting Done or in-progress on the cards.
         document.body.addEventListener("click",function(e){
@@ -134,7 +125,6 @@ function addCheckboxElement(){
         //if the element our mouse is hovering has the id of done then run.
         if(e.target.className=="newDone"){
             document.getElementById(e.target.id).style.backgroundColor="lawngreen";
-            console.log(e.target.previousElementSibling);
             document.getElementById(e.target.previousElementSibling.id).style.backgroundColor="grey";
             e.target.parentElement.childNodes[3].style.backgroundColor="lawngreen";
             e.target.parentElement.style.outline="2px solid lawngreen";
@@ -197,12 +187,10 @@ document.body.addEventListener('click',hideMembersbar);
         if(e.target.className=='expand'){
             if(e.target.nextElementSibling.style.display == 'block'){
             e.target.nextElementSibling.style.display= 'none';
-            console.log("Show none");
             e.target.style.transform="rotate(0deg)";
             }
         else {
             e.target.nextElementSibling.style.display = 'block';
-            console.log("Show block");
             e.target.style.transform="rotate(180deg)";
         }
     }
@@ -218,47 +206,3 @@ function deleteElement(e){
     }
 }
 //===============DELETE END==============================
-//=====================Added templates===================
-
-    var template1=document.getElementById('template1');
-    var template2=document.getElementById('template2');
-    var template3=document.getElementById('template3');
-    
-    function addTemplates1(){
-        var newTemplate=document.getElementById("template1").cloneNode(true);
-         document.getElementById('foreignContainer').appendChild(newTemplate);
-        
-        var e =window.event;
-        newTemplate.style.top = e.clientY-80 + "px";
-        newTemplate.style.left = e.clientX-300 + "px";
-        newTemplate.setAttribute('draggable',true);
-        
-        dragElement(newTemplate);
-    } 
-    function addTemplates2(){
-        var newTemplate=document.getElementById("template2").cloneNode(true);
-        document.getElementById('foreignContainer').appendChild(newTemplate);
-
-        var e =window.event;
-        newTemplate.style.top = e.clientY-80 + "px";
-        newTemplate.style.left = e.clientX-300 + "px";
-        newTemplate.setAttribute('draggable',true);
-        
-        dragElement(newTemplate);
-        }
-    function addTemplates3(){
-        var newTemplate=document.getElementById("template3").cloneNode(true);
-        document.getElementById('foreignContainer').appendChild(newTemplate);
-        
-        var e =window.event;
-        newTemplate.style.top = e.clientY-80 + "px";
-        newTemplate.style.left = e.clientX-300 + "px";
-        newTemplate.setAttribute('draggable',true);
-        
-        dragElement(newTemplate);
-        }
-
-    template1.addEventListener("dragend",addTemplates1); 
-    template2.addEventListener("dragend",addTemplates2); 
-    template3.addEventListener("dragend",addTemplates3); 
-//=====================Added templates END===============
