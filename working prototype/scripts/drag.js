@@ -1,16 +1,8 @@
-var dateElement = document.getElementById("dateInput");
-//Testing av hva som registrers som e.target.=============LA STÅ
-/*document.body.addEventListener('click ',function(e){
-    console.log(e.target);
-});*/
-//===============================================================
-
 //Index for cards.
 var i=0;
-
-//===================DraggingFunction==================================
-    var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;    
-    function dragElement(elmnt) {
+//=================== DraggingFunction START ==================================
+var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;    
+function dragElement(elmnt) {
         if(elmnt.id=="template1" || elmnt.id=="template2" || elmnt.id=="template3") {
           elmnt.onmousedown = dragMouseDown;
       } 
@@ -50,10 +42,10 @@ var i=0;
         document.onmousemove = null;
       } 
     }
-//==============DraggingFunction-END==================================
+//============== DraggingFunction END ==================================
 
-//===================Creating new Div-elements=====================.
-    function addElement(){
+//=================== Creating new Div-elements START =====================.
+function addElement(){
 
         //Cloning and setting new values to the cloned element.
         var newElement= document.getElementById("myDiv").cloneNode(true);
@@ -109,7 +101,6 @@ var i=0;
         dateSetter();
        
 }
-
 function addCheckboxElement(){
     var newCheckboxElement= document.getElementById("myCheckbox").cloneNode(true);
         
@@ -151,17 +142,14 @@ function addCheckboxElement(){
         dragElement(newCheckboxElement);
         dateSetter();
 }
-        
-//===================Creating new Div-elements-END=================.
+      
+//listening for the drag event to create new elements.
+document.getElementById("testTemplate").addEventListener("dragend",addElement); //First template
+document.getElementById("testTemplateCheckbox").addEventListener("dragend",addCheckboxElement); //Second template
+//===================Creating new Div-elements END START=================.
 
-//listening for the drag event. (Hvis vi drar fra myDiv, så kjører den addElement funksjonen)
-var trigger = document.getElementById("testTemplate");
-trigger.addEventListener("dragend",addElement); 
-
-var triggerCheckbox = document.getElementById("testTemplateCheckbox");
-triggerCheckbox.addEventListener("dragend",addCheckboxElement); 
-
-//=============DateSETTER==========================
+//============= DateSETTER START ==========================
+var dateElement = document.getElementById("dateInput");
 function dateSetter(){
     var classname= document.getElementsByClassName("dateInput");
         for (var i = 0; i < classname.length; i++) {
@@ -176,11 +164,9 @@ function dateSetter(){
         }
                
 }
+//================ DATE END ==============================
 
-
-
-//================DATE END==============================
-//================Expand box=============================
+//================ Expand box START =============================
 document.body.addEventListener('click',hideMembersbar);
  function hideMembersbar(e){
      
@@ -195,8 +181,9 @@ document.body.addEventListener('click',hideMembersbar);
         }
     }
  }
-//===============Expand box END==========================
-//===============DELETE=================================
+//=============== Expand box END ==========================
+
+//=============== DELETE START =================================
 document.body.addEventListener('click',deleteElement);
 function deleteElement(e){
     if(e.target.className=="deleteButton"){
@@ -205,4 +192,4 @@ function deleteElement(e){
     divElement.parentNode.removeChild(divElement);
     }
 }
-//===============DELETE END==============================
+//=============== DELETE END ==============================
