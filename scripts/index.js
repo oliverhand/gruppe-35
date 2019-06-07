@@ -31,6 +31,7 @@ function closeCreateProject() {
     // Setting the input.value of the input field, as the innerHTML text of the projectName field
     domProjectName.innerHTML = domSetProjectNameValue;
     document.getElementById("foreignContainer").innerHTML = null;
+    document.getElementById("pathContainer").innerHTML = null;
     } else if (domLogIn.innerHTML != "<strong>Logged in as guest</strong>" && domSetProjectNameValue != null) {
         alert("You have to be logged in to create a project");
         domCreateProjectPopUp.style.visibility = "hidden";
