@@ -82,6 +82,7 @@ body {
     display: flex;
     width: 90%;
     overflow: hidden;
+    background-image: url("../images/grid_32.jpg");
 }
 
 .popUps{
@@ -194,9 +195,19 @@ body {
     background-color: rgb(240, 240, 255);
 }
 
+#kanBanBackground{
+    position: absolute;
+    left: 3.5%;
+    bottom: 115px;
+}
+
+#kanBanBackground:hover{
+    cursor: pointer;
+}
+
 #darkLightMode{
     position: absolute;
-    left: 4%;
+    left: 3.5%;
     bottom: 50px;
 }
 
@@ -274,8 +285,10 @@ div p {
     width: 100%;
 }
 
-.mainContent{
-    background-image: url(../images/grid_32.jpg);
+#svg{
+    background-image: none;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 #inProgress,#newInProgress,.newInProgress,#done,#newDone,.newDone{
