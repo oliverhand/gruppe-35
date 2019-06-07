@@ -197,12 +197,10 @@ domKanBanbBackground.addEventListener("click", changeToKanBan);
 function changeToKanBan() {
     if(toggleThemeKanBan == false){
         toggleThemeKanBan = !toggleThemeKanBan;
-        document.getElementById("svg").style.backgroundImage = "url('../images/kanban57.png')"
-        /*document.getElementById("svg").style.opacity = "1";*/
+        domIndexCSS.setAttribute("href", "stylesheets/lightModeCSSKanBan.css")
     } else if(toggleThemeKanBan){
         toggleThemeKanBan = !toggleThemeKanBan;
-        document.getElementById("svg").style.backgroundImage = "none";
-        /*document.getElementById("svg").style.opacity = "0";*/
+        domIndexCSS.setAttribute("href", "stylesheets/indexKanBan.css")   
     }
 }
     

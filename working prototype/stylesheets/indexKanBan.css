@@ -286,7 +286,7 @@ div p {
 }
 
 #svg{
-    background-image: none;
+    background-image: url(../images/kanban57.png);
     background-size: cover;
     background-repeat: no-repeat;
 }
