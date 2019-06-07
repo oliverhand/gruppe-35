@@ -35,11 +35,13 @@
     <div class="row">
         <div id="sideBar" class="sideBar">
             
+            <!-- Pre-sets display will be placed here-->
             <div id="sidebarContainer">
                 <img id= "testTemplate"class="image"src="images/CardTemplate.png" draggable="true">
                 <img id= "testTemplateCheckbox"class="image"src="images/CardTemplateCheckbox.jpg" draggable="true">
             </div>
         
+            <!-- First pre-set -->
             <div id="myDiv" draggable="true">
                 <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
                 <div id="myDivHeader" contentEditable="true" >Click here to move</div>
@@ -67,6 +69,7 @@
                 </div>                                         
             </div> 
             
+            <!-- Second pre-set -->
             <div id="myCheckbox" draggable="true">
                 
                 <div class="CheckboxHeader" id="myCheckboxHeader" contentEditable="true" >Your task name here</div>
@@ -83,12 +86,15 @@
                 
                 <input type=date id="dateInput" class="dateInput">
             </div>
+            
+            <!-- img for dark/lightmode and the kanban grid -->
             <img id="kanBanBackground" src="images/kanban-zone-logo-web%20(1).png">
             <img id="darkLightMode" src="images/day-and-night.png">
         </div>
         
         <div class="mainContent" id="mainContent">
             
+            <!-- SVG tag for being able to draw path lines -->
             <svg id="svg">
                 <g id="g-container" >
                     <foreignObject id="foreignContainer" pointer-events="all">  

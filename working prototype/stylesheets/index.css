@@ -259,7 +259,7 @@ body {
 .text {
     width: inherit;
     padding-bottom: 10px; 
-    resize: vertical;
+    
     overflow-wrap: normal;
     word-wrap: break-word;
 }
