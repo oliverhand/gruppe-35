@@ -1,6 +1,6 @@
 var dateElement = document.getElementById("dateInput");
 //Testing av hva som registrers som e.target.=============LA STÅ
-/*document.body.addEventListener('click',function(e){
+/*document.body.addEventListener('click ',function(e){
     console.log(e.target);
 });*/
 //===============================================================

@@ -15,21 +15,21 @@ body {
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
-    background-color: rgb(50, 50, 50);
+    background-color: rgb(240, 240, 240);
     height: 50px;
-    border-bottom:2px solid rgb(250, 250, 250);
+    border-bottom:2px solid rgb(20, 20, 20);
 }
 
 #navbarHorizontal button{
     background-color: inherit;
-    color: rgb(240, 240, 240);
+    color: rgb(20, 20, 20);
     border: 0;
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
 }
 
 #navbarHorizontal button:hover{
-    background-color: rgb(220, 30, 30);
+    background-color: rgb(160, 160, 255);
     cursor: pointer;
 }
 
@@ -54,7 +54,7 @@ body {
     margin-top:15px;
     font-size: 16px;
     font-family: 'Roboto', sans-serif;
-    color: rgb(240, 240, 240);
+    color: rgb(20, 20, 20);
 }
 
 #projectName:hover{
@@ -66,23 +66,24 @@ body {
     display: flex;
     flex-wrap: wrap;
     min-height: 100vh;
+  
 } 
 
 /* Create two unequal columns that sits next to each other */
 /* Sidebar/left column */
 #sideBar {
-    background-color: rgb(50,50,50);
+    background-color: rgb(240, 240, 240);
     padding: 20px;
     width:10%;
-    border-right: 2px solid rgb(250, 250, 250);
-}
+    border-right: 2px solid rgb(20, 20, 20);
+    }
 
 /* Main column */
 .mainContent {
     display: flex;
     width: 90%;
     overflow: hidden;
-    background-image: url("../images/grid_32.jpg");
+    background-image: url("../images/grid_32_hc.jpg");
 }
 
 .popUps{
@@ -286,7 +287,7 @@ div p {
 }
 
 #svg{
-    background-image: none;
+    background-image: url(../images/kanban57.png);
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -305,7 +306,7 @@ div p {
     display: block;
     float: right;
     font-size: 12px;
-    outline:2px solid black;
+     outline:2px solid black;
 }
 
 .expandableBox{
@@ -328,8 +329,8 @@ div p {
     top: 0px;
     right:0px;
     margin: 0px;
-    opacity: 0.3;
-}   
+    opacity: 0.3;   
+}
 
 #expand:hover, #deleteButton:hover, #dateInput:hover{
     cursor: pointer;

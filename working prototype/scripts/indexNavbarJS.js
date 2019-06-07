@@ -98,13 +98,6 @@ function addMember() {
         alert("You are either trying to add a member to a project that does not exist, or a member without a name");
     }
 }
-/*function refreshSelectors(optionToBeRefreshed){
-    
-    var selectorsByTag = document.getElementsByClassName("assignMemberSelector");
-    for(var i = 0; i < selectorsByTag.length; i++ ){
-        selectorsByTag[i].appendChild(optionToBeRefreshed);
-    }    
-}*/
 
 // A function to hide the feedback message when you add a member successfully
 domSetMemberInput.addEventListener("input", function(){
@@ -115,12 +108,14 @@ var selectedMemberIndex;
 // Because this.selectedIndex was different depending on if you tested in the html or javascript, this function is called 'onchange' in the html element
 function getMemberIndex(index){
     selectedMemberIndex = index;
+
 }
 
 document.body.addEventListener('click',assignMember)
 // The button would not register a press, so a workaround was to have an eventlistener on the whole body, but only run the function if the target's classname was the classname // of the button. 
 // Adds the selected member to the cloned copy of the box so it live updates, instead of appending it to the parent box which wont update until you create another box 
-    if(e.target.className=="AssignMembers"){
+function assignMember(e){
+        if(e.target.className=="AssignMembers"){
         
         var newMember= document.createElement('div');
         
@@ -130,7 +125,7 @@ document.body.addEventListener('click',assignMember)
         newMember.className="newMember";
         
         e.target.parentElement.appendChild(newMember);          
-    }
+    }       
 }
 
 
@@ -171,7 +166,7 @@ function createAccount() {
 
 var domDarkLightMode = document.getElementById("darkLightMode");
 var domIndexCSS = document.getElementById("indexCSS");
-var toggleTheme = false;
+var toggleThemeDarkLight = false;
 
 domDarkLightMode.addEventListener("click", changeTheme);
 
@@ -179,14 +174,14 @@ domDarkLightMode.addEventListener("click", changeTheme);
 function changeTheme() {
     var domSvg = document.getElementById("svg");
     var className= document.getElementsByClassName("newDivHeader");
-    if(toggleTheme == false){
-        toggleTheme = !toggleTheme;
+    if(toggleThemeDarkLight == false){
+        toggleThemeDarkLight = !toggleThemeDarkLight;
         domIndexCSS.setAttribute("href", "stylesheets/lightModeCSS.css")
         for (var i = 0; i < className.length; i++){
             className[i].style.backgroundColor = "rgb(220, 220, 220)";
         }
-    } else if(toggleTheme) {
-        toggleTheme = !toggleTheme;
+    } else if(toggleThemeDarkLight) {
+        toggleThemeDarkLight = !toggleThemeDarkLight;
         domIndexCSS.setAttribute("href", "stylesheets/index.css")
         for (var i = 0; i < className.length; i++){
             className[i].style.backgroundColor = "grey";
@@ -194,7 +189,21 @@ function changeTheme() {
     }
 }
 
+var domKanBanbBackground = document.getElementById("kanBanBackground");
+var domMainContainer = document.getElementsByClassName("mainContainer");
+var toggleThemeKanBan = false;
+domKanBanbBackground.addEventListener("click", changeToKanBan);
 
+function changeToKanBan() {
+    if(toggleThemeKanBan == false){
+        toggleThemeKanBan = !toggleThemeKanBan;
+        domIndexCSS.setAttribute("href", "stylesheets/lightModeCSSKanBan.css")
+    } else if(toggleThemeKanBan){
+        toggleThemeKanBan = !toggleThemeKanBan;
+        domIndexCSS.setAttribute("href", "stylesheets/indexKanBan.css")   
+    }
+}
+    
 
 
 
